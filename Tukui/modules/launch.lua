@@ -79,31 +79,32 @@ local function install()
 		FCF_SetLocked(ChatFrame4, 1)
 		ChatFrame4:Show();
 
+		--Code thanks to Jaxxo
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
 			local chatFrameId = frame:GetID()
 			local chatName = FCF_GetChatWindowInfo(chatFrameId)
-			
-			frame:SetSize(TukuiDB.Scale(TukuiCF["panels"].tinfowidth + 1), TukuiDB.Scale(111))
-			
+ 
+			frame:SetSize(TukuiDB.Scale(TukuiCF["panels"].tinfowidth - 7), TukuiDB.Scale(120))
+ 
 			-- this is the default width and height of tukui chats.
-			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["panels"].tinfowidth + 1), TukuiDB.Scale(111))
-			
+			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["panels"].tinfowidth - 7), TukuiDB.Scale(120))
+ 
 			-- move general bottom left or Loot (if found) on right.
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", ChatLeft, "BOTTOM", TukuiDB.Scale(-1), TukuiDB.Scale(6))
 			elseif i == 4 and chatName == "Loot" then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", ChatRight, "BOTTOM", 0, TukuiDB.Scale(6))
 			end
-					
+ 
 			-- save new default position and dimension
 			FCF_SavePositionAndDimensions(frame)
-			
+ 
 			-- set default tukui font size
 			FCF_SetChatWindowFontSize(nil, frame, 12)
-			
+ 
 			-- rename windows general and combat log
 			if i == 1 then FCF_SetWindowName(frame, "G, S & W") end
 			if i == 2 then FCF_SetWindowName(frame, "Log") end
@@ -148,15 +149,12 @@ local function install()
 		ChatFrame_AddMessageGroup(ChatFrame1, "BN_CONVERSATION")
 					
 		-- Setup the spam chat frame
-		ChatFrame_RemoveAllMessageGroups(ChatFrame3)
-		ChatFrame_AddChannel(ChatFrame3, "Trade")
-		ChatFrame_AddChannel(ChatFrame3, "General")
-		ChatFrame_AddChannel(ChatFrame3, "LocalDefense")
-		ChatFrame_AddChannel(ChatFrame3, "GuildRecruitment")
-		ChatFrame_AddChannel(ChatFrame3, "LookingForGroup")
-				
-		-- Setup the right chat
-		ChatFrame_RemoveAllMessageGroups(ChatFrame4);
+		ChatFrame_RemoveAllMessageGroups(ChatFrame4)
+		ChatFrame_AddChannel(ChatFrame4, "Trade")
+		ChatFrame_AddChannel(ChatFrame4, "General")
+		ChatFrame_AddChannel(ChatFrame4, "LocalDefense")
+		ChatFrame_AddChannel(ChatFrame4, "GuildRecruitment")
+		ChatFrame_AddChannel(ChatFrame4, "LookingForGroup")
 		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_XP_GAIN")
 		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_HONOR_GAIN")
 		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_FACTION_CHANGE")

@@ -19,7 +19,7 @@ TukuiCF["unitframes"] = {
 	["highThreshold"] = 80,                -- hunter high threshold
 	["lowThreshold"] = 20,                 -- global low threshold, for low mana warning.
 	["targetpowerpvponly"] = true,         -- enable power text on pvp target only
-	["totdebuffs"] = false,                -- enable tot debuffs (high reso only)
+	["totdebuffs"] = true,                -- enable tot debuffs (high reso only)
 	["focusdebuffs"] = false,              -- enable focus debuffs 
 	["showfocustarget"] = false,           -- show focus target
 	["showtotalhpmp"] = false,             -- change the display of info text on player and target with XXXX/Total.
@@ -35,12 +35,12 @@ TukuiCF["unitframes"] = {
 
 	-- raid layout
 	["showrange"] = true,                  -- show range opacity on raidframes
-	["healcomm"] = false,                  -- enable healcomm4 support on healer layout.
+	["healcomm"] = true,                  -- enable healcomm4 support on healer layout.
 	["raidalphaoor"] = 0.3,                -- alpha of unitframes when unit is out of range
-	["gridonly"] = false,                  -- enable grid only mode for all healer mode raid layout.
+	["gridonly"] = true,                  -- enable grid only mode for all healer mode raid layout.
 	["showsymbols"] = true,	               -- show symbol.
 	["aggro"] = true,                      -- show aggro on all raids layouts
-	["raidunitdebuffwatch"] = false,       -- track important spell to watch in pve for grid mode.
+	["raidunitdebuffwatch"] = true,       -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,         -- enable vertical grow on health bar for grid mode.
 	["showplayerinparty"] = false,         -- show my player frame in party
 	["gridscale"] = 1,                     -- set the healing grid scaling
@@ -68,11 +68,12 @@ TukuiCF["arena"] = {
 TukuiCF["actionbar"] = {
 	["enable"] = true,                     -- enable tukz action bars
 	["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
+	["splitbar"] = true,
 	["rightbarmouseover"] = false,         -- enable right bars on mouse over
 	["shapeshiftmouseover"] = false,       -- enable shapeshift or totembar on mouseover
 	["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
-	["rightbars"] = 3,                     -- numbers of right bar you want
+	["rightbars"] = 0,                     -- numbers of right bar you want
 	["showgrid"] = true,                   -- show grid on empty button
 }
 
@@ -101,26 +102,27 @@ TukuiCF["cooldown"] = {
 }
 
 TukuiCF["datatext"] = {
-	["fps_ms"] = 4,                        -- show fps and ms on panels
-	["mem"] = 5,                           -- show total memory on panels
+	["fps_ms"] = 8,                        -- show fps and ms on panels
+	["mem"] = 9,                           -- show total memory on panels
 	["bags"] = 0,                          -- show space used in bags on panels
-	["gold"] = 6,                          -- show your current gold on panels
-	["wowtime"] = 8,                       -- show time on panels
-	["guild"] = 1,                         -- show number on guildmate connected on panels
+	["gold"] = 3,                          -- show your current gold on panels
+	["wowtime"] = 10,                       -- show time on panels
+	["guild"] = 14,                         -- show number on guildmate connected on panels
 	["dur"] = 2,                           -- show your equipment durability on panels.
-	["friends"] = 3,                       -- show number of friends connected.
+	["friends"] = 15,                       -- show number of friends connected.
 	["dps_text"] = 0,                      -- show a dps meter on panels
 	["hps_text"] = 0,                      -- show a heal meter on panels
-	["power"] = 7,                         -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["power"] = 0,                         -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["arp"] = 0,                           -- show your armor penetration rating on panels.
 	["haste"] = 0,                         -- show your haste rating on panels.
 	["crit"] = 0,                          -- show your crit rating on panels.
 	["avd"] = 0,                           -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                         -- show your armor value against the level mob you are currently targeting
+	["location"] = 13,
 
 	["battleground"] = true,               -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
-	["time24"] = true,                     -- set time to 24h format.
-	["localtime"] = false,                 -- set time to local time instead of server time.
+	["time24"] = false,                     -- set time to 24h format.
+	["localtime"] = true,                 -- set time to local time instead of server time.
 	["fontsize"] = 12,                     -- font size for panels.
 }
 

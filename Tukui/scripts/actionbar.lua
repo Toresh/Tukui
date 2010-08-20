@@ -169,7 +169,7 @@ if db.rightbars > 2 then
 end
 
 -- now look for others shit, if found, set bar or override settings bar above.
-if TukuiDB.lowversion == true then
+--if TukuiDB.lowversion == true then
 	if db.bottomrows == 2 then
 		TukuiBar2:Show()
 		MultiBarBottomLeftButton1:ClearAllPoints()
@@ -181,7 +181,7 @@ if TukuiDB.lowversion == true then
 			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
 		end   
 	end
-else
+--[[else
 	TukuiBar2:Show()
 	MultiBarBottomLeftButton1:ClearAllPoints()
 	MultiBarBottomLeftButton1:SetPoint("LEFT", ActionButton12, "RIGHT", TukuiDB.Scale(4), 0)
@@ -218,6 +218,25 @@ else
 		MultiBarLeftButton11:SetAlpha(0)
 		MultiBarLeftButton12:SetScale(0.0001)
 		MultiBarLeftButton12:SetAlpha(0)
+	end
+end--]]
+if db.splitbar == true then
+	TukuiBar5:Show()
+	MultiBarLeftButton1:ClearAllPoints()
+	MultiBarLeftButton1:SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+	for i= 2, 12 do
+	local b = _G["MultiBarLeftButton"..i]
+	local b2 = _G["MultiBarLeftButton"..i-1]
+		b:ClearAllPoints()
+		b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
+	end
+	MultiBarLeftButton4:ClearAllPoints()
+	MultiBarLeftButton4:SetPoint("BOTTOMLEFT", TukuiRightSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+	MultiBarLeftButton7:ClearAllPoints()
+	if db.bottomrows == 2 then
+		MultiBarLeftButton7:SetPoint("BOTTOMLEFT", MultiBarLeftButton1,"TOPLEFT", 0, TukuiDB.Scale(4));
+		MultiBarLeftButton10:ClearAllPoints()
+		MultiBarLeftButton10:SetPoint("BOTTOMLEFT", MultiBarLeftButton4,"TOPLEFT", 0, TukuiDB.Scale(4));
 	end
 end
 
@@ -381,14 +400,16 @@ if db.rightbarmouseover == true and db.rightbars > 0 then
 		pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
 		pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
 		if not (db.rightbars == 1 and db.bottomrows == 2 and TukuiDB.lowversion ~= true) then
-			local pb = _G["MultiBarLeftButton"..i]
-			pb:SetAlpha(0)
-			pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
-			pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
-			local pb = _G["MultiBarBottomRightButton"..i]
-			pb:SetAlpha(0)
-			pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
-			pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
+			if db.splitbar == false then
+				local pb = _G["MultiBarLeftButton"..i]
+				pb:SetAlpha(0)
+				pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
+				pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
+				local pb = _G["MultiBarBottomRightButton"..i]
+				pb:SetAlpha(0)
+				pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
+				pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
+			end
 		end
 	end
 	for i=1, NUM_PET_ACTION_SLOTS do

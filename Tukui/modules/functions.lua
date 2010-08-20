@@ -103,21 +103,42 @@ function TukuiDB.PP(p, obj)
 		obj:SetHeight(TukuiInfoLeft:GetHeight())
 		obj:SetPoint("RIGHT", TukuiInfoLeft, -30, 0.5)
 	elseif p == 4 then
+		obj:SetHeight(TukuiInfoCentre:GetHeight())
+		obj:SetPoint("LEFT", TukuiInfoCentre, "LEFT", 30, .5)
+	elseif p == 5 then
+		obj:SetHeight(TukuiInfoCentre:GetHeight())
+		obj:SetPoint("RIGHT", TukuiInfoCentre, "RIGHT", -30, .5)
+	elseif p == 6 then
+		obj:SetHeight(TukuiInfoCentre:GetHeight())
+		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", 75, .5)
+	elseif p == 7 then
+		obj:SetHeight(TukuiInfoCentre:GetHeight())
+		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", -75, .5)
+	elseif p == 8 then
 		obj:SetHeight(TukuiInfoRight:GetHeight())
 		obj:SetPoint("LEFT", TukuiInfoRight, 30, 0.5)
-	elseif p == 5 then
+	elseif p == 9 then
 		obj:SetHeight(TukuiInfoRight:GetHeight())
 		obj:SetPoint("CENTER", TukuiInfoRight, 0, 0.5)
-	elseif p == 6 then
+	elseif p == 10 then
 		obj:SetHeight(TukuiInfoRight:GetHeight())
 		obj:SetPoint("RIGHT", TukuiInfoRight, -30, 0.5)
 	end
 	
 	if TukuiMinimap then
-		if p == 7 then
+		if p == 11 then
+			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
+			obj:SetPoint("LEFT", TukuiMinimapStatsTop, 20, 0.5)
+		elseif p == 12 then
+			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
+			obj:SetPoint("RIGHT", TukuiMinimapStatsTop, -20, 0.5)
+		elseif p == 13 then
+			obj:SetHeight(TukuiLocationPanel:GetHeight())
+			obj:SetPoint("CENTER", TukuiLocationPanel, 0, 0.5)
+		elseif p == 14 then
 			obj:SetHeight(TukuiMinimapStatsLeft:GetHeight())
 			obj:SetPoint("CENTER", TukuiMinimapStatsLeft, 0, 1)
-		elseif p == 8 then
+		elseif p == 15 then
 			obj:SetHeight(TukuiMinimapStatsRight:GetHeight())
 			obj:SetPoint("CENTER", TukuiMinimapStatsRight, 0, 1)
 		end
