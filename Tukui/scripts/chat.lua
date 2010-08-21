@@ -250,28 +250,33 @@ local function SetupChatPosAndFont(self)
 		end
 		
 		-- set font align to right if a any chat is found at right of your screen.		
-		if i == 4 and name == "Loot" and point == "BOTTOMRIGHT" or point == "RIGHT" or point == "TOPRIGHT" then 
-			chat:SetJustifyH("RIGHT") 
-		end
+		--if i == 4 and name == "Loot" and point == "BOTTOMRIGHT" or point == "RIGHT" or point == "TOPRIGHT" then 
+			--chat:SetJustifyH("RIGHT") 
+		--end
 		
 		-- force chat position on #1 and #4, needed if we change ui scale or resolution
 		-- also set original width and height of chatframes 1 and 4 if first time we run tukui.
 		-- doing resize of chat also here for users that hit "cancel" when default installation is show.
+		--thanks to jaxo for background
 		if i == 1 then
 			chat:ClearAllPoints()
-			chat:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(6))
+			chat:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(2), TukuiDB.Scale(7))
+ 
 			FCF_SavePositionAndDimensions(chat)
 		elseif i == 4 and name == "Loot" then
 			chat:ClearAllPoints()
-			chat:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, TukuiDB.Scale(6))
+			chat:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", -5, TukuiDB.Scale(7))
+ 
 			FCF_SavePositionAndDimensions(chat)
 		end
 	end
-	
+ 
 	-- reposition battle.net popup over chat #1
 	BNToastFrame:HookScript("OnShow", function(self)
-		self:ClearAllPoints()
-		self:SetPoint("BOTTOMLEFT", ChatFrame1, "TOPLEFT", 0, TukuiDB.Scale(5))
+	self:ClearAllPoints()
+	self:SetPoint("BOTTOMLEFT", ChatLeft, "TOPLEFT", 0, TukuiDB.Scale(3))
+	self:SetBackdropColor(unpack(TukuiCF["media"].backdropcolor))
+	self:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 	end)
 end
 

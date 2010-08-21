@@ -35,9 +35,10 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 	self.default = 1
 end)
 
+--update for background from jaxo
 GameTooltip:HookScript("OnUpdate",function(self, ...)
 	if self:GetAnchorType() == "ANCHOR_CURSOR" and NeedBackdropBorderRefresh == true and db.cursor ~= true then
-		-- h4x for world object tooltip border showing last border color 
+		-- h4x for world object tooltip border showing last border color
 		-- or showing background sometime ~blue :x
 		NeedBackdropBorderRefresh = false
 		self:SetBackdropColor(unpack(TukuiCF.media.backdropcolor))
@@ -49,10 +50,10 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 			self:SetAlpha(1)
 			if TukuiCF["bags"].enable == true and StuffingFrameBags:IsShown() then
 				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", 0, TukuiDB.Scale(4))
+				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", 0, TukuiDB.Scale(3))
 			else
 				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, TukuiDB.Scale(5))
+				self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(3))
 			end
 		end
 	end
