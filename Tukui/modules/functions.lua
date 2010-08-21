@@ -107,13 +107,13 @@ function TukuiDB.PP(p, obj)
 		obj:SetPoint("LEFT", TukuiInfoCentre, "LEFT", 30, .5)
 	elseif p == 5 then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
-		obj:SetPoint("RIGHT", TukuiInfoCentre, "RIGHT", -30, .5)
+		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", -75, .5)
 	elseif p == 6 then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
 		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", 75, .5)
 	elseif p == 7 then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
-		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", -75, .5)
+		obj:SetPoint("RIGHT", TukuiInfoCentre, "RIGHT", -30, .5)
 	elseif p == 8 then
 		obj:SetHeight(TukuiInfoRight:GetHeight())
 		obj:SetPoint("LEFT", TukuiInfoRight, 30, 0.5)

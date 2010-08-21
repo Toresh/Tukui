@@ -28,10 +28,8 @@ if TukuiCF["datatext"].location and TukuiCF["datatext"].location > 0 then
 		end
 		
 		Text:SetText(location)
-		--TukuiLocationPanel:SetWidth(Text:GetWidth() + 24)
-		UIFrameFadeIn(TukuiLocationPanel, 0.5, 0, 1)
+		--UIFrameFadeIn(TukuiLocationPanel, 0.5, 0, 1)
 	end
-	
 	Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 	Stat:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 	Stat:SetScript("OnMouseDown", function() ToggleFrame(WorldMapFrame) end)
