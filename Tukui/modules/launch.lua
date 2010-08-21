@@ -70,16 +70,13 @@ local function install()
 		FCF_SetLocked(ChatFrame1, 1)
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
-		FCF_OpenNewWindow("General")
+
+		FCF_OpenNewWindow("Spam")
+		FCF_UnDockFrame(ChatFrame3)
 		FCF_SetLocked(ChatFrame3, 1)
-		FCF_DockFrame(ChatFrame3)
+		ChatFrame3:Show();
 
-		FCF_OpenNewWindow("Loot")
-		FCF_UnDockFrame(ChatFrame4)
-		FCF_SetLocked(ChatFrame4, 1)
-		ChatFrame4:Show();
-
-		--Code thanks to Jaxxo
+		--Code thanks to Jaxxo/Hydra
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
 			local chatFrameId = frame:GetID()
@@ -94,7 +91,7 @@ local function install()
 			if i == 1 then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOM", ChatLeft, "BOTTOM", TukuiDB.Scale(-1), TukuiDB.Scale(6))
-			elseif i == 4 and chatName == "Loot" then
+			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOM", ChatRight, "BOTTOM", 0, TukuiDB.Scale(6))
 			end
@@ -149,17 +146,17 @@ local function install()
 		ChatFrame_AddMessageGroup(ChatFrame1, "BN_CONVERSATION")
 					
 		-- Setup the spam chat frame
-		ChatFrame_RemoveAllMessageGroups(ChatFrame4)
-		ChatFrame_AddChannel(ChatFrame4, "Trade")
-		ChatFrame_AddChannel(ChatFrame4, "General")
-		ChatFrame_AddChannel(ChatFrame4, "LocalDefense")
-		ChatFrame_AddChannel(ChatFrame4, "GuildRecruitment")
-		ChatFrame_AddChannel(ChatFrame4, "LookingForGroup")
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_XP_GAIN")
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_HONOR_GAIN")
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_FACTION_CHANGE")
-		ChatFrame_AddMessageGroup(ChatFrame4, "LOOT")
-		ChatFrame_AddMessageGroup(ChatFrame4, "MONEY")
+		ChatFrame_RemoveAllMessageGroups(ChatFrame3)
+		ChatFrame_AddChannel(ChatFrame3, "Trade")
+		ChatFrame_AddChannel(ChatFrame3, "General")
+		ChatFrame_AddChannel(ChatFrame3, "LocalDefense")
+		ChatFrame_AddChannel(ChatFrame3, "GuildRecruitment")
+		ChatFrame_AddChannel(ChatFrame3, "LookingForGroup")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_XP_GAIN")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_HONOR_GAIN")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_FACTION_CHANGE")
+		ChatFrame_AddMessageGroup(ChatFrame3, "LOOT")
+		ChatFrame_AddMessageGroup(ChatFrame3, "MONEY")
 				
 		-- enable classcolor automatically on login and on each character without doing /configure each time.
 		ToggleChatColorNamesByClassGroup(true, "SAY")

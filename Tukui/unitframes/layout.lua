@@ -151,24 +151,24 @@ local function Shared(self, unit)
 			else
 				portrait:SetHeight(57)
 			end
-			portrait:SetWidth(33)
+			portrait:SetWidth(40)
 			portrait:SetAlpha(1)
 			if unit == "player" then
-				health:SetPoint("TOPLEFT", 34,0)
+				health:SetPoint("TOPLEFT", 41,0)
 				health:SetPoint("TOPRIGHT")
 				power:SetPoint("TOPLEFT", health, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPLEFT", power, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPRIGHT", power, "BOTTOMRIGHT", 0, -TukuiDB.mult)
-				portrait:SetPoint("TOPLEFT", health, "TOPLEFT", -34,0)
+				portrait:SetPoint("TOPLEFT", health, "TOPLEFT", -41,0)
 			elseif unit == "target" then
-				health:SetPoint("TOPRIGHT", -34,0)
+				health:SetPoint("TOPRIGHT", -41,0)
 				health:SetPoint("TOPLEFT")
 				power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				power:SetPoint("TOPLEFT", health, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPRIGHT", power, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPLEFT", power, "BOTTOMLEFT", 0, -TukuiDB.mult)
-				portrait:SetPoint("TOPRIGHT", health, "TOPRIGHT", 34,0)
+				portrait:SetPoint("TOPRIGHT", health, "TOPRIGHT", 41,0)
 			end
 			table.insert(self.__elements, TukuiDB.HidePortrait)
 			self.Portrait = portrait
@@ -1284,7 +1284,7 @@ if not IsAddOnLoaded("Gladius") then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "oUF_Arena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 252, 300)
+			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 300, 300)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 10)
 		end
@@ -1305,7 +1305,7 @@ if not IsAddOnLoaded("DXE") then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "oUF_Boss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 252, 300)
+			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 300, 300)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)             
 		end

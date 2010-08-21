@@ -561,27 +561,11 @@ function Stuffing:Layout(lb)
 
 	if lb then
 		bs = bags_BANK
-		if TukuiCF["panels"].tinfowidth >= 405 then
-			cols = 11
-		elseif TukuiCF["panels"].tinfowidth >= 370 and TukuiCF["panels"].tinfowidth < 405 then
-			cols = 10
-		elseif TukuiCF["panels"].tinfowidth >= 335 and TukuiCF["panels"].tinfowidth < 370 then
-			cols = 9
-		else
-			cols = 8
-		end
+		cols = 12
 		f = self.bankFrame
 	else
 		bs = bags_BACKPACK
-		if TukuiCF["panels"].tinfowidth >= 405 then
-			cols = 11
-		elseif TukuiCF["panels"].tinfowidth >= 370 and TukuiCF["panels"].tinfowidth < 405 then
-			cols = 10
-		elseif TukuiCF["panels"].tinfowidth >= 335 and TukuiCF["panels"].tinfowidth < 370 then
-			cols = 9
-		else
-			cols = 8
-		end
+		cols = 12
 		f = self.frame
 
 		f.gold:SetText (GetCoinTextureString(GetMoney(), 12))
@@ -618,8 +602,8 @@ function Stuffing:Layout(lb)
 		fb:SetBackdropColor(unpack(TukuiCF["media"].backdropcolor))
 		fb:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 
-		local bsize = 30
-		if lb then bsize = 37 end
+		local bsize = 24
+		if lb then bsize = 30 end
 
 		local w = 2 * 12
 		w = w + ((#bs - 1) * bsize)
@@ -676,8 +660,8 @@ function Stuffing:Layout(lb)
 		rows = rows + 1
 	end
 
-	f:SetWidth(TukuiDB.Scale(cols * 31 + (cols - 1) * 4 + 12 * 2)) 
-	f:SetHeight(TukuiDB.Scale(rows * 31 + (rows - 1) * 4 + off + 12 * 2))
+	f:SetWidth(TukuiDB.Scale(352)) 
+	f:SetHeight(TukuiDB.Scale(rows * 25 + (rows - 3.5) * 4 + off + 12 * 2))
 
 
 	local idx = 0
@@ -702,17 +686,18 @@ function Stuffing:Layout(lb)
 						table.insert(self.buttons, idx + 1, b)
 					end
 
-					xoff = 12 + (x * 31)
+					xoff = 4 + (x * 25)
 							+ (x * 4)
 
-					yoff = off + 12 + (y * 31)
+					yoff = off + 12 + (y * 25)
 							+ ((y - 1) * 4)
 					yoff = yoff * -1
+					
 
 					b.frame:ClearAllPoints()
 					b.frame:SetPoint("TOPLEFT", f, "TOPLEFT", TukuiDB.Scale(xoff), TukuiDB.Scale(yoff))
-					b.frame:SetHeight(TukuiDB.Scale(31))
-					b.frame:SetWidth(TukuiDB.Scale(31))
+					b.frame:SetHeight(TukuiDB.Scale(25))
+					b.frame:SetWidth(TukuiDB.Scale(25))
 					b.frame:SetPushedTexture("")
 					b.frame:SetNormalTexture("")
 					b.frame:Show()

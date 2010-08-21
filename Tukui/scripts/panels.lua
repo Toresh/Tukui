@@ -1,16 +1,16 @@
 -- ACTION BAR PANEL
-TukuiDB.buttonsize = TukuiDB.Scale(27)
+TukuiDB.buttonsize = TukuiDB.Scale(25)
 TukuiDB.buttonspacing = TukuiDB.Scale(4)
-TukuiDB.petbuttonsize = TukuiDB.Scale(29)
+TukuiDB.petbuttonsize = TukuiDB.Scale(25)
 TukuiDB.petbuttonspacing = TukuiDB.Scale(4)
 
 -- set left and right info panel width
-TukuiCF["panels"] = {["tinfowidth"] = 325}
+TukuiCF["panels"] = {["tinfowidth"] = 352}
 
 --  Info Centre
 local icentre = CreateFrame("Frame", "TukuiInfoCentre", UIParent)
 TukuiDB.CreatePanel(icentre, 1, 23, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(14))
-icentre:SetWidth(((TukuiDB.buttonsize * 19) + (TukuiDB.buttonspacing * 16))+1)
+icentre:SetWidth(((TukuiDB.buttonsize * 19) + (TukuiDB.buttonspacing * 16))+2)
 
 local barbg = CreateFrame("Frame", "TukuiActionBarBackground", UIParent)
 TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", icentre, "TOP", 0, TukuiDB.Scale(4))
@@ -83,10 +83,11 @@ if TukuiMinimap then
 end
 
 --Cooldown bar
-local cooldown = CreateFrame("Frame", "cooldown", barbg)
-TukuiDB.CreatePanel(cooldown, 1, 35, "Bottom", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(4))
-cooldown:SetWidth(TukuiInfoCentre:GetWidth()+1)
-
+if TukuiCF["actionbar"].cooldownbar then
+	local cooldown = CreateFrame("Frame", "cooldown", barbg)
+	TukuiDB.CreatePanel(cooldown, 1, 30, "Bottom", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(4))
+	cooldown:SetWidth(TukuiInfoCentre:GetWidth()+2)
+end
 
 
 --Chat backgrounds thanks to Hydra
@@ -147,11 +148,6 @@ if TukuiCF["actionbar"].enable == true or not (IsAddOnLoaded("Dominos") or IsAdd
 	else
 		TukuiDB.CreatePanel(petbg, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-6), TukuiDB.Scale(-13.5))
 	end
-
-	local ltpetbg1 = CreateFrame("Frame", "TukuiLineToPetActionBarBackground", petbg)
-	TukuiDB.CreatePanel(ltpetbg1, 30, 265, "TOPLEFT", petbg, "TOPRIGHT", 0, TukuiDB.Scale(-33))
-	ltpetbg1:SetFrameLevel(0)
-	ltpetbg1:SetAlpha(.8)
 end
 
 --BATTLEGROUND STATS FRAME

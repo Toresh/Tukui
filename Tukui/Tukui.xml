@@ -79,6 +79,7 @@
 	<Script file="datatext\mem.lua"/>
 	<Script file="datatext\power.lua"/>
 	<Script file="datatext\time.lua"/>
+	<Script file="datatext\location.lua"/>
 		
 	<Script file="scripts\actionbar.lua"/>
 	<Script file="scripts\buttonstyler.lua"/>

@@ -25,7 +25,7 @@ TukuiCF["unitframes"] = {
 	["showtotalhpmp"] = false,             -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                 -- enable smooth bar
 	["showthreat"] = true,                 -- enable the threat bar anchored to info left panel.
-	["charportrait"] = false,              -- do i really need to explain this?
+	["charportrait"] = true,              -- do i really need to explain this?
 	["maintank"] = false,                  -- enable maintank
 	["mainassist"] = false,                -- enable mainassist
 	["unicolor"] = false,                  -- enable unicolor theme
@@ -73,7 +73,8 @@ TukuiCF["actionbar"] = {
 	["shapeshiftmouseover"] = false,       -- enable shapeshift or totembar on mouseover
 	["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
-	["rightbars"] = 0,                     -- numbers of right bar you want
+	["rightbars"] = 0,					   -- numbers of right bar you want
+	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
 	["showgrid"] = true,                   -- show grid on empty button
 }
 
@@ -118,12 +119,16 @@ TukuiCF["datatext"] = {
 	["crit"] = 0,                          -- show your crit rating on panels.
 	["avd"] = 0,                           -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                         -- show your armor value against the level mob you are currently targeting
-	["location"] = 13,
+	["location"] = 13,					   -- shows your location. (zone text)
 
 	["battleground"] = true,               -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = false,                     -- set time to 24h format.
 	["localtime"] = true,                 -- set time to local time instead of server time.
 	["fontsize"] = 12,                     -- font size for panels.
+}
+
+TukuiCF["broker_datatext"] = {
+	--["Skada"] = 8,					  This is an example of how to add broker addons. To find the name, type /showldb in game.
 }
 
 TukuiCF["chat"] = {
