@@ -674,19 +674,13 @@ TukuiDB.countOffsets = {
 	BOTTOM = {0, 0},
 }
 
-function TukuiDB.auraIcon(self, icon)
-	TukuiDB.SetTemplate(icon)
-	icon.icon:SetPoint("TOPLEFT", TukuiDB.Scale(1), TukuiDB.Scale(-1))
-	icon.icon:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(-1), TukuiDB.Scale(1))
+function TukuiDB.CreateAuraWatchIcon(self, icon)
 	icon.icon:SetTexCoord(.08, .92, .08, .92)
-	icon.icon:SetDrawLayer("ARTWORK")
 	if (icon.cd) then
 		icon.cd:SetReverse()
-	end
-	icon.overlay:SetTexture()
+	end 	
 end
 
-local _, class = UnitClass("player")
 function TukuiDB.createAuraWatch(self, unit)
 	local auras = CreateFrame("Frame", nil, self)
 	auras:SetPoint("TOPLEFT", self.Health, 2, -2)
@@ -694,7 +688,7 @@ function TukuiDB.createAuraWatch(self, unit)
 	auras.presentAlpha = 1
 	auras.missingAlpha = 0
 	auras.icons = {}
-	auras.PostCreateIcon = TukuiDB.auraIcon
+	auras.PostCreateIcon = TukuiDB.CreateAuraWatchIcon
 
 	if (not TukuiCF["unitframes"].auratimer) then
 		auras.hideCooldown = true
@@ -721,8 +715,8 @@ function TukuiDB.createAuraWatch(self, unit)
 			local icon = CreateFrame("Frame", nil, auras)
 			icon.spellID = spell[1]
 			icon.anyUnit = spell[4]
-			icon:SetWidth(TukuiDB.Scale(6*TukuiCF["unitframes"].gridscale))
-			icon:SetHeight(TukuiDB.Scale(6*TukuiCF["unitframes"].gridscale))
+			icon:SetWidth(TukuiDB.Scale(7*TukuiCF["unitframes"].gridscale))
+			icon:SetHeight(TukuiDB.Scale(7*TukuiCF["unitframes"].gridscale))
 			icon:SetPoint(spell[2], 0, 0)
 
 			local tex = icon:CreateTexture(nil, "OVERLAY")
@@ -752,7 +746,7 @@ function TukuiDB.createAuraWatch(self, unit)
 			icon:SetWidth(TukuiDB.Scale(22*TukuiCF["unitframes"].gridscale))
 			icon:SetHeight(TukuiDB.Scale(22*TukuiCF["unitframes"].gridscale))
 			icon:SetPoint("CENTER", 0, 0)
-
+						
 			local count = icon:CreateFontString(nil, "OVERLAY")
 			count:SetFont(TukuiCF["media"].uffont, 9*TukuiCF["unitframes"].gridscale, "THINOUTLINE")
 			count:SetPoint("BOTTOMRIGHT", 2, 2)
