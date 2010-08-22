@@ -75,6 +75,7 @@ TukuiCF["actionbar"] = {
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
 	["rightbars"] = 0,					   -- numbers of right bar you want
 	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
+	["horizonbars"] = true,				   -- enables horizontal right bars
 	["showgrid"] = true,                   -- show grid on empty button
 }
 

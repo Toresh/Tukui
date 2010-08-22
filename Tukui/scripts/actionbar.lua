@@ -102,12 +102,20 @@ PossessBarFrame:SetAlpha(0)
 -- pet action bar.
 PetActionBarFrame:SetParent(TukuiPet)
 PetActionButton1:ClearAllPoints()
-PetActionButton1:SetPoint("TOP", TukuiPetActionBarBackground, "TOP", 0, TukuiDB.Scale(-4))
+if TukuiCF["actionbar"].horizonbars == true then
+	PetActionButton1:SetPoint("TOPLEFT", TukuiPetActionBarBackground, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+else
+	PetActionButton1:SetPoint("TOP", TukuiPetActionBarBackground, "TOP", 0, TukuiDB.Scale(-4))
+end
 for i=2, 10 do
 	local b = _G["PetActionButton"..i]
 	local b2 = _G["PetActionButton"..i-1]
 	b:ClearAllPoints()
-	b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.petbuttonspacing)
+	if TukuiCF["actionbar"].horizonbars == true then
+		b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.Scale(4), 0)
+	else
+		b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.petbuttonspacing)
+	end
 end
 
 ------------------------------------------------------------------------------------------
@@ -136,36 +144,60 @@ if db.rightbars > 0 then
 	TukuiActionBarBackgroundRight:SetFrameLevel(1)
 	TukuiBar4:Show()
 	MultiBarRightButton1:ClearAllPoints()
-	MultiBarRightButton1:SetPoint("TOPRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(-4))
+	if TukuiCF["actionbar"].horizonbars == true then
+		MultiBarRightButton1:SetPoint("TOPLEFT", TukuiActionBarBackgroundRight, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+	else
+		MultiBarRightButton1:SetPoint("TOPRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(-4))
+	end
 	for i= 2, 12 do
 		local b = _G["MultiBarRightButton"..i]
 		local b2 = _G["MultiBarRightButton"..i-1]
 		b:ClearAllPoints()
-		b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		if TukuiCF["actionbar"].horizonbars == true then
+			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
+		else
+			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		end
 	end
 end
 
 if db.rightbars > 1 then
 	TukuiBar3:Show()
 	MultiBarBottomRightButton1:ClearAllPoints()
-	MultiBarBottomRightButton1:SetPoint("TOPLEFT", TukuiActionBarBackgroundRight, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+	if TukuiCF["actionbar"].horizonbars == true then
+		MultiBarBottomRightButton1:SetPoint("BOTTOMLEFT", TukuiActionBarBackgroundRight, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+	else
+		MultiBarBottomRightButton1:SetPoint("TOPLEFT", TukuiActionBarBackgroundRight, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+	end
 	for i= 2, 12 do
 		local b = _G["MultiBarBottomRightButton"..i]
 		local b2 = _G["MultiBarBottomRightButton"..i-1]
 		b:ClearAllPoints()
-		b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		if TukuiCF["actionbar"].horizonbars == true then
+			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.Scale(4), 0)
+		else
+			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		end
 	end    
 end
 
 if db.rightbars > 2 then
 	TukuiBar5:Show()
 	MultiBarLeftButton1:ClearAllPoints()
-	MultiBarLeftButton1:SetPoint("TOP", TukuiActionBarBackgroundRight, "TOP", 0, TukuiDB.Scale(-4))
+	if TukuiCF["actionbar"].horizonbars == true then
+		MultiBarLeftButton1:SetPoint("TOPLEFT", TukuiActionBarBackgroundRight, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+	else
+		MultiBarLeftButton1:SetPoint("TOP", TukuiActionBarBackgroundRight, "TOP", 0, TukuiDB.Scale(-4))
+	end
 	for i= 2, 12 do
 		local b = _G["MultiBarLeftButton"..i]
 		local b2 = _G["MultiBarLeftButton"..i-1]
 		b:ClearAllPoints()
-		b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		if TukuiCF["actionbar"].horizonbars == true then
+			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.Scale(4), 0)
+		else
+			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		end
 	end
 end
 
@@ -182,45 +214,7 @@ end
 			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
 		end   
 	end
---[[else
-	TukuiBar2:Show()
-	MultiBarBottomLeftButton1:ClearAllPoints()
-	MultiBarBottomLeftButton1:SetPoint("LEFT", ActionButton12, "RIGHT", TukuiDB.Scale(4), 0)
-	for i=2, 12 do
-		local b = _G["MultiBarBottomLeftButton"..i]
-		local b2 = _G["MultiBarBottomLeftButton"..i-1]
-		b:ClearAllPoints()
-		b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
-	end
-	MultiBarBottomLeftButton11:SetAlpha(0)
-	MultiBarBottomLeftButton11:SetScale(0.0001)
-	MultiBarBottomLeftButton12:SetAlpha(0)
-	MultiBarBottomLeftButton12:SetScale(0.0001)   
-	if db.bottomrows == 2 then
-		TukuiBar5:Show()
-		MultiBarBottomRightButton1:ClearAllPoints()
-		MultiBarBottomRightButton1:SetPoint("BOTTOM", ActionButton1, "TOP", 0, TukuiDB.Scale(4))
-		for i= 2, 12 do
-			local b = _G["MultiBarBottomRightButton"..i]
-			local b2 = _G["MultiBarBottomRightButton"..i-1]
-			b:ClearAllPoints()
-			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
-		end
-		TukuiBar3:Show()
-		MultiBarLeftButton1:ClearAllPoints()
-		MultiBarLeftButton1:SetPoint("LEFT", MultiBarBottomRightButton12, "RIGHT", TukuiDB.Scale(4), 0)
-		for i= 2, 12 do
-			local b = _G["MultiBarLeftButton"..i]
-			local b2 = _G["MultiBarLeftButton"..i-1]
-			b:ClearAllPoints()
-			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
-		end
-		MultiBarLeftButton11:SetScale(0.0001)
-		MultiBarLeftButton11:SetAlpha(0)
-		MultiBarLeftButton12:SetScale(0.0001)
-		MultiBarLeftButton12:SetAlpha(0)
-	end
-end--]]
+
 if db.splitbar == true then
 	TukuiBar5:Show()
 	MultiBarLeftButton1:ClearAllPoints()
@@ -273,7 +267,7 @@ end
 local vehicle = CreateFrame("BUTTON", nil, UIParent, "SecureActionButtonTemplate")
 vehicle:SetWidth(TukuiDB.Scale(26))
 vehicle:SetHeight(TukuiDB.Scale(26))
-vehicle:SetPoint("TOPRIGHT", Minimap, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-26))
+vehicle:SetPoint("TOPRIGHT", TukuiMinimapStatsRight, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-4))
 
 vehicle:RegisterForClicks("AnyUp")
 vehicle:SetScript("OnClick", function() VehicleExit() end)
