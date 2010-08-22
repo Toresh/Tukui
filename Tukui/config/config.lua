@@ -9,7 +9,7 @@ TukuiCF["unitframes"] = {
 	-- general options
 	["enable"] = true,                     -- do i really need to explain this?
 	["enemyhcolor"] = false,               -- enemy target (players) color by hostility, very useful for healer.
-	["unitcastbar"] = true,                -- enable tukui castbar
+	["unitcastbar"] = false,                -- enable tukui castbar
 	["cblatency"] = false,                 -- enable castbar latency
 	["cbicons"] = true,                    -- enable icons on castbar
 	["auratimer"] = true,                  -- enable timers on buffs/debuffs
@@ -43,7 +43,7 @@ TukuiCF["unitframes"] = {
 	["raidunitdebuffwatch"] = true,       -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,         -- enable vertical grow on health bar for grid mode.
 	["showplayerinparty"] = false,         -- show my player frame in party
-	["gridscale"] = 1,                     -- set the healing grid scaling
+	["gridscale"] = 0.8,                     -- set the healing grid scaling
 	
 	-- boss frames
 	["showboss"] = true,                   -- enable boss unit frames for PVELOL encounters.
@@ -107,7 +107,7 @@ TukuiCF["datatext"] = {
 	["fps_ms"] = 8,                        -- show fps and ms on panels
 	["mem"] = 9,                           -- show total memory on panels
 	["bags"] = 0,                          -- show space used in bags on panels
-	["gold"] = 3,                          -- show your current gold on panels
+	["gold"] = 0,                          -- show your current gold on panels
 	["wowtime"] = 10,                       -- show time on panels
 	["guild"] = 14,                         -- show number on guildmate connected on panels
 	["dur"] = 2,                           -- show your equipment durability on panels.
@@ -130,6 +130,19 @@ TukuiCF["datatext"] = {
 
 TukuiCF["broker_datatext"] = {
 	--["Skada"] = 8,					  This is an example of how to add broker addons. To find the name, type /showldb in game.
+	["RaidBuffStatus"] = 5,
+	["Cashflow"] = 3,
+	["clsaver"] = 0,
+	["WIM"] = 7,
+	["Altoholic"] = 4,
+	["Outfitter"] = 0,
+	["DXE"] = 0,
+	["AtlasLoot"] = 6,
+	["Omen"] = 0,
+	["Spamalyzer"] = 1,
+	["Broker_HudMap"] = 11,
+	["Skinner"] = 0,
+	["ZOMGBuffs"] = 12,
 }
 
 TukuiCF["chat"] = {
