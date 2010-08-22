@@ -40,11 +40,12 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 			"AudioOptionsFrame",
 			"LFDDungeonReadyStatus",
 			"BNToastFrame",
-			"TicketStatusFrame",
+			"TicketStatusFrameButton",
 			"DropDownList1MenuBackdrop",
 			"DropDownList2MenuBackdrop",
 			"DropDownList1Backdrop",
 			"DropDownList2Backdrop",
+			"LFDSearchStatus",
 		}
 		
 		-- reskin popup buttons
