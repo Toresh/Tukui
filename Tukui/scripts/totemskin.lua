@@ -51,7 +51,9 @@ end
 
 local function SkinButton(button,colorr, colorg, colorb)
 	TukuiDB.SetTemplate(button)
-	TukuiDB.SetTemplate(button.actionButton)
+	if button.actionButton then
+		TukuiDB.SetTemplate(button.actionButton)
+	end
 	button.background:SetDrawLayer("ARTWORK")
 	button.background:ClearAllPoints()
 	button.background:SetPoint("TOPLEFT",button,"TOPLEFT",borderspacing,-borderspacing)
@@ -164,6 +166,7 @@ function AddOn:PLAYER_ENTERING_WORLD()
 		end
 		MultiCastFlyoutFrame:HookScript("OnShow",SkinFlyoutTray)
 		MultiCastFlyoutFrameOpenButton:HookScript("OnShow", function(self) if MultiCastFlyoutFrame:IsShown() then MultiCastFlyoutFrame:Hide() end SkinFlyoutButton(self) end)
+		MultiCastFlyoutFrame:SetFrameLevel(4)
 	end
 end
 
