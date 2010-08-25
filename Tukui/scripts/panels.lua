@@ -95,7 +95,7 @@ end
 local chatleft = CreateFrame("Frame", "ChatLeft", TukuiInfoLeft)
 	TukuiDB.CreatePanel(chatleft, TukuiCF["panels"].tinfowidth, TukuiDB.Scale(125), "BOTTOM", TukuiInfoLeft, "TOP", 0, TukuiDB.Scale(3))
 	chatleft:SetFrameLevel(2)
-	chatleft:SetBackdropColor(.075,.075,.075,.7)
+	--chatleft:SetBackdropColor(.075,.075,.075,.7)
 	chatleft:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 	 
 	leftborder = CreateFrame("Frame", nil, UIParent)
@@ -113,7 +113,7 @@ local chatleft = CreateFrame("Frame", "ChatLeft", TukuiInfoLeft)
 local chatright = CreateFrame("Frame", "ChatRight", TukuiInfoRight)
 	TukuiDB.CreatePanel(chatright, TukuiCF["panels"].tinfowidth, TukuiDB.Scale(125), "BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(3))
 	chatright:SetFrameLevel(2)
-	chatright:SetBackdropColor(.075,.075,.075,.7)
+	--chatright:SetBackdropColor(.075,.075,.075,.7)
 	chatright:SetBackdropBorderColor(unpack(TukuiCF["media"].bordercolor))
 	 
 	rightborder = CreateFrame("Frame", nil, UIParent)
