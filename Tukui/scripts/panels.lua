@@ -10,7 +10,7 @@ TukuiCF["panels"] = {["tinfowidth"] = 352}
 --  Info Centre
 local icentre = CreateFrame("Frame", "TukuiInfoCentre", UIParent)
 TukuiDB.CreatePanel(icentre, 1, 23, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(14))
-icentre:SetWidth(((TukuiDB.buttonsize * 19) + (TukuiDB.buttonspacing * 16))+2)
+icentre:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
 
 local barbg = CreateFrame("Frame", "TukuiActionBarBackground", UIParent)
 TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", icentre, "TOP", 0, TukuiDB.Scale(4))
@@ -86,7 +86,7 @@ end
 if TukuiCF["actionbar"].cooldownbar then
 	local cooldown = CreateFrame("Frame", "cooldown", barbg)
 	TukuiDB.CreatePanel(cooldown, 1, 30, "Bottom", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(4))
-	cooldown:SetWidth(TukuiInfoCentre:GetWidth()+2)
+	cooldown:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
 end
 
 
