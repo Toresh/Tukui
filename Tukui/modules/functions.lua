@@ -105,10 +105,10 @@ function TukuiDB.PP(p, obj)
 	elseif p == 4 then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
 		obj:SetPoint("LEFT", TukuiInfoCentre, "LEFT", 30, .5)
-	elseif p == 5 then
+	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
 		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", -75, .5)
-	elseif p == 6 then
+	elseif p == 6 and TukuiCF["actionbar"].splitbar == true then
 		obj:SetHeight(TukuiInfoCentre:GetHeight())
 		obj:SetPoint("CENTER", TukuiInfoCentre, "CENTER", 75, .5)
 	elseif p == 7 then
@@ -126,13 +126,13 @@ function TukuiDB.PP(p, obj)
 	end
 	
 	if TukuiMinimap then
-		if p == 11 then
+		if p == 11 and TukuiCF["actionbar"].topinfo then
 			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
 			obj:SetPoint("LEFT", TukuiMinimapStatsTop, 20, 0.5)
-		elseif p == 12 then
+		elseif p == 12 and TukuiCF["actionbar"].topinfo then
 			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
 			obj:SetPoint("RIGHT", TukuiMinimapStatsTop, -20, 0.5)
-		elseif p == 13 then
+		elseif p == 13 and TukuiCF["actionbar"].location then
 			obj:SetHeight(TukuiLocationPanel:GetHeight())
 			obj:SetPoint("CENTER", TukuiLocationPanel, 0, 0.5)
 		elseif p == 14 then

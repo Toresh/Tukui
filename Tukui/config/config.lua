@@ -68,15 +68,17 @@ TukuiCF["arena"] = {
 TukuiCF["actionbar"] = {
 	["enable"] = true,                     -- enable tukz action bars
 	["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
-	["splitbar"] = true,
 	["rightbarmouseover"] = false,         -- enable right bars on mouse over
 	["shapeshiftmouseover"] = false,       -- enable shapeshift or totembar on mouseover
 	["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
+	["splitbar"] = true,
 	["rightbars"] = 0,					   -- numbers of right bar you want
 	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
 	["horizonbars"] = true,				   -- enables horizontal right bars
 	["showgrid"] = true,                   -- show grid on empty button
+	["topinfo"] = true,
+	["location"] = true,
 }
 
 TukuiCF["nameplate"] = {
@@ -126,6 +128,11 @@ TukuiCF["datatext"] = {
 	["time24"] = false,                     -- set time to 24h format.
 	["localtime"] = true,                 -- set time to local time instead of server time.
 	["fontsize"] = 12,                     -- font size for panels.
+}
+
+TukuiCF["panels"] = {
+	["topinfo"] = true,
+	["location"] = true,
 }
 
 TukuiCF["broker_datatext"] = {
