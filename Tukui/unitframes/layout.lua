@@ -38,17 +38,8 @@ local function Shared(self, unit)
 	self:SetBackdropColor(0, 0, 0)
 
 	-- this is the glow border
-	self.FrameBackdrop = CreateFrame("Frame", nil, self)
-	self.FrameBackdrop:SetPoint("TOPLEFT", self, "TOPLEFT", TukuiDB.Scale(-3), TukuiDB.Scale(3))
-	self.FrameBackdrop:SetFrameStrata("BACKGROUND")
-	self.FrameBackdrop:SetBackdrop {
-	  edgeFile = glowTex, edgeSize = 3,
-	  insets = {left = 0, right = 0, top = 0, bottom = 0}
-	}
-	self.FrameBackdrop:SetBackdropColor(0, 0, 0, 0)
-	self.FrameBackdrop:SetBackdropBorderColor(0, 0, 0)
-	self.FrameBackdrop:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", TukuiDB.Scale(3), TukuiDB.Scale(-3))
-
+	TukuiDB.CreateShadow(self)
+	
 	------------------------------------------------------------------------
 	--	Player and Target units layout (mostly mirror'd)
 	------------------------------------------------------------------------
@@ -308,6 +299,9 @@ local function Shared(self, unit)
 
 			-- deathknight runes
 			if TukuiDB.myclass == "DEATHKNIGHT" and db.runebar == true then
+				-- rescale top shadow border
+				self.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(13))
+				
 				local Runes = CreateFrame("Frame", nil, self)
 				Runes:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, TukuiDB.Scale(1))
 				Runes:SetHeight(TukuiDB.Scale(8))
@@ -336,18 +330,14 @@ local function Shared(self, unit)
 					Runes[i]:GetStatusBarTexture():SetHorizTile(false)
 				end
 
-				Runes.FrameBackdrop = CreateFrame("Frame", nil, Runes)
-				Runes.FrameBackdrop:SetPoint("TOPLEFT", Runes, "TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
-				Runes.FrameBackdrop:SetPoint("BOTTOMRIGHT", Runes, "BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
-				Runes.FrameBackdrop:SetFrameStrata("BACKGROUND")
-				Runes.FrameBackdrop:SetBackdrop {edgeFile = glowTex, edgeSize = 4, insets = {left = 3, right = 3, top = 3, bottom = 3}}
-				Runes.FrameBackdrop:SetBackdropColor(0, 0, 0, 0)
-				Runes.FrameBackdrop:SetBackdropBorderColor(0, 0, 0, .7)
 				self.Runes = Runes
 			end
 			
 			-- shaman totem bar
 			if TukuiDB.myclass == "SHAMAN" and db.totemtimer == true then
+				-- rescale top shadow border
+				self.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(13))
+				
 				local TotemBar = {}
 				TotemBar.Destroy = true
 				for i = 1, 4 do
@@ -372,17 +362,6 @@ local function Shared(self, unit)
 					TotemBar[i].bg:SetAllPoints(TotemBar[i])
 					TotemBar[i].bg:SetTexture(normTex)
 					TotemBar[i].bg.multiplier = 0.3
-									
-					TotemBar[i].FrameBackdrop = CreateFrame("Frame", nil, TotemBar[i])
-					TotemBar[i].FrameBackdrop:SetPoint("TOPLEFT", TotemBar[i], "TOPLEFT", TukuiDB.Scale(-3), TukuiDB.Scale(3))
-					TotemBar[i].FrameBackdrop:SetPoint("BOTTOMRIGHT", TotemBar[i], "BOTTOMRIGHT", TukuiDB.Scale(3), TukuiDB.Scale(-3))
-					TotemBar[i].FrameBackdrop:SetFrameStrata("BACKGROUND")
-					TotemBar[i].FrameBackdrop:SetBackdrop {
-						edgeFile = glowTex, edgeSize = 4,
-						insets = {left = 3, right = 3, top = 3, bottom = 3}
-					}
-					TotemBar[i].FrameBackdrop:SetBackdropColor(0, 0, 0, 0)
-					TotemBar[i].FrameBackdrop:SetBackdropBorderColor(0, 0, 0, .7)
 				end
 				self.TotemBar = TotemBar
 			end
@@ -491,6 +470,7 @@ local function Shared(self, unit)
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
+			castbar:SetStatusBarColor(0.31, 0.45, 0.63, 0.5)
 			
 			castbar.bg = castbar:CreateTexture(nil, "BORDER")
 			castbar.bg:SetAllPoints(castbar)
@@ -521,6 +501,7 @@ local function Shared(self, unit)
 				castbar.button:SetHeight(TukuiDB.Scale(26))
 				castbar.button:SetWidth(TukuiDB.Scale(26))
 				TukuiDB.SetTemplate(castbar.button)
+				TukuiDB.CreateShadow(castbar.button)
 
 				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
 				castbar.icon:SetPoint("TOPLEFT", castbar.button, TukuiDB.Scale(2), TukuiDB.Scale(-2))
@@ -539,7 +520,7 @@ local function Shared(self, unit)
 					else
 						castbar.button:SetPoint("RIGHT", 46.5, 26.5)
 					end					
-				end	
+				end
 			end
 			
 			-- cast bar latency on player
@@ -549,17 +530,6 @@ local function Shared(self, unit)
 				castbar.safezone:SetVertexColor(0.69, 0.31, 0.31, 0.75)
 				castbar.SafeZone = castbar.safezone
 			end
-			
-			castbar.IconBackdrop = CreateFrame("Frame", nil, self)
-			castbar.IconBackdrop:SetPoint("TOPLEFT", castbar.button, "TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(4))
-			castbar.IconBackdrop:SetPoint("BOTTOMRIGHT", castbar.button, "BOTTOMRIGHT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
-			castbar.IconBackdrop:SetParent(castbar)
-			castbar.IconBackdrop:SetBackdrop({
-				edgeFile = glowTex, edgeSize = 4,
-				insets = {left = 3, right = 3, top = 3, bottom = 3}
-			})
-			castbar.IconBackdrop:SetBackdropColor(0, 0, 0, 0)
-			castbar.IconBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
 					
 			self.Castbar = castbar
 			self.Castbar.Time = castbar.time
@@ -717,7 +687,7 @@ local function Shared(self, unit)
 		
 		-- health bar
 		local health = CreateFrame('StatusBar', nil, self)
-		health:SetHeight(TukuiDB.Scale(18))
+		health:SetHeight(TukuiDB.Scale(13))
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
@@ -747,11 +717,32 @@ local function Shared(self, unit)
 				health.colorHappiness = true
 			end
 		end
+		
+		-- power
+		local power = CreateFrame('StatusBar', nil, self)
+		power:SetHeight(TukuiDB.Scale(4))
+		power:SetPoint("TOPLEFT", health, "BOTTOMLEFT", 0, -TukuiDB.mult)
+		power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -TukuiDB.mult)
+		power:SetStatusBarTexture(normTex)
+		
+		power.frequentUpdates = true
+		power.colorPower = true
+		if db.showsmooth == true then
+			power.Smooth = true
+		end
+
+		local powerBG = power:CreateTexture(nil, 'BORDER')
+		powerBG:SetAllPoints(power)
+		powerBG:SetTexture(normTex)
+		powerBG.multiplier = 0.3
+				
+		self.Power = power
+		self.Power.bg = powerBG
 				
 		-- Unit name
 		local Name = health:CreateFontString(nil, "OVERLAY")
 		if TukuiDB.lowversion then
-			Name:SetPoint("CENTER", health, "CENTER", 0, TukuiDB.Scale(1))
+			Name:SetPoint("CENTER", self, "CENTER", 0, TukuiDB.Scale(1))
 			Name:SetFont(font1, 12, "OUTLINE")
 		else
 			Name:SetPoint("CENTER", panel, "CENTER", 0, TukuiDB.Scale(1))
@@ -766,6 +757,7 @@ local function Shared(self, unit)
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
+			castbar:SetStatusBarColor(0.31, 0.45, 0.63, 0.5)
 			
 			if not TukuiDB.lowversion then
 				castbar.bg = castbar:CreateTexture(nil, "BORDER")
@@ -816,8 +808,8 @@ local function Shared(self, unit)
 	------------------------------------------------------------------------
 	
 	if (unit == "focus") then
-		-- no glow border on focus please
-		self.FrameBackdrop:SetAlpha(0)
+		-- hide shadow
+		self.shadow:SetAlpha(0)
 		
 		-- create health bar
 		local health = CreateFrame('StatusBar', nil, self)
@@ -892,6 +884,7 @@ local function Shared(self, unit)
 			castbar:SetHeight(TukuiDB.Scale(20))
 			castbar:SetWidth(TukuiDB.Scale(240))
 			castbar:SetStatusBarTexture(normTex)
+			castbar:SetStatusBarColor(0.31, 0.45, 0.63, 0.5)
 			castbar:SetFrameLevel(6)
 			castbar:SetPoint("CENTER", UIParent, "CENTER", 0, 250)		
 			
@@ -900,6 +893,7 @@ local function Shared(self, unit)
 			castbar.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
 			castbar.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 			castbar.bg:SetFrameLevel(5)
+			TukuiDB.CreateShadow(castbar.bg)
 			
 			castbar.time = TukuiDB.SetFontString(castbar, font1, 12)
 			castbar.time:SetPoint("RIGHT", castbar, "RIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(1))
@@ -917,19 +911,6 @@ local function Shared(self, unit)
 			castbar:RegisterEvent('UNIT_SPELLCAST_INTERRUPTABLE', TukuiDB.SpellCastInterruptable)
 			castbar:RegisterEvent('UNIT_SPELLCAST_NOT_INTERRUPTABLE', TukuiDB.SpellCastInterruptable)
 			
-			castbar.CastbarBackdrop = CreateFrame("Frame", nil, castbar)
-			castbar.CastbarBackdrop:SetPoint("TOPLEFT", castbar, "TOPLEFT", TukuiDB.Scale(-6), TukuiDB.Scale(6))
-			castbar.CastbarBackdrop:SetPoint("BOTTOMRIGHT", castbar, "BOTTOMRIGHT", TukuiDB.Scale(6), TukuiDB.Scale(-6))
-			castbar.CastbarBackdrop:SetParent(castbar)
-			castbar.CastbarBackdrop:SetFrameStrata("BACKGROUND")
-			castbar.CastbarBackdrop:SetFrameLevel(4)
-			castbar.CastbarBackdrop:SetBackdrop({
-				edgeFile = glowTex, edgeSize = 4,
-				insets = {left = 3, right = 3, top = 3, bottom = 3}
-			})
-			castbar.CastbarBackdrop:SetBackdropColor(0, 0, 0, 0)
-			castbar.CastbarBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
-			
 			if db.cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
 				castbar.button:SetHeight(TukuiDB.Scale(40))
@@ -942,16 +923,7 @@ local function Shared(self, unit)
 				castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 				
-				castbar.IconBackdrop = CreateFrame("Frame", nil, self)
-				castbar.IconBackdrop:SetPoint("TOPLEFT", castbar.button, "TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(4))
-				castbar.IconBackdrop:SetPoint("BOTTOMRIGHT", castbar.button, "BOTTOMRIGHT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
-				castbar.IconBackdrop:SetParent(castbar)
-				castbar.IconBackdrop:SetBackdrop({
-					edgeFile = glowTex, edgeSize = 4,
-					insets = {left = 3, right = 3, top = 3, bottom = 3}
-				})
-				castbar.IconBackdrop:SetBackdropColor(0, 0, 0, 0)
-				castbar.IconBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
+				TukuiDB.CreateShadow(castbar.button)
 			end
 
 			self.Castbar = castbar

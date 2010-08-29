@@ -132,7 +132,7 @@ local function styleButton(b)
     local normaltexture   = _G[name.."NormalTexture"]
  
     local hover = b:CreateTexture("frame", nil, self) -- hover
-    hover:SetTexture(1,1,1,0.4)
+    hover:SetTexture(1,1,1,0.3)
     hover:SetHeight(button:GetHeight())
     hover:SetWidth(button:GetWidth())
     hover:SetPoint("TOPLEFT",button,2,-2)
@@ -140,7 +140,7 @@ local function styleButton(b)
     button:SetHighlightTexture(hover)
  
     local pushed = b:CreateTexture("frame", nil, self) -- pushed
-    pushed:SetTexture(0.9,0.8,0.1,0.4)
+    pushed:SetTexture(0.9,0.8,0.1,0.3)
     pushed:SetHeight(button:GetHeight())
     pushed:SetWidth(button:GetWidth())
     pushed:SetPoint("TOPLEFT",button,2,-2)
@@ -148,7 +148,7 @@ local function styleButton(b)
     button:SetPushedTexture(pushed)
  
     local checked = b:CreateTexture("frame", nil, self) -- checked
-    checked:SetTexture(0,1,0,0.4)
+    checked:SetTexture(0,1,0,0.3)
     checked:SetHeight(button:GetHeight())
     checked:SetWidth(button:GetWidth())
     checked:SetPoint("TOPLEFT",button,2,-2)
@@ -239,7 +239,6 @@ do
 	end
 end
 
---hooksecurefunc("ActionButton_OnUpdate", onupdate)
 hooksecurefunc("ActionButton_Update", style)
 hooksecurefunc("PetActionBar_Update", stylepet)
 hooksecurefunc("ShapeshiftBar_OnLoad", styleshift)
