@@ -47,7 +47,7 @@ local function OnTooltipEnter(frame)
 		if not frame.isMoving and obj.OnTooltipShow then
 			GameTooltip:SetOwner(frame, "ANCHOR_TOP", 0, TukuiDB.Scale(6));
 			GameTooltip:ClearAllPoints()
-			GameTooltip:SetPoint("BOTTOM", frame, "TOP", 0, Stats.TTSpacing)
+			GameTooltip:SetPoint("BOTTOM", frame, "TOP", 0, TukuiDB.Scale(4)) --Stat.TTSpacing
 			GameTooltip:ClearLines()	
 			obj.OnTooltipShow(GameTooltip, frame)
 			GameTooltip:Show()
