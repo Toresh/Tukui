@@ -213,6 +213,7 @@ local function Shared(self, unit)
 			-- the threat bar on info left panel ? :P
 			if (db.showthreat == true) then
 				local ThreatBar = CreateFrame("StatusBar", self:GetName()..'_ThreatBar', TukuiInfoLeft)
+				ThreatBar:SetFrameLevel(5)
 				ThreatBar:SetPoint("TOPLEFT", TukuiInfoLeft, TukuiDB.Scale(2), TukuiDB.Scale(-2))
 				ThreatBar:SetPoint("BOTTOMRIGHT", TukuiInfoLeft, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 			  
@@ -641,7 +642,7 @@ local function Shared(self, unit)
 		end
 		Name:SetJustifyH("CENTER")
 
-		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level]')
+		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
 		
 		if db.totdebuffs == true and TukuiDB.lowversion ~= true then
@@ -1266,7 +1267,7 @@ if not IsAddOnLoaded("Gladius") then
 	end
 end
 
-if not IsAddOnLoaded("DXE") then
+if db.showboss then
 	for i = 1,MAX_BOSS_FRAMES do
 		local t_boss = _G["Boss"..i.."TargetFrame"]
 		t_boss:UnregisterAllEvents()
