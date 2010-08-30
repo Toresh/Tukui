@@ -13,7 +13,7 @@ p:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
 --------------------------------------------------------------------
 
 Minimap:ClearAllPoints()
-Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", TukuiDB.Scale(-24), TukuiDB.Scale(-24))
+Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-30))
 Minimap:SetSize(TukuiDB.Scale(144), TukuiDB.Scale(144))
 
 -- Hide Border
