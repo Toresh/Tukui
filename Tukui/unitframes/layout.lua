@@ -1240,9 +1240,9 @@ if db.totdebuffs then totdebuffs = 24 end
 oUF:RegisterStyle('Tukz', Shared)
 
 oUF:SetActiveStyle('Tukz')
-oUF:Spawn('player', "oUF_Tukz_player"):SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "TOPLEFT", -50,70+adjustXY)
+oUF:Spawn('player', "oUF_Tukz_player"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -225,85+adjustXY)
 oUF:Spawn('focus', "oUF_Tukz_focus"):SetPoint("CENTER", TukuiInfoRight, "CENTER")
-oUF:Spawn('target', "oUF_Tukz_target"):SetPoint("BOTTOMRIGHT", TukuiRightSplitABBackground, "TOPRIGHT", 50,70+adjustXY)
+oUF:Spawn('target', "oUF_Tukz_target"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 225,85+adjustXY)
 
 if TukuiDB.lowversion then
 	oUF:Spawn("targettarget", "oUF_Tukz_targettarget"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 0,8)
@@ -1259,7 +1259,7 @@ if not IsAddOnLoaded("Gladius") then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "oUF_Arena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 300, 300)
+			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 350, 350)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 10)
 		end
@@ -1280,7 +1280,7 @@ if not IsAddOnLoaded("DXE") then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "oUF_Boss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 300, 300)
+			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 350, 350)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)             
 		end
