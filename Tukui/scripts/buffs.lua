@@ -106,7 +106,7 @@ local function UpdateBuffAnchors()
 				elseif ((mainhand and not offhand) or (offhand and not mainhand)) and not UnitHasVehicleUI("player") then
 					buff:SetPoint("RIGHT", TempEnchant1, "LEFT", TukuiDB.Scale(-4), 0)
 				else
-					buff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-184), TukuiDB.Scale(-22))
+					buff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-175), TukuiDB.Scale(-22))
 				end
 			else
 				buff:SetPoint("RIGHT", previousBuff, "LEFT", TukuiDB.Scale(-4), 0)
@@ -129,7 +129,7 @@ local function UpdateDebuffAnchors(buttonName, index)
 	_G[buttonName..index.."Panel"]:SetBackdropBorderColor(color.r * 0.6, color.g * 0.6, color.b * 0.6)
 	debuff:ClearAllPoints()
 	if index == 1 then
-		debuff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-184), TukuiDB.Scale(-161))
+		debuff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-175), TukuiDB.Scale(-161))
 	else
 		debuff:SetPoint("RIGHT", _G[buttonName..(index-1)], "LEFT", TukuiDB.Scale(-4), 0)
 	end
