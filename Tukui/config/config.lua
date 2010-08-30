@@ -93,6 +93,8 @@ TukuiCF["bags"] = {
 
 TukuiCF["map"] = {
 	["enable"] = true,                     -- reskin the map to fit tukui
+	["coord"] = true,					   -- Turns on coords on top of minimap when mouse over
+	["loctaion"] = false,				   -- Turns on/off location on minimap mouseover
 }
 
 TukuiCF["loot"] = {

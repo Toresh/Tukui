@@ -186,19 +186,33 @@ m_coord_text:SetJustifyV("MIDDLE")
  
 -- Set Scripts and etc.
 Minimap:SetScript("OnEnter",function()
-	m_zone.anim_o:Stop()
-	m_coord.anim_o:Stop()
+	if TukuiCF["map"].location == true then
+		m_zone.anim_o:Stop()
+	end
+	if TukuiCF["map"].coord == true then
+		m_coord.anim_o:Stop()
+	end
+	if TukuiCF["map"].location == true then
 	m_zone:Show()
-	m_coord:Show()
-	m_coord.anim:Play()
-	m_zone.anim:Play()
+	end
+	if TukuiCF["map"].coord == true then
+		m_coord:Show()
+		m_coord.anim:Play()
+	end
+	if TukuiCF["map"].location == true then
+		m_zone.anim:Play()
+	end
 end)
  
 Minimap:SetScript("OnLeave",function()
-	m_coord.anim:Stop()
-	m_coord.anim_o:Play()
-	m_zone.anim:Stop()
-	m_zone.anim_o:Play()
+	if TukuiCF["map"].coord == true then
+		m_coord.anim:Stop()
+		m_coord.anim_o:Play()
+	end
+	if TukuiCF["map"].location == true then
+		m_zone.anim:Stop()
+		m_zone.anim_o:Play()
+	end
 end)
  
 m_coord_text:SetText("00,00")
