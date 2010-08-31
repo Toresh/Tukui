@@ -129,7 +129,7 @@ local function UpdateDebuffAnchors(buttonName, index)
 	_G[buttonName..index.."Panel"]:SetBackdropBorderColor(color.r * 0.6, color.g * 0.6, color.b * 0.6)
 	debuff:ClearAllPoints()
 	if index == 1 then
-		debuff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-68), TukuiDB.Scale(-169))
+		debuff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-168), TukuiDB.Scale(-152))
 	else
 		debuff:SetPoint("RIGHT", _G[buttonName..(index-1)], "LEFT", TukuiDB.Scale(-4), 0)
 	end
