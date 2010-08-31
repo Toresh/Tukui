@@ -60,6 +60,13 @@ local function install()
 	SetCVar("showVKeyCastbar", 1)
 	SetCVar("colorblindMode", 0)
 	
+	--call functions to set up addons
+	Setup_DXE()
+	Setup_Recount()
+	Setup_Omen()
+	Setup_Skinner()
+	Setup_Forte()
+	
 	-- setting this the creator or tukui only, because a lot of people don't like this change.		
 	if TukuiDB.myname == "Tukz" then	
 		SetCVar("secureAbilityToggle", 0)
@@ -180,7 +187,7 @@ local function install()
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL3")
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL4")
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL5")
-	end
+	end	
 		   
 	TukuiInstallv1100 = true
 	
@@ -190,7 +197,7 @@ local function install()
 	else
 		TukuiData.ufpos = {}
 	end
-			
+		
 	ReloadUI()
 end
 
@@ -298,7 +305,7 @@ TukuiOnLogon:SetScript("OnEvent", function(self, event)
 	if (IsAddOnLoaded("Tukui_Dps_Layout") and IsAddOnLoaded("Tukui_Heal_Layout")) then
 		StaticPopup_Show("DISABLE_RAID")
 	end
-	
+
 	SetCVar("showArenaEnemyFrames", 0)
 	
 	-- force chat CVar to be applied
@@ -341,3 +348,132 @@ SLASH_CONFIGURE1 = "/resetui"
 SlashCmdList.CONFIGURE = function() StaticPopup_Show("INSTALL_UI") end
 
 
+--------------------------------------------------------------------------
+--  Set up addons
+-------------------------------------------------------------------------
+
+function Setup_DXE()
+
+	-- force DXE to load so that we can skin it
+	if IsAddOnLoadOnDemand("DXE") then
+		LoadAddOn("DXE")
+	end
+
+	if IsAddOnLoaded("DXE") then
+		local namespace = DXE.db:GetNamespace("Alerts").profile
+		
+		DXEIconDB.hide = true
+		DXE.db.profile.Globals.BarTexture = "TukTex"
+		DXE.db.profile.Globals.BackgroundColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		DXE.db.profile.Pane.TitleFontSize = 12
+		DXE.db.profile.Pane.Width = 352
+		DXE.db.profile.Pane.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		DXE.db.profile.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		
+		DXE.db.profile.Positions.DXEPane.yOfs = 187
+		DXE.db.profile.Positions.DXEPane.xOfs = 14
+		DXE.db.profile.Positions.DXEPane.point = "BOTTOMLEFT"
+		DXE.db.profile.Positions.DXEPane.relativePoint = "BOTTOMLEFT"
+		
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.yOfs = 8.99
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.xOfs = -305.49
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.point = "RIGHT"
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.relativePoint = "RIGHT"
+		
+		namespace.CenterScale = 1
+		namespace.CenterAlpha = 1
+		namespace.CenterGrowth = "UP"
+		namespace.TopAlpha = 1
+		namespace.TopScale = 1
+
+		DXE.db.profile.Windows.TitleBarColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+	end
+
+end
+
+function Setup_Recount()
+	if IsAddOnLoaded("Recount") then		
+		Recount.db.profile.MainWindow.ShowScrollbar = false	
+		Recount.db.profile.BarTextColorSwap = false
+		Recount.db.profile.ConfirmDeleteRaid = false
+		Recount.db.profile.ConfirmDeleteInstance = false
+		Recount.db.profile.ConfirmDeleteGroup = false
+		Recount.db.profile.MainWindow.ShowScrollbar = false
+		Recount.db.profile.ReportLines = 4
+		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
+		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
+		Recount.db.profile.MainWindow.Position.y = -431.250643299163
+		Recount.db.profile.MainWindow.Position.x = 372.0003691559128
+		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
+		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
+		Recount.db.profile.MainWindowHeight = 159.8336667240456
+		Recount.db.profile.MainWindowWidth = 188.0000255850633
+		
+		local function RecountSetColor(Branch,Name,r,g,b,a)
+			Recount.db.profile.Colors[Branch][Name].r=r
+			Recount.db.profile.Colors[Branch][Name].g=g
+			Recount.db.profile.Colors[Branch][Name].b=b
+			Recount.db.profile.Colors[Branch][Name].a=a
+		end
+		
+		RecountSetColor("Window","Title",0.1333333333333333,0.1333333333333333,0.1333333333333333,0)			
+		Recount:LockWindows(false)
+		Recount.MainWindow:SetResizable(true)
+		Recount.db.profile.MainWindowHeight = 245
+		Recount.db.profile.MainWindowWidth = 197
+		Recount:SetBarTextures(Recount.db.profile.BarTexture)
+		Recount:RestoreMainWindowPosition(Recount.db.profile.MainWindow.Position.x,Recount.db.profile.MainWindow.Position.y,Recount.db.profile.MainWindow.Position.w,Recount.db.profile.MainWindow.Position.h)
+		Recount:ResizeMainWindow()
+		Recount:FullRefreshMainWindow()
+		Recount:SetupMainWindowButtons()
+		Recount.profilechange = true
+		Recount:CloseAllRealtimeWindows()
+		Recount.Colors:UpdateAllColors()
+		Recount.profilechange = nil
+		Recount:SetStrataAndClamp()
+		Recount.db.profile.Locked = true
+		Recount:LockWindows(true)
+		
+		TukuiDB.SetTemplate(Recount_MainWindow)
+	end
+
+end
+
+function Setup_Omen()
+	if IsAddOnLoaded("Omen") then
+		Omen.db.profile.MinimapIcon.hide = true
+		Omen.db.profile.ShowWith.UseShowWith = false	
+		Omen.db.profile.PositionX = 372--359.4994234613777
+		Omen.db.profile.PositionY = 165--146.9990649412748
+		Omen.db.profile.PositionW = 192--199.0000127884138
+		Omen.db.profile.PositionH = 152--142.9999017275369		
+		Omen.db.profile.Shown = true
+		Omen.db.profile.Locked = true
+		
+	end
+end
+
+function Setup_Skinner()
+	if IsAddOnLoaded("Skinner") then
+		Skinner.db.profile.MinimapIcon.hide = true
+	end
+end
+
+function Setup_Forte()
+	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting")and IsAddOnLoaded ("Forte_Cooldown")and IsAddOnLoaded ("Forte_Timer") then
+		FC_Saved.Profiles.Profile.Timer.y = 186.9980548147254
+		FC_Saved.Profiles.Profile.Timer.x = 411.7942399257686
+		FC_Saved.Profiles.Profile.Timer.Width = 250
+		FC_Saved.Profiles.Profile.Timer.lock = true
+		FC_Saved.Profiles.Profile.Timer.Expand = true
+		FC_Saved.Profiles.Profile.Cooldown.IconSize = 16
+		FC_Saved.Profiles.Profile.Cooldown.x = 614.3999600954436
+		FC_Saved.Profiles.Profile.Cooldown.y = 89.26663520305853
+		FC_Saved.Profiles.Profile.Cooldown.Height = 22
+		FC_Saved.Profiles.Profile.Cooldown.Vertical = false
+		FC_Saved.Profiles.Profile.Cooldown.Width = 538
+		FC_Saved.Profiles.Profile.Cooldown.Flip = false
+	end
+end
+		
+		
