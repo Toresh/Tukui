@@ -66,6 +66,7 @@ local function install()
 	Setup_Omen()
 	Setup_Skinner()
 	Setup_Forte()
+	Setup_Quartz()
 	
 	-- setting this the creator or tukui only, because a lot of people don't like this change.		
 	if TukuiDB.myname == "Tukz" then	
@@ -402,7 +403,7 @@ function Setup_Recount()
 		Recount.db.profile.ReportLines = 4
 		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
 		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
-		Recount.db.profile.MainWindow.Position.y = -431.250643299163
+		Recount.db.profile.MainWindow.Position.y = -430.250643299163
 		Recount.db.profile.MainWindow.Position.x = 372.0003691559128
 		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
 		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
@@ -460,20 +461,38 @@ function Setup_Skinner()
 end
 
 function Setup_Forte()
-	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting")and IsAddOnLoaded ("Forte_Cooldown")and IsAddOnLoaded ("Forte_Timer") then
-		FC_Saved.Profiles.Profile.Timer.y = 186.9980548147254
-		FC_Saved.Profiles.Profile.Timer.x = 411.7942399257686
-		FC_Saved.Profiles.Profile.Timer.Width = 250
-		FC_Saved.Profiles.Profile.Timer.lock = true
-		FC_Saved.Profiles.Profile.Timer.Expand = true
-		FC_Saved.Profiles.Profile.Cooldown.IconSize = 16
-		FC_Saved.Profiles.Profile.Cooldown.x = 614.3999600954436
-		FC_Saved.Profiles.Profile.Cooldown.y = 89.26663520305853
-		FC_Saved.Profiles.Profile.Cooldown.Height = 22
-		FC_Saved.Profiles.Profile.Cooldown.Vertical = false
-		FC_Saved.Profiles.Profile.Cooldown.Width = 538
-		FC_Saved.Profiles.Profile.Cooldown.Flip = false
+	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting") then
+		if IsAddOnLoaded ("Forte_Timer")then
+			if TukuiDB.myclass == "Death Knight" then
+				FC_Saved.Profiles.Profile.Timer.y = 186.9980548147254
+			else
+				FC_Saved.Profiles.Profile.Timer.y = 193.9238999478766
+			end
+			FC_Saved.Profiles.Profile.Timer.x = 411.7942399257686
+			FC_Saved.Profiles.Profile.Timer.Width = 250
+			FC_Saved.Profiles.Profile.Timer.lock = true
+			FC_Saved.Profiles.Profile.Timer.Expand = true
+			end
+		
+		if IsAddOnLoaded ("Forte_Cooldown") then
+			FC_Saved.Profiles.Profile.Cooldown.IconSize = 16
+			FC_Saved.Profiles.Profile.Cooldown.x = 614.3999600954436
+			FC_Saved.Profiles.Profile.Cooldown.y = 89.26663520305853
+			FC_Saved.Profiles.Profile.Cooldown.Height = 22
+			FC_Saved.Profiles.Profile.Cooldown.Vertical = false
+			FC_Saved.Profiles.Profile.Cooldown.Width = 538
+			FC_Saved.Profiles.Profile.Cooldown.Flip = false
+		end
 	end
 end
-		
+
+function Setup_Quartz()
+	if IsAddOnLoaded ("Quartz") then
+		Quartz3DB.namespaces.Player.profiles.Default.y = 282.0533722694886
+		Quartz3DB.namespaces.Player.profiles.Default.x = 722.0000400645222
+		Quartz3DB.namespaces.Player.profiles.Default.icongap = 8
+		Quartz3DB.namespaces.Player.profiles.Default.border = "Tukui Border"
+		Quartz3DB.namespaces.Player.profiles.Default.texture = "Tukui StatusBar"
+	end
+end
 		
