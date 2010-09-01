@@ -1200,22 +1200,25 @@ end
 ------------------------------------------------------------------------
 
 -- for lower reso
-local adjustXY = 0
-local totdebuffs = 0
-if TukuiDB.lowversion then adjustXY = 24 end
+--local adjustXY = 0
+--local totdebuffs = 0
+--if TukuiDB.lowversion then adjustXY = 24 end
 if db.totdebuffs then totdebuffs = 24 end
 
 oUF:RegisterStyle('Tukz', Shared)
 
 oUF:SetActiveStyle('Tukz')
-oUF:Spawn('player', "oUF_Tukz_player"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -225,85+adjustXY)
-oUF:Spawn('focus', "oUF_Tukz_focus"):SetPoint("CENTER", TukuiInfoRight, "CENTER")
-oUF:Spawn('target', "oUF_Tukz_target"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 225,85+adjustXY)
 
 if TukuiDB.lowversion then
-	oUF:Spawn("targettarget", "oUF_Tukz_targettarget"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 0,8)
-	oUF:Spawn("pet", "oUF_Tukz_pet"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", 0,8)
+	oUF:Spawn('player', "oUF_Tukz_player"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -80,85)
+	oUF:Spawn('focus', "oUF_Tukz_focus"):SetPoint("CENTER", TukuiInfoRight, "CENTER")
+	oUF:Spawn('target', "oUF_Tukz_target"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 80,85)
+	oUF:Spawn("targettarget", "oUF_Tukz_targettarget"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 80,65)
+	oUF:Spawn("pet", "oUF_Tukz_pet"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -80,65)
 else
+	oUF:Spawn('player', "oUF_Tukz_player"):SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -225,85)
+	oUF:Spawn('focus', "oUF_Tukz_focus"):SetPoint("CENTER", TukuiInfoRight, "CENTER")
+	oUF:Spawn('target', "oUF_Tukz_target"):SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 225,85)
 	oUF:Spawn('pet', "oUF_Tukz_pet"):SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0,105+totdebuffs)
 	oUF:Spawn('targettarget', "oUF_Tukz_targettarget"):SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0,49)
 end

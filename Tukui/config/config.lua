@@ -134,7 +134,7 @@ TukuiCF["datatext"] = {
 }
 
 TukuiCF["broker_datatext"] = {
-	--["Skada"] = 8,					  This is an example of how to add broker addons. To find the name, type /showldb in game.
+	["Skada"] = 0,					  --This is an example of how to add broker addons. To find the name, type /showldb in game.
 	["RaidBuffStatus"] = 5,
 	["Cashflow"] = 3,
 	["clsaver"] = 0,
