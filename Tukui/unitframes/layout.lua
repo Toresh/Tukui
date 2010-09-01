@@ -1199,10 +1199,6 @@ end
 --	Default position of Tukui unitframes
 ------------------------------------------------------------------------
 
--- for lower reso
---local adjustXY = 0
---local totdebuffs = 0
---if TukuiDB.lowversion then adjustXY = 24 end
 if db.totdebuffs then totdebuffs = 24 end
 
 oUF:RegisterStyle('Tukz', Shared)

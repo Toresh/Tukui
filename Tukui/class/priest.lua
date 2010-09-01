@@ -143,3 +143,19 @@ if (TukuiCF["unitframes"].ws_show_player) then
 	WeakenedPlayerFrame:SetScript("OnEvent", WeakenedPlayerCheck)
 	WeakenedPlayerFrame:RegisterEvent("UNIT_AURA")
 end
+
+
+-- turn off healing if we have Vampiric Embrace up
+--From Kruger edit
+local ve = GetSpellInfo(15286)
+local sp=CreateFrame("Frame")
+local function spOnEvent(...)
+	if (arg1 == "SPELL_AURA_START" and arg2==ve) then
+		SetCVar('CombatHealing', 0)
+	elseif (arg1 == "SPELL_AURA_END" and arg2 ==ve) then	
+	  SetCVar('CombatHealing', 1)
+	end
+end
+
+sp:RegisterEvent("COMBAT_TEXT_UPDATE")
+sp:SetScript("OnEvent", spOnEvent)
