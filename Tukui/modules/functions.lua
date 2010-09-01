@@ -302,7 +302,8 @@ TukuiDB.PostUpdateHealthRaid = function(health, unit, min, max)
 		-- because if vehicle or pet is too far away, unitreaction return nil and color of health bar is white.
 		if not UnitIsPlayer(unit) and UnitIsFriend(unit, "player") and TukuiCF["unitframes"].unicolor ~= true then
 			r, g, b = 75/255,  175/255, 76/255
-			health:SetStatusBarColor(r, g, b)				
+			health:SetStatusBarColor(r, g, b)
+			health.bg:SetTexture(.1, .1, .1)
 		end
 		
 		if min ~= max then
@@ -683,6 +684,9 @@ function TukuiDB.CreateAuraWatchIcon(self, icon)
 	icon.icon:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(-1), TukuiDB.Scale(1))
 	icon.icon:SetTexCoord(.08, .92, .08, .92)
 	icon.icon:SetDrawLayer("ARTWORK")
+	if (icon.cd) then
+		icon.cd:SetReverse()
+	end
 	icon.overlay:SetTexture()
 end
 

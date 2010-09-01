@@ -156,7 +156,8 @@ local function Shared(self, unit)
 		RaidDebuffs:SetHeight(TukuiDB.Scale(22*TukuiCF["unitframes"].gridscale))
 		RaidDebuffs:SetWidth(TukuiDB.Scale(22*TukuiCF["unitframes"].gridscale))
 		RaidDebuffs:SetPoint('CENTER', health)
-		RaidDebuffs:SetFrameStrata'HIGH'
+		RaidDebuffs:SetFrameStrata(health:GetFrameStrata())
+		RaidDebuffs:SetFrameLevel(health:GetFrameLevel() + 2)
 		
 		TukuiDB.SetTemplate(RaidDebuffs)
 		
@@ -177,7 +178,7 @@ local function Shared(self, unit)
 		
 		RaidDebuffs.count = RaidDebuffs:CreateFontString(nil, 'OVERLAY')
 		RaidDebuffs.count:SetFont(TukuiCF["media"].uffont, 9*TukuiCF["unitframes"].gridscale, "THINOUTLINE")
-		RaidDebuffs.count:SetPoint('BOTTOMRIGHT', RaidDebuffs, 'BOTTOMRIGHT', 2, 2)
+		RaidDebuffs.count:SetPoint('BOTTOMRIGHT', RaidDebuffs, 'BOTTOMRIGHT', 0, 2)
 		RaidDebuffs.count:SetTextColor(1, .9, 0)
 		
 		self.RaidDebuffs = RaidDebuffs

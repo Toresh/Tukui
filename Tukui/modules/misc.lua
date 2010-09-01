@@ -109,3 +109,24 @@ SlashCmdList["GROUPDISBAND"] = function()
 		LeaveParty()
 end
 SLASH_GROUPDISBAND1 = '/rd'
+
+-- hide emotes from showing in chat when in these areas due to gold spammers
+local function CHINESE_FILTER()
+	if GetMinimapZoneText() == "Valley of Strength" or GetMinimapZoneText() == "Trade District" then
+		ChatFrame_AddMessageEventFilter("CHAT_MSG_TEXT_EMOTE", FUCKYOU_CHINESE)
+	else
+		ChatFrame_RemoveMessageEventFilter("CHAT_MSG_TEXT_EMOTE", FUCKYOU_CHINESE)
+	end
+end
+
+function FUCKYOU_CHINESE(self, event, ...)
+    if strfind(arg1, "falls asleep. Zzzzzzz.") then
+	return true
+    end
+end
+
+local CHINESESPAM = CreateFrame("Frame")
+CHINESESPAM:RegisterEvent("PLAYER_ENTERING_WORLD")
+CHINESESPAM:RegisterEvent("ZONE_CHANGED_INDOORS")
+CHINESESPAM:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+CHINESESPAM:SetScript("OnEvent", CHINESE_FILTER)
