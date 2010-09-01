@@ -182,7 +182,7 @@ if db.rightbars > 1 then
 	end    
 end
 
-if db.rightbars > 2 then
+--[[if db.rightbars > 2 then
 	TukuiBar5:Show()
 	MultiBarLeftButton1:ClearAllPoints()
 	if TukuiCF["actionbar"].horizonbars == true then
@@ -200,7 +200,7 @@ if db.rightbars > 2 then
 			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
 		end
 	end
-end
+end--]]
 
 -- now look for others shit, if found, set bar or override settings bar above.
 --if TukuiDB.lowversion == true then
@@ -216,7 +216,7 @@ end
 		end   
 	end
 
-if db.splitbar == true then
+if db.splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
 	TukuiBar5:Show()
 	MultiBarLeftButton1:ClearAllPoints()
 	MultiBarLeftButton1:SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))

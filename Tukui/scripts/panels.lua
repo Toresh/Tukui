@@ -10,7 +10,7 @@ TukuiCF["panels"] = {["tinfowidth"] = 352}
 --  Info Centre
 local icentre = CreateFrame("Frame", "TukuiInfoCentre", UIParent)
 TukuiDB.CreatePanel(icentre, 1, 23, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(14))
-if TukuiCF["actionbar"].splitbar == true then
+if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
 	icentre:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
 else
 	icentre:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
@@ -94,7 +94,7 @@ if TukuiCF["actionbar"].cooldownbar then
 	local cooldown = CreateFrame("Frame", "cooldown", barbg)
 	TukuiDB.CreatePanel(cooldown, 1, 30, "Bottom", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(4))
 	
-	if TukuiCF["actionbar"].splitbar == true then
+	if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
 		cooldown:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
 	else
 		cooldown:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
@@ -123,24 +123,17 @@ if TukuiCF["actionbar"].enable == true or not (IsAddOnLoaded("Dominos") or IsAdd
 		TukuiDB.CreatePanel(barbgr, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), 1, "BOTTOMLEFT", ChatRight, "TOPLEFT", TukuiDB.Scale(0), TukuiDB.Scale(4))
 		if TukuiCF["actionbar"].rightbars == 1 then
 			barbgr:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-		elseif TukuiCF["actionbar"].rightbars == 2 then
+		elseif TukuiCF["actionbar"].rightbars > 1 then
 			barbgr:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
-		elseif TukuiCF["actionbar"].rightbars == 3 then
-			barbgr:SetHeight((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
 		else
 			barbgr:Hide()
 		end
-	
-	
-	
 	else
 		TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-13.5))
 		if TukuiCF["actionbar"].rightbars == 1 then
 			barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-		elseif TukuiCF["actionbar"].rightbars == 2 then
+		elseif TukuiCF["actionbar"].rightbars > 1 then
 			barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
-		elseif TukuiCF["actionbar"].rightbars == 3 then
-			barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
 		else
 			barbgr:Hide()
 		end

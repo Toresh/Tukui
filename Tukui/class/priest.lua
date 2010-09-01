@@ -146,7 +146,7 @@ end
 
 
 -- turn off healing if we have Vampiric Embrace up
---From Kruger edit
+--From Kruger's repo
 local ve = GetSpellInfo(15286)
 local sp=CreateFrame("Frame")
 local function spOnEvent(...)
