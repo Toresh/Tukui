@@ -457,7 +457,6 @@ local function Shared(self, unit)
 			debuffs.initialAnchor = 'TOPRIGHT'
 			debuffs["growth-y"] = "UP"
 			debuffs["growth-x"] = "LEFT"
-			debuffs.onlyShowPlayer = db.playerdebuffsonly
 			debuffs.PostCreateIcon = TukuiDB.PostCreateAura
 			debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
 			self.Debuffs = debuffs
@@ -1093,51 +1092,28 @@ local function Shared(self, unit)
 		debuffs.num = 5
 		debuffs.spacing = 2
 		debuffs.initialAnchor = 'LEFT'
-		debuffs["growth-x"] = "LEFT"
+		debuffs["growth-x"] = "RIGHT"
 		debuffs.PostCreateIcon = TukuiDB.PostCreateAura
 		debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
-		debuffs.onlyShowPlayer = db.playerdebuffsonly
 		self.Debuffs = debuffs	
-		
-		
-		if (unit and unit:find("arena%d")) or (unit and unit:find("boss%d")) then
-			if (unit and unit:find("boss%d")) then
-				self.Buffs:SetPoint("RIGHT", self, "LEFT", -4, 0)
-				self.Buffs.num = 3
-				self.Buffs.numBuffs = 3
-				self.Buffs.initialAnchor = "RIGHT"
-				self.Buffs["growth-x"] = "LEFT"
-			end
-			self.Debuffs.num = 5
-			self.Debuffs.size = 26
-			self.Debuffs:SetPoint('LEFT', self, 'RIGHT', 4, 0)
-			self.Debuffs.initialAnchor = "LEFT"
-			self.Debuffs["growth-x"] = "RIGHT"
-			self.Debuffs["growth-y"] = "DOWN"
-			self.Debuffs:SetHeight(26)
-			self.Debuffs:SetWidth(200)
-			self.Debuffs.onlyShowPlayer = db.playerdebuffsonly
-		end	
-		
-		-- trinket feature via trinket plugin
-		if not IsAddOnLoaded("Gladius") then
-			if (unit and unit:find('arena%d')) then
-				local Trinketbg = CreateFrame("Frame", nil, self)
-				Trinketbg:SetHeight(26)
-				Trinketbg:SetWidth(26)
-				Trinketbg:SetPoint("RIGHT", self, "LEFT", -6, 0)				
-				TukuiDB.SetTemplate(Trinketbg)
-				Trinketbg:SetFrameLevel(0)
-				self.Trinketbg = Trinketbg
 				
-				local Trinket = CreateFrame("Frame", nil, Trinketbg)
-				Trinket:SetAllPoints(Trinketbg)
-				Trinket:SetPoint("TOPLEFT", Trinketbg, TukuiDB.Scale(2), TukuiDB.Scale(-2))
-				Trinket:SetPoint("BOTTOMRIGHT", Trinketbg, TukuiDB.Scale(-2), TukuiDB.Scale(2))
-				Trinket:SetFrameLevel(1)
-				Trinket.trinketUseAnnounce = true
-				self.Trinket = Trinket
-			end
+		-- trinket feature via trinket plugin
+		if (TukuiCF.arena.unitframes) and (unit and unit:find('arena%d')) then
+			local Trinketbg = CreateFrame("Frame", nil, self)
+			Trinketbg:SetHeight(26)
+			Trinketbg:SetWidth(26)
+			Trinketbg:SetPoint("RIGHT", self, "LEFT", -6, 0)				
+			TukuiDB.SetTemplate(Trinketbg)
+			Trinketbg:SetFrameLevel(0)
+			self.Trinketbg = Trinketbg
+			
+			local Trinket = CreateFrame("Frame", nil, Trinketbg)
+			Trinket:SetAllPoints(Trinketbg)
+			Trinket:SetPoint("TOPLEFT", Trinketbg, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+			Trinket:SetPoint("BOTTOMRIGHT", Trinketbg, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+			Trinket:SetFrameLevel(1)
+			Trinket.trinketUseAnnounce = true
+			self.Trinket = Trinket
 		end
 		
 		self:SetAttribute("initial-height", TukuiDB.Scale(29))
