@@ -127,13 +127,13 @@ function TukuiDB.PP(p, obj)
 	end
 	
 	if TukuiMinimap then
-		if p == 11 and TukuiCF["actionbar"].topinfo then
+		if p == 11 and TukuiCF["map"].topinfo then
 			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
 			obj:SetPoint("LEFT", TukuiMinimapStatsTop, 20, 0.5)
-		elseif p == 12 and TukuiCF["actionbar"].topinfo then
+		elseif p == 12 and TukuiCF["map"].topinfo then
 			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
 			obj:SetPoint("RIGHT", TukuiMinimapStatsTop, -20, 0.5)
-		elseif p == 13 and TukuiCF["actionbar"].location then
+		elseif p == 13 and TukuiCF["map"].location then
 			obj:SetHeight(TukuiLocationPanel:GetHeight())
 			obj:SetPoint("CENTER", TukuiLocationPanel, 0, 0.5)
 		elseif p == 14 then

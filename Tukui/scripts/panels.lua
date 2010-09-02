@@ -61,7 +61,7 @@ iright:SetFrameStrata("BACKGROUND")
 --NEW STAT PANELS // MINIMAP
 if TukuiMinimap then
 
-	if TukuiCF["actionbar"].location == true then
+	if TukuiCF["map"].location == true then
 		--location panel
 		local locationpanel = CreateFrame("Frame", "TukuiLocationPanel", TukuiMinimap)
 		TukuiDB.CreatePanel(locationpanel, TukuiMinimap:GetWidth() + 4, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, TukuiDB.Scale(-4))
@@ -82,7 +82,7 @@ if TukuiMinimap then
 	
 		
 	 --minimap stats top
-	if TukuiCF["actionbar"].topinfo == true then
+	if TukuiCF["map"].topinfo == true then
 		local minimapstatstop = CreateFrame("Frame", "TukuiMinimapStatsTop", TukuiMinimap)
 		TukuiDB.CreatePanel(minimapstatstop, (TukuiMinimap:GetWidth() + 4), 19, "TOPLEFT", TukuiMinimap, "TOPLEFT", 0, TukuiDB.Scale(22))
 	end

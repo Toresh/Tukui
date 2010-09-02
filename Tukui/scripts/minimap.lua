@@ -186,20 +186,20 @@ m_coord_text:SetJustifyV("MIDDLE")
  
 -- Set Scripts and etc.
 Minimap:SetScript("OnEnter",function()
-	if TukuiCF["map"].location == true then
+	if TukuiCF["map"].locationhover == true then
 		m_zone.anim_o:Stop()
 	end
 	if TukuiCF["map"].coord == true then
 		m_coord.anim_o:Stop()
 	end
-	if TukuiCF["map"].location == true then
+	if TukuiCF["map"].locationhover == true then
 	m_zone:Show()
 	end
 	if TukuiCF["map"].coord == true then
 		m_coord:Show()
 		m_coord.anim:Play()
 	end
-	if TukuiCF["map"].location == true then
+	if TukuiCF["map"].locationhover == true then
 		m_zone.anim:Play()
 	end
 end)

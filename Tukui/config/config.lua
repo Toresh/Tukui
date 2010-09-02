@@ -78,8 +78,6 @@ TukuiCF["actionbar"] = {
 	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
 	["horizonbars"] = true,				   -- enables horizontal right bars
 	["showgrid"] = true,                   -- show grid on empty button
-	["topinfo"] = true,					   -- enables info panel above minimap
-	["location"] = true,				   -- enables the info panel below the minimap
 }
 
 TukuiCF["nameplate"] = {
@@ -94,7 +92,9 @@ TukuiCF["bags"] = {
 TukuiCF["map"] = {
 	["enable"] = true,                     -- reskin the map to fit tukui
 	["coord"] = true,					   -- Turns on coords on top of minimap when mouse over
-	["loctaion"] = false,				   -- Turns on/off location on minimap mouseover
+	["loctaionhover"] = false,				   -- Turns on/off location on minimap mouseover
+	["topinfo"] = true,					   -- enables info panel above minimap
+	["location"] = true,				   -- enables the info panel below the minimap
 }
 
 TukuiCF["loot"] = {
