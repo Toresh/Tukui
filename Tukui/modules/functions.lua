@@ -747,3 +747,43 @@ function TukuiDB.createAuraWatch(self, unit)
 	
 	self.AuraWatch = auras
 end
+
+------------------------------------------------------
+--Namepleats by Elv22
+------------------------------------------------------
+local RollUpdater = CreateFrame("Frame")
+local function CheckRoll(self, event, unit)
+	if event == "UNIT_AURA" and unit ~= "player" then return end
+	if (TukuiDB.myclass == "PALADIN" and UnitBuff("player", GetSpellInfo(25780))) and GetCombatRatingBonus(CR_DEFENSE_SKILL) > 100 or
+	(TukuiDB.myclass == "WARRIOR" and GetBonusBarOffset() == 2) or
+	(TukuiDB.myclass == "DEATHKNIGHT" and UnitBuff("player", GetSpellInfo(48263))) or
+	(TukuiDB.myclass == "DRUID" and GetBonusBarOffset() == 3) then
+		TukuiDB.Roll = "Tank"
+	else
+		local playerint = select(2, UnitStat("player", 4))
+		local playeragi	= select(2, UnitStat("player", 2))
+		local base, posBuff, negBuff = UnitAttackPower("player");
+		local playerap = base + posBuff + negBuff;
+ 
+		if ((playerap > playerint) or (playeragi > playerint)) and not (UnitBuff("player", GetSpellInfo(24858)) or UnitBuff("player", GetSpellInfo(65139))) then
+			TukuiDB.Roll = "Melee"
+		else
+			TukuiDB.Roll = "Caster"
+		end
+	end
+ 
+	--Unregister useless events
+	if event == "PLAYER_ENTERING_WORLD" then
+		if TukuiDB.myclass ~= "WARRIOR" and  TukuiDB.myclass ~= "DRUID" then
+			RollUpdater:UnregisterEvent("UPDATE_BONUS_ACTIONBAR")
+		end
+		RollUpdater:UnregisterEvent("PLAYER_ENTERING_WORLD")
+	end
+end
+RollUpdater:RegisterEvent("PLAYER_ENTERING_WORLD")
+RollUpdater:RegisterEvent("UNIT_AURA")
+RollUpdater:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
+RollUpdater:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+RollUpdater:RegisterEvent("CHARACTER_POINTS_CHANGED")
+RollUpdater:RegisterEvent("UNIT_INVENTORY_CHANGED")
+RollUpdater:SetScript("OnEvent", CheckRoll)

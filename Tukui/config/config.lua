@@ -82,6 +82,9 @@ TukuiCF["actionbar"] = {
 
 TukuiCF["nameplate"] = {
 	["enable"] = true,                     -- enable nice skinned nameplates that fit into tukui
+	["showhealth"] = true,					-- show health text on nameplate
+	["enhancethreat"] = true,				-- threat features based on if your a tank or not
+	["showclassicons"] = true,				-- show class icons on player nameplates
 }
 
 TukuiCF["bags"] = {

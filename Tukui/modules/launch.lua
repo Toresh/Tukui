@@ -472,6 +472,23 @@ function Setup_Forte()
 			FC_Saved.Profiles.Profile.Timer.Width = 250
 			FC_Saved.Profiles.Profile.Timer.lock = true
 			FC_Saved.Profiles.Profile.Timer.Expand = true
+			FC_Saved.Profiles.Profile.Timer.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
+			FC_Saved.Profiles.Profile.Timer.LabelFont = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
+			FC_Saved.Profiles.Profile.Timer.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
+			--[[FC_Saved.Profiles.Profile.Timer.MagicColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.TargetBgColor1 = 0.9686274509803922 0.9686274509803922 0.9686274509803922 0.7800000011920929
+			FC_Saved.Profiles.Profile.Timer.PetColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.Backdrop = "Interface\\AddOns\\Forte_Core\\Textures\\Background" "Interface\\AddOns\\Forte_Core\\Textures\\Border" false 16 5 3
+			FC_Saved.Profiles.Profile.Timer.DrainColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.FailColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.NormalBgColor = 0 0 0 0.5
+			FC_Saved.Profiles.Profile.Timer.FriendlyBuffColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.CrowdColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.HealColor = 0.21 0.21 0.22
+			FC_Saved.Profiles.Profile.Timer.FocusBgColor = 0.97 0.97 0.97 1
+			FC_Saved.Profiles.Profile.Timer.NormalBgColor = 0.97 0.97 0.97 1
+			FC_Saved.Profiles.Profile.Timer.FocusColor = 0.97 0.97 0.97 1
+			FC_Saved.Profiles.Profile.Timer.TargetBgColor = 0.97 0.97 0.97 1--]]
 			end
 		
 		if IsAddOnLoaded ("Forte_Cooldown") then

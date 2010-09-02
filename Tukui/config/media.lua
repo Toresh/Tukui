@@ -13,6 +13,7 @@ TukuiCF["media"] = {
 	["altbordercolor"] = { .4,.4,.4,1 }, -- alternative border color, mainly for unitframes text panels.
 	["backdropcolor"] = { .1,.1,.1,1 }, -- background color of tukui panels
 	["buttonhover"] = [[Interface\AddOns\Tukui\media\textures\button_hover]],
+	["raidicons"] = [[Interface\AddOns\Tukui\media\textures\raidicons.blp]], -- new raid icon textures by hankthetank
 	
 	-- sound
 	["whisper"] = [[Interface\AddOns\Tukui\media\sounds\whisper.mp3]],
