@@ -468,6 +468,13 @@ function Setup_Forte()
 			FC_Saved.Profiles.Profile.Timer.Width = 247
 			FC_Saved.Profiles.Profile.Timer.lock = true
 			FC_Saved.Profiles.Profile.Timer.Expand = true
+			FC_Saved.Profiles.Profile.Timer.BuffEnable = false
+			FC_Saved.Profiles.Profile.Timer.CooldownsOtherEnable = false
+			FC_Saved.Profiles.Profile.Timer.CoolDownsEnable = false
+			FC_Saved.Profiles.Profile.Timer.DebuffsEnable = false
+			FC_Saved.Profiles.Profile.Timer.DebuffsOtherEnable = false
+			FC_Saved.Profiles.Profile.Timer.SelfDebuffOtherEnable = false
+			FC_Saved.Profiles.Profile.Timer.BuffOtherEnable = false
 			FC_Saved.Profiles.Profile.Timer.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
 			FC_Saved.Profiles.Profile.Timer.LabelFont = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
 			FC_Saved.Profiles.Profile.Timer.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
