@@ -139,16 +139,6 @@ if TukuiCF["actionbar"].enable == true or not (IsAddOnLoaded("Dominos") or IsAdd
 		end
 	end
 	
-	--[[if TukuiCF["actionbar"].rightbars > 0 then
-		local rbl = CreateFrame("Frame", "TukuiRightBarLine", barbgr)
-		local crblu = CreateFrame("Frame", "TukuiCubeRightBarUP", barbgr)
-		local crbld = CreateFrame("Frame", "TukuiCubeRightBarDown", barbgr)
-		TukuiDB.CreatePanel(rbl, 2, (TukuiDB.buttonsize / 2 * 27) + (TukuiDB.buttonspacing * 6), "RIGHT", barbgr, "RIGHT", TukuiDB.Scale(1), 0)
-		rbl:SetWidth(TukuiDB.Scale(2))
-		TukuiDB.CreatePanel(crblu, 10, 10, "BOTTOM", rbl, "TOP", 0, 0)
-		TukuiDB.CreatePanel(crbld, 10, 10, "TOP", rbl, "BOTTOM", 0, 0)
-	end--]]
-	
 	local petbg = CreateFrame("Frame", "TukuiPetActionBarBackground", PetActionButton1)
 	if TukuiCF["actionbar"].horizonbars == true then
 		if TukuiCF["actionbar"].rightbars > 0 then
