@@ -463,11 +463,7 @@ end
 function Setup_Forte()
 	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting") then
 		if IsAddOnLoaded ("Forte_Timer")then
-			if TukuiDB.myclass == "Death Knight" then
-				FC_Saved.Profiles.Profile.Timer.y = 186.9980548147254
-			else
-				FC_Saved.Profiles.Profile.Timer.y = 193.9238999478766
-			end
+			FC_Saved.Profiles.Profile.Timer.y = 193.9238999478766
 			FC_Saved.Profiles.Profile.Timer.x = 411.7942399257686
 			FC_Saved.Profiles.Profile.Timer.Width = 250
 			FC_Saved.Profiles.Profile.Timer.lock = true
@@ -475,20 +471,8 @@ function Setup_Forte()
 			FC_Saved.Profiles.Profile.Timer.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
 			FC_Saved.Profiles.Profile.Timer.LabelFont = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
 			FC_Saved.Profiles.Profile.Timer.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
-			--[[FC_Saved.Profiles.Profile.Timer.MagicColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.TargetBgColor1 = 0.9686274509803922 0.9686274509803922 0.9686274509803922 0.7800000011920929
-			FC_Saved.Profiles.Profile.Timer.PetColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.Backdrop = "Interface\\AddOns\\Forte_Core\\Textures\\Background" "Interface\\AddOns\\Forte_Core\\Textures\\Border" false 16 5 3
-			FC_Saved.Profiles.Profile.Timer.DrainColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.FailColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.NormalBgColor = 0 0 0 0.5
-			FC_Saved.Profiles.Profile.Timer.FriendlyBuffColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.CrowdColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.HealColor = 0.21 0.21 0.22
-			FC_Saved.Profiles.Profile.Timer.FocusBgColor = 0.97 0.97 0.97 1
-			FC_Saved.Profiles.Profile.Timer.NormalBgColor = 0.97 0.97 0.97 1
-			FC_Saved.Profiles.Profile.Timer.FocusColor = 0.97 0.97 0.97 1
-			FC_Saved.Profiles.Profile.Timer.TargetBgColor = 0.97 0.97 0.97 1--]]
+			FC_Saved.Profiles.Profile.Timer.Backdrop = { "Interface\\AddOns\\Tukui\\media\\textures\\blank", "Interface\\AddOns\\Tukui\\media\\textures\\blank", false, 16, 5, 3 }
+			FC_Saved.Profiles.Profile.Timer.NormalBgColor = { 0.1, 0.1, 0.1, 1 }
 			end
 		
 		if IsAddOnLoaded ("Forte_Cooldown") then
@@ -499,17 +483,30 @@ function Setup_Forte()
 			FC_Saved.Profiles.Profile.Cooldown.Vertical = false
 			FC_Saved.Profiles.Profile.Cooldown.Width = 538
 			FC_Saved.Profiles.Profile.Cooldown.Flip = false
+			FC_Saved.Profiles.Profile.Cooldown.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
+			FC_Saved.Profiles.Profile.Cooldown.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
+			FC_Saved.Profiles.Profile.Cooldown.Backdrop = { "Interface\\AddOns\\Tukui\\media\\textures\\blank", "Interface\\AddOns\\Tukui\\media\\textures\\blank", false, 16, 5, 3 }
 		end
 	end
 end
 
 function Setup_Quartz()
 	if IsAddOnLoaded ("Quartz") then
-		Quartz3DB.namespaces.Player.profiles.Default.y = 282.0533722694886
-		Quartz3DB.namespaces.Player.profiles.Default.x = 722.0000400645222
+		Quartz3DB.namespaces.Player.profiles.Default.y = 282
+		Quartz3DB.namespaces.Player.profiles.Default.x = 711
 		Quartz3DB.namespaces.Player.profiles.Default.icongap = 8
+		Quartz3DB.namespaces.Player.profiles.Default.hideicon = true
 		Quartz3DB.namespaces.Player.profiles.Default.border = "Tukui Border"
 		Quartz3DB.namespaces.Player.profiles.Default.texture = "Tukui StatusBar"
+		Quartz3DB.profiles.Default.modules.buff = false
+		Quartz3DB.profiles.Default.modules.Interrupt = false
+		Quartz3DB.profiles.Default.modules.GCD = false
+		Quartz3DB.profiles.Default.modules.Pet = false
+		Quartz3DB.profiles.Default.modules.Focus = false
+		Quartz3DB.profiles.Default.modules.Target = false
+		Quartz3DB.profiles.Default.modules.Range = false
+		Quartz3DB.profiles.Default.modules.Timer = false
+		Quartz3DB.profiles.Default.modules.Mirror = false
 	end
 end
 		
