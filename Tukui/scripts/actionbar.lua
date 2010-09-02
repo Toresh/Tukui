@@ -346,9 +346,6 @@ end
 
 local function rightbaralpha(alpha)
 	TukuiActionBarBackgroundRight:SetAlpha(alpha)
-	TukuiRightBarLine:SetAlpha(alpha)
-	TukuiCubeRightBarUP:SetAlpha(alpha)
-	TukuiCubeRightBarDown:SetAlpha(alpha)
 	if db.rightbars > 2 then
 		if MultiBarLeft:IsShown() then
 			for i=1, 12 do
@@ -379,9 +376,6 @@ local function rightbaralpha(alpha)
 end
 
 if db.rightbarmouseover == true and db.rightbars > 0 then
-	TukuiRightBarLine:SetAlpha(0)
-	TukuiCubeRightBarUP:SetAlpha(0)
-	TukuiCubeRightBarDown:SetAlpha(0)
 	TukuiActionBarBackgroundRight:EnableMouse(true)
 	TukuiPetActionBarBackground:EnableMouse(true)
 	TukuiActionBarBackgroundRight:SetAlpha(0)
@@ -401,12 +395,12 @@ if db.rightbarmouseover == true and db.rightbars > 0 then
 				pb:SetAlpha(0)
 				pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
 				pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
-				local pb = _G["MultiBarBottomRightButton"..i]
-				pb:SetAlpha(0)
-				pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
-				pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
 			end
-		end
+			local pb = _G["MultiBarBottomRightButton"..i]
+			pb:SetAlpha(0)
+			pb:HookScript("OnEnter", function(self) mouseoverpet(1) rightbaralpha(1) end)
+			pb:HookScript("OnLeave", function(self) mouseoverpet(0) rightbaralpha(0) end)
+			end
 	end
 	for i=1, NUM_PET_ACTION_SLOTS do
 		local pb = _G["PetActionButton"..i]
