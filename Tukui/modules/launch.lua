@@ -463,9 +463,9 @@ end
 function Setup_Forte()
 	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting") then
 		if IsAddOnLoaded ("Forte_Timer")then
-			FC_Saved.Profiles.Profile.Timer.y = 193.9238999478766
-			FC_Saved.Profiles.Profile.Timer.x = 411.7942399257686
-			FC_Saved.Profiles.Profile.Timer.Width = 250
+			FC_Saved.Profiles.Profile.Timer.y = 188.8039247910538
+			FC_Saved.Profiles.Profile.Timer.x = 412.5257419558476
+			FC_Saved.Profiles.Profile.Timer.Width = 247
 			FC_Saved.Profiles.Profile.Timer.lock = true
 			FC_Saved.Profiles.Profile.Timer.Expand = true
 			FC_Saved.Profiles.Profile.Timer.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
@@ -498,7 +498,7 @@ function Setup_Quartz()
 		Quartz3DB.namespaces.Player.profiles.Default.hideicon = true
 		Quartz3DB.namespaces.Player.profiles.Default.border = "Tukui Border"
 		Quartz3DB.namespaces.Player.profiles.Default.texture = "Tukui StatusBar"
-		Quartz3DB.profiles.Default.modules.buff = false
+		Quartz3DB.profiles.Default.modules.Buff = false
 		Quartz3DB.profiles.Default.modules.Interrupt = false
 		Quartz3DB.profiles.Default.modules.GCD = false
 		Quartz3DB.profiles.Default.modules.Pet = false
