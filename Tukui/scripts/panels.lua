@@ -116,7 +116,7 @@ local chatright = CreateFrame("Frame", "ChatRight", TukuiInfoRight)
 	chatright:SetFrameStrata("BACKGROUND")
 
 --RIGHT BAR BACKGROUND
-if TukuiCF["actionbar"].enable == true or not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded("Macaroon")) then
+if TukuiCF["actionbar"].enable == true then
 	local barbgr = CreateFrame("Frame", "TukuiActionBarBackgroundRight", MultiBarRight)
 	
 	if TukuiCF["actionbar"].horizonbars == true then
