@@ -488,7 +488,7 @@ function Setup_Forte()
 			FC_Saved.Profiles.Profile.Cooldown.y = 89.26663520305853
 			FC_Saved.Profiles.Profile.Cooldown.Height = 22
 			FC_Saved.Profiles.Profile.Cooldown.Vertical = false
-			FC_Saved.Profiles.Profile.Cooldown.Width = 538
+			FC_Saved.Profiles.Profile.Cooldown.Width = 534
 			FC_Saved.Profiles.Profile.Cooldown.Flip = false
 			FC_Saved.Profiles.Profile.Cooldown.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
 			FC_Saved.Profiles.Profile.Cooldown.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
