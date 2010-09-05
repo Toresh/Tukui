@@ -531,22 +531,22 @@ TukuiDB.HidePortrait = function(self, unit)
 	end
 end
 
-local CheckInterrupt = function(self, unit)
+local CheckInterrupt = function(self, event, unit, interrupt)
 	if unit == "vehicle" then unit = "player" end
 
-	if self.interrupt and UnitCanAttack("player", unit) then
+	if interrupt and UnitCanAttack("player", unit) then
 		self:SetStatusBarColor(1, 0, 0, 0.5)	
 	else
 		self:SetStatusBarColor(0.31, 0.45, 0.63, 0.5)		
 	end
 end
 
-TukuiDB.CheckCast = function(self, unit, name, rank, castid)
-	CheckInterrupt(self, unit)
+TukuiDB.CheckCast = function(self, event, unit, name, rank, text, castid, interrupt)
+    CheckInterrupt(self, event, unit, interrupt)
 end
 
-TukuiDB.CheckChannel = function(self, unit, name, rank)
-	CheckInterrupt(self, unit)
+TukuiDB.CheckChannel = function(self, event, unit, name, rank, text, interrupt)
+    CheckInterrupt(self, event, unit, interrupt)
 end
 
 TukuiDB.MLAnchorUpdate = function (self)
@@ -579,7 +579,6 @@ TukuiDB.UpdateManaLevel = function(self, elapsed)
 	if self.parent.unit ~= "player" or delay < 0.2 or UnitIsDeadOrGhost("player") or UnitPowerType("player") ~= 0 then return end
 	delay = 0
 
-	local AotV = GetSpellInfo(viperAspectName)
 	local percMana = UnitMana("player") / UnitManaMax("player") * 100
 
 	if AotV then
@@ -595,7 +594,7 @@ TukuiDB.UpdateManaLevel = function(self, elapsed)
 			StopFlash(self)
 		end
 	else
-		if percMana <= TukuiCF["unitframes"].lowThreshold then
+		if percMana <= 20 then
 			self.ManaLevel:SetText("|cffaf5050"..tukuilocal.unitframes_ouf_lowmana.."|r")
 			Flash(self, 0.3)
 		else
