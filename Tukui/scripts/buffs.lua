@@ -15,7 +15,7 @@ TemporaryEnchantFrame.SetPoint = TukuiDB.dummy
 
 TempEnchant1:ClearAllPoints()
 TempEnchant2:ClearAllPoints()
-TempEnchant1:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-184), TukuiDB.Scale(-22))
+TempEnchant1:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-168), TukuiDB.Scale(-30))
 TempEnchant2:SetPoint("RIGHT", TempEnchant1, "LEFT", TukuiDB.Scale(-4), 0)
 
 for i = 1, 2 do
@@ -94,7 +94,7 @@ local function UpdateBuffAnchors()
 			buff:ClearAllPoints()
 			if ( (index > 1) and (mod(index, rowbuffs) == 1) ) then
 				if ( index == rowbuffs+1 ) then
-					buff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-184), TukuiDB.Scale(-80))
+					buff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-168), TukuiDB.Scale(-70))
 				else
 					buff:SetPoint("TOPRIGHT", UIParent, TukuiDB.Scale(-168), TukuiDB.Scale(-30))
 				end
