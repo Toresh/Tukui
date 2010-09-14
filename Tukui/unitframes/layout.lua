@@ -461,7 +461,7 @@ local function Shared(self, unit)
 			debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
 			self.Debuffs = debuffs
 			if TukuiCF["unitframes"].playerdebuffonly == true then
-				self.Debuffs.onlyShowPlayer = true
+				self.Debuffs.CustomFilter = TukuiDB.TargetDebuffFilter
 			end
 		end
 		

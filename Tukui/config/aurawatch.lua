@@ -172,3 +172,65 @@ if TukuiCF["unitframes"].raidunitdebuffwatch == true then
 		ORD:RegisterDebuffs(TukuiDB.debuffids)
 	end
 end
+
+if TukuiCF["unitframes"].playerdebuffonly == true then
+	DebuffWhiteList = {
+	-- Death Knight
+		["Hungering Cold"] = true,
+		["Strangulate"] = true,
+	-- Druid
+		["Cyclone"] = true,
+		["Hibernate"] = true,
+		["Entangling Roots"] = true,
+	-- Hunter
+		["Freezing Trap Effect"] = true,
+		["Freezing Arrow Effect"] = true,
+		["Scare Beast"] = true,
+		["Scatter Shot"] = true,
+		["Silencing Shot"] = true,
+	-- Mage
+		["Dragon's Breath"] = true,
+		["Polymorph"] = true,
+		["Slow"] = true,
+		["Silenced - Improved Counterspell"] = true,
+		["Frost Nova"] = true,
+		["Shattered Barrier"] = true,
+	-- Paladin
+		["Repentance"] = true,
+		["Turn Evil"] = true,
+		["Hammer of Justice"] = true,
+	-- Priest
+		["Mind Control"] = true,
+		["Psychic Horror"] = true,
+		["Psychic Scream"] = true,
+		["Shackle Undead"] = true,
+		["Silence"] = true,
+	-- Rogue
+		["Blind"] = true,
+		["Gouge"] = true,
+		["Sap"] = true,
+		["Silenced - Improved Kick"] = true,
+	-- Shaman
+		["Hex"] = true,
+		["Earthbind"] = true,
+		["Frost Shock"] = true,
+		["Freeze"] = true,
+		["Stoneclaw Stun"] = true,
+	-- Warlock
+		["Banish"] = true,
+		["Death Coil"] = true,
+		["Fear"] = true,
+		["Howl of Terror"] = true,
+		["Seduction"] = true,
+		["Shadowfury"] = true,
+	-- Warrior
+		["Intimidating Shout"] = true,
+	-- Racial
+		["Arcane Torrent"] = true,
+ 
+	--PVE Debuffs
+ 
+	-- Lich King
+		["Necrotic Plague"] = true
+	}
+end

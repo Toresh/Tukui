@@ -206,6 +206,28 @@ TukuiDB.SetFontString = function(parent, fontName, fontHeight, fontStyle)
 	return fs
 end
 
+TukuiDB.TargetDebuffFilter = function(icons, unit, icon, name, rank, texture, count, dtype, duration, timeLeft, caster)
+	icon.owner = caster
+	-- Show all debuffs on friendly targets
+	if UnitIsFriend("player", "target") then return true end
+ 
+	local isPlayer
+ 
+	if(caster == 'player' or caster == 'vehicle') then
+		isPlayer = true
+	else
+		isPlayer = false
+	end
+ 
+	if isPlayer then
+		return true
+	elseif DebuffWhiteList[name] then
+		return true
+	else
+		return false
+	end
+end
+
 local ShortValue = function(value)
 	if value >= 1e6 then
 		return ("%.1fm"):format(value / 1e6):gsub("%.?0+([km])$", "%1")

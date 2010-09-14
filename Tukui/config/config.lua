@@ -32,7 +32,7 @@ TukuiCF["unitframes"] = {
 	["combatfeedback"] = true,             -- enable combattext on player and target.
 	["playeraggro"] = true,                -- color player border to red if you have aggro on current target.
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
-	["playerdebuffonly"] = true,		   -- Show only your debuffs on your target
+	["playerdebuffonly"] = true,		   -- Fillters debuffs to only show important ones. Found at bottom of aurawatch.lua
 
 	-- raid layout
 	["showrange"] = true,                  -- show range opacity on raidframes
