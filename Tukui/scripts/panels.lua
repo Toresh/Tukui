@@ -161,8 +161,8 @@ if TukuiCF["actionbar"].enable == true then
 		barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
 	elseif TukuiCF["actionbar"].rightbars == 2 then
 		barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
-	elseif TukuiCF["actionbar"].rightbars == 3 then
-		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
+	--[[elseif TukuiCF["actionbar"].rightbars == 3 then
+		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))--]]
 	else
 		barbgr:Hide()
 	end
