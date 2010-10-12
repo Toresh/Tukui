@@ -19,20 +19,22 @@ TukuiCF["unitframes"] = {
 	["highThreshold"] = 80,                -- hunter high threshold
 	["lowThreshold"] = 20,                 -- global low threshold, for low mana warning.
 	["targetpowerpvponly"] = true,         -- enable power text on pvp target only
-	["totdebuffs"] = false,                -- enable tot debuffs (high reso only)
+	["totdebuffs"] = true,                -- enable tot debuffs (high reso only)
 	["focusdebuffs"] = false,              -- enable focus debuffs 
 	["showfocustarget"] = false,           -- show focus target
 	["showtotalhpmp"] = false,             -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                 -- enable smooth bar
 	["showthreat"] = true,                 -- enable the threat bar anchored to info left panel.
-	["charportrait"] = false,              -- do i really need to explain this?
+	["charportrait"] = true,              -- do i really need to explain this?
 	-- NOT DONE YET ["maintank"] = false,  -- enable maintank
 	-- NOT DONE YET ["mainassist"] = false,-- enable mainassist
 	["unicolor"] = false,                  -- enable unicolor theme
 	["combatfeedback"] = true,             -- enable combattext on player and target.
 	["playeraggro"] = true,                -- color player border to red if you have aggro on current target.
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
-	["healcomm"] = false,                  -- enable healprediction support.
+	["healcomm"] = true,                  -- enable healprediction support.
+	["playerdebuffonly"] = true,		   -- Fillters debuffs to only show important ones. Found at bottom of aurawatch.lua
+	
 
 	-- raid layout
 	["showrange"] = true,                  -- show range opacity on raidframes
@@ -70,12 +72,18 @@ TukuiCF["actionbar"] = {
 	["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
-	["rightbars"] = 3,                     -- numbers of right bar you want
+	["rightbars"] = 0,                     -- numbers of right bar you want
 	["showgrid"] = true,                   -- show grid on empty button
+	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
+	["horizonbars"] = true,				   -- enables horizontal right bars
+	["splitbar"] = true,				   -- shows a 3x2 action bar on either side of main bars
 }
 
 TukuiCF["nameplate"] = {
 	["enable"] = true,                     -- enable nice skinned nameplates that fit into tukui
+	["showhealth"] = true,					-- show health text on nameplate
+	["enhancethreat"] = true,				-- threat features based on if your a tank or not
+	["showclassicons"] = true,				-- show class icons on player nameplates
 }
 
 TukuiCF["bags"] = {
@@ -84,6 +92,10 @@ TukuiCF["bags"] = {
 
 TukuiCF["map"] = {
 	["enable"] = true,                     -- reskin the map to fit tukui
+	["coord"] = true,					   -- Turns on coords on top of minimap when mouse over
+	["loctaionhover"] = false,				   -- Turns on/off location on minimap mouseover
+	["topinfo"] = true,					   -- enables info panel above minimap
+	["location"] = true,				   -- enables the info panel below the minimap
 }
 
 TukuiCF["loot"] = {
@@ -98,26 +110,44 @@ TukuiCF["cooldown"] = {
 }
 
 TukuiCF["datatext"] = {
-	["fps_ms"] = 4,                        -- show fps and ms on panels
-	["mem"] = 5,                           -- show total memory on panels
+	["fps_ms"] = 8,                        -- show fps and ms on panels
+	["mem"] = 9,                           -- show total memory on panels
 	["bags"] = 0,                          -- show space used in bags on panels
-	["gold"] = 6,                          -- show your current gold on panels
-	["wowtime"] = 8,                       -- show time on panels
-	["guild"] = 1,                         -- show number on guildmate connected on panels
+	["gold"] = 0,                          -- show your current gold on panels
+	["wowtime"] = 10,                       -- show time on panels
+	["guild"] = 14,                         -- show number on guildmate connected on panels
 	["dur"] = 2,                           -- show your equipment durability on panels.
-	["friends"] = 3,                       -- show number of friends connected.
+	["friends"] = 15,                       -- show number of friends connected.
 	["dps_text"] = 0,                      -- show a dps meter on panels
 	["hps_text"] = 0,                      -- show a heal meter on panels
-	["power"] = 7,                         -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["power"] = 0,                         -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 0,                         -- show your haste rating on panels.
 	["crit"] = 0,                          -- show your crit rating on panels.
 	["avd"] = 0,                           -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                         -- show your armor value against the level mob you are currently targeting
-
+	["location"] = 13,					   -- shows your location. (zone text)
+	
 	["battleground"] = true,               -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
-	["time24"] = true,                     -- set time to 24h format.
-	["localtime"] = false,                 -- set time to local time instead of server time.
+	["time24"] = false,                     -- set time to 24h format.
+	["localtime"] = true,                 -- set time to local time instead of server time.
 	["fontsize"] = 12,                     -- font size for panels.
+}
+
+TukuiCF["broker_datatext"] = {
+	["Skada"] = 0,					  --This is an example of how to add broker addons. To find the name, type /showldb in game.
+	["RaidBuffStatus"] = 5,
+	["Cashflow"] = 3,
+	["clsaver"] = 0,
+	["WIM"] = 7,
+	["Altoholic"] = 4,
+	["Outfitter"] = 0,
+	["DXE"] = 0,
+	["AtlasLoot"] = 6,
+	["Omen"] = 0,
+	["Spamalyzer"] = 1,
+	["Broker_HudMap"] = 11,
+	["Skinner"] = 0,
+	["ZOMGBuffs"] = 12,
 }
 
 TukuiCF["chat"] = {

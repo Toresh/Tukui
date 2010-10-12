@@ -32,15 +32,7 @@ local invbarbg = CreateFrame("Frame", "InvTukuiActionBarBackground", UIParent)
 invbarbg:SetSize(barbg:GetWidth(), barbg:GetHeight())
 invbarbg:SetPoint("BOTTOM", 0, TukuiDB.Scale(14))
 
--- LEFT VERTICAL LINE
-local ileftlv = CreateFrame("Frame", "TukuiInfoLeftLineVertical", barbg)
-TukuiDB.CreatePanel(ileftlv, 2, 130, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", TukuiDB.Scale(22), TukuiDB.Scale(30))
-
--- RIGHT VERTICAL LINE
-local irightlv = CreateFrame("Frame", "TukuiInfoRightLineVertical", barbg)
-TukuiDB.CreatePanel(irightlv, 2, 130, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", TukuiDB.Scale(-22), TukuiDB.Scale(30))
-
--- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
+--[[ CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
 local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", barbg)
 TukuiDB.CreatePanel(cubeleft, 10, 10, "BOTTOM", ileftlv, "TOP", 0, 0)
 cubeleft:EnableMouse(true)
@@ -58,9 +50,9 @@ cubeleft:SetScript("OnMouseDown", function(self, btn)
 	if btn == "LeftButton" then	
 		ToggleFrame(ChatMenu)
 	end
-end)
+end)--]]
 
--- CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
+--[[ CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
 local cuberight = CreateFrame("Frame", "TukuiCubeRight", barbg)
 TukuiDB.CreatePanel(cuberight, 10, 10, "BOTTOM", irightlv, "TOP", 0, 0)
 if TukuiCF["bags"].enable then
@@ -68,21 +60,7 @@ if TukuiCF["bags"].enable then
 	cuberight:SetScript("OnMouseDown", function(self)
 		ToggleKeyRing()
 	end)
-end
-
--- HORIZONTAL LINE LEFT
-local ltoabl = CreateFrame("Frame", "TukuiLineToABLeft", barbg)
-TukuiDB.CreatePanel(ltoabl, 5, 2, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
-ltoabl:ClearAllPoints()
-ltoabl:SetPoint("BOTTOMLEFT", ileftlv, "BOTTOMLEFT", 0, 0)
-ltoabl:SetPoint("RIGHT", barbg, "BOTTOMLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(17))
-
--- HORIZONTAL LINE RIGHT
-local ltoabr = CreateFrame("Frame", "TukuiLineToABRight", barbg)
-TukuiDB.CreatePanel(ltoabr, 5, 2, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
-ltoabr:ClearAllPoints()
-ltoabr:SetPoint("LEFT", barbg, "BOTTOMRIGHT", TukuiDB.Scale(1), TukuiDB.Scale(17))
-ltoabr:SetPoint("BOTTOMRIGHT", irightlv, "BOTTOMRIGHT", 0, 0)
+end--]]
 
 -- INFO LEFT (FOR STATS)
 local ileft = CreateFrame("Frame", "TukuiInfoLeft", barbg)
