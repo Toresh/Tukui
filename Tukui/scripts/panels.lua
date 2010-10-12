@@ -7,8 +7,19 @@ TukuiDB.petbuttonspacing = TukuiDB.Scale(4)
 -- set left and right info panel width
 TukuiCF["panels"] = {["tinfowidth"] = 370}
 
+
+--  Info Centre
+local icentre = CreateFrame("Frame", "TukuiInfoCentre", UIParent)
+TukuiDB.CreatePanel(icentre, 1, 23, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(14))
+if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
+	icentre:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
+else
+	icentre:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
+end
+
+--action bar background
 local barbg = CreateFrame("Frame", "TukuiActionBarBackground", UIParent)
-TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(14))
+TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", icentre, "TOP", 0, TukuiDB.Scale(14))--should be 4
 if TukuiDB.lowversion == true then
 	barbg:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
 	if TukuiCF["actionbar"].bottomrows == 2 then
@@ -31,6 +42,20 @@ barbg:SetFrameLevel(1)
 local invbarbg = CreateFrame("Frame", "InvTukuiActionBarBackground", UIParent)
 invbarbg:SetSize(barbg:GetWidth(), barbg:GetHeight())
 invbarbg:SetPoint("BOTTOM", 0, TukuiDB.Scale(14))
+
+if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
+	-- Left Split Bar
+	local leftbg = CreateFrame("Frame", "TukuiLeftSplitABBackground", UIParent)
+	TukuiDB.CreatePanel(leftbg, 1, 1, "RIGHT", barbg, "LEFT", TukuiDB.Scale(-4), 0)
+	leftbg:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
+	leftbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
+ 
+	-- Right Split Bar
+	local rightbg = CreateFrame("Frame", "TukuiRightSplitABBackground", UIParent)
+	TukuiDB.CreatePanel(rightbg, 1, 1, "LEFT", barbg, "RIGHT", TukuiDB.Scale(4), 0)
+	rightbg:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
+	rightbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
+end
 
 --[[ CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
 local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", barbg)
@@ -62,6 +87,7 @@ if TukuiCF["bags"].enable then
 	end)
 end--]]
 
+
 -- INFO LEFT (FOR STATS)
 local ileft = CreateFrame("Frame", "TukuiInfoLeft", barbg)
 TukuiDB.CreatePanel(ileft, TukuiCF["panels"].tinfowidth, 23, "LEFT", ltoabl, "LEFT", TukuiDB.Scale(14), 0)
@@ -75,12 +101,57 @@ iright:SetFrameLevel(2)
 iright:SetFrameStrata("BACKGROUND")
 
 if TukuiMinimap then
-	local minimapstatsleft = CreateFrame("Frame", "TukuiMinimapStatsLeft", TukuiMinimap)
-	TukuiDB.CreatePanel(minimapstatsleft, ((TukuiMinimap:GetWidth() + 4) / 2) - 1, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, TukuiDB.Scale(-2))
 
-	local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
-	TukuiDB.CreatePanel(minimapstatsright, ((TukuiMinimap:GetWidth() + 4) / 2) -1, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, TukuiDB.Scale(-2))
+	if TukuiCF["map"].location == true then
+		--location panel
+		local locationpanel = CreateFrame("Frame", "TukuiLocationPanel", TukuiMinimap)
+		TukuiDB.CreatePanel(locationpanel, TukuiMinimap:GetWidth() + 4, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, TukuiDB.Scale(-4))
+		--left stats
+		local minimapstatsleft = CreateFrame("Frame", "TukuiMinimapStatsLeft", locationpanel)
+		TukuiDB.CreatePanel(minimapstatsleft, (TukuiMinimap:GetWidth() / 2), 19, "TOPLEFT", locationpanel, "BOTTOMLEFT", 0, TukuiDB.Scale(-4))
+		--right stats
+		local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", locationpanel)
+		TukuiDB.CreatePanel(minimapstatsright, (TukuiMinimap:GetWidth() / 2), 19, "TOPRIGHT", locationpanel, "BOTTOMRIGHT", 0, TukuiDB.Scale(-4))
+	else
+		--left stats
+		local minimapstatsleft = CreateFrame("Frame", "TukuiMinimapStatsLeft", TukuiMinimap)
+		TukuiDB.CreatePanel(minimapstatsleft, ((TukuiMinimap:GetWidth() + 4) / 2) - 1, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, TukuiDB.Scale(-2))
+		--right stats
+		local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
+		TukuiDB.CreatePanel(minimapstatsright, ((TukuiMinimap:GetWidth() + 4) / 2) -1, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, TukuiDB.Scale(-2))
+	end
+	
+	 --minimap stats top
+	if TukuiCF["map"].topinfo == true then
+		local minimapstatstop = CreateFrame("Frame", "TukuiMinimapStatsTop", TukuiMinimap)
+		TukuiDB.CreatePanel(minimapstatstop, (TukuiMinimap:GetWidth() + 4), 19, "TOPLEFT", TukuiMinimap, "TOPLEFT", 0, TukuiDB.Scale(22))
+	end
 end
+
+--Cooldown bar
+if TukuiCF["actionbar"].cooldownbar then
+	local cooldown = CreateFrame("Frame", "cooldown", barbg)
+	TukuiDB.CreatePanel(cooldown, 1, 30, "Bottom", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(4))
+	
+	if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
+		cooldown:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
+	else
+		cooldown:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
+	end
+end
+
+--Chat background
+-- CHAT LEFT
+local chatleft = CreateFrame("Frame", "ChatLeft", TukuiInfoLeft)
+	TukuiDB.CreatePanel(chatleft, TukuiCF["panels"].tinfowidth, TukuiDB.Scale(125), "BOTTOM", TukuiInfoLeft, "TOP", 0, TukuiDB.Scale(3))
+	chatleft:SetFrameLevel(0)
+	chatleft:SetFrameStrata("BACKGROUND")
+ 
+-- CHAT RIGHT
+local chatright = CreateFrame("Frame", "ChatRight", TukuiInfoRight)
+	TukuiDB.CreatePanel(chatright, TukuiCF["panels"].tinfowidth, TukuiDB.Scale(125), "BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(3))
+	chatright:SetFrameLevel(0)
+	chatright:SetFrameStrata("BACKGROUND")
 
 --RIGHT BAR BACKGROUND
 if TukuiCF["actionbar"].enable == true then
