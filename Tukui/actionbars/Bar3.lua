@@ -8,7 +8,7 @@ local TukuiBar3 = CreateFrame("Frame","TukuiBar3",UIParent) -- bottomrightbar
 TukuiBar3:SetAllPoints(TukuiActionBarBackground)
 MultiBarLeft:SetParent(TukuiBar3)
 
-for i= 1, 12 do
+--[[for i= 1, 12 do
 	local b = _G["MultiBarLeftButton"..i]
 	local b2 = _G["MultiBarLeftButton"..i-1]
 	b:ClearAllPoints()
@@ -33,9 +33,27 @@ if not TukuiDB.lowversion and TukuiCF.actionbar.bottomrows == 2 then
 	MultiBarLeftButton11:SetAlpha(0)
 	MultiBarLeftButton12:SetScale(0.0001)
 	MultiBarLeftButton12:SetAlpha(0)
+end--]]
+	MultiBarLeftButton1:ClearAllPoints()
+	MultiBarLeftButton1:SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+	for i= 2, 12 do
+	local b = _G["MultiBarLeftButton"..i]
+	local b2 = _G["MultiBarLeftButton"..i-1]
+		b:ClearAllPoints()
+		b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
+	end
+	MultiBarLeftButton4:ClearAllPoints()
+	MultiBarLeftButton4:SetPoint("BOTTOMLEFT", TukuiRightSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+	MultiBarLeftButton7:ClearAllPoints()
+	MultiBarLeftButton7:SetPoint("BOTTOMLEFT", MultiBarLeftButton1,"TOPLEFT", 0, TukuiDB.Scale(4));
+	MultiBarLeftButton10:ClearAllPoints()
+	MultiBarLeftButton10:SetPoint("BOTTOMLEFT", MultiBarLeftButton4,"TOPLEFT", 0, TukuiDB.Scale(4));
 end
 
 -- hide it if needed
-if (TukuiCF.actionbar.bottomrows == 1 and TukuiCF.actionbar.rightbars < 3) or (TukuiDB.lowversion and TukuiCF.actionbar.rightbars < 3) then
+--[[if (TukuiCF.actionbar.bottomrows == 1 and TukuiCF.actionbar.rightbars < 3) or (TukuiDB.lowversion and TukuiCF.actionbar.rightbars < 3) then
+	TukuiBar3:Hide()
+end--]]
+if db.splitbar == false and TukuiCF["actionbar"].bottomrows < 2 then 
 	TukuiBar3:Hide()
 end
