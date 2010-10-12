@@ -5,7 +5,7 @@ TukuiDB.petbuttonsize = TukuiDB.Scale(29)
 TukuiDB.petbuttonspacing = TukuiDB.Scale(4)
 
 -- set left and right info panel width
-TukuiCF["panels"] = {["tinfowidth"] = 370}
+TukuiCF["panels"] = {["tinfowidth"] = 352}
 
 
 --  Info Centre
