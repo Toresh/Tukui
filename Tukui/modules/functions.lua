@@ -97,6 +97,7 @@ end
 function TukuiDB.PP(p, obj)
 	local left = TukuiInfoLeft
 	local right = TukuiInfoRight
+	local centre = TukuiInfoCentre
 	local mapleft = TukuiMinimapStatsLeft
 	local mapright = TukuiMinimapStatsRight
 	
@@ -115,15 +116,29 @@ function TukuiDB.PP(p, obj)
 		obj:SetPoint('TOP', left)
 		obj:SetPoint('BOTTOM', left)
 	elseif p == 4 then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("LEFT", left, 30, 0)
+		obj:SetPoint('TOP', left)
+		obj:SetPoint('BOTTOM', left)
+	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("CENTER", centre, "CENTER", -75, .5)
+	elseif p == 6 and TukuiCF["actionbar"].splitbar == true then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("CENTER", centre, "CENTER", 75, .5)
+	elseif p == 7 then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("RIGHT", centre, "RIGHT", -30, .5)
+	elseif p == 8 then
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint("LEFT", right, 30, 0)
 		obj:SetPoint('TOP', right)
 		obj:SetPoint('BOTTOM', right)
-	elseif p == 5 then
+	elseif p == 9 then
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint('TOP', right)
 		obj:SetPoint('BOTTOM', right)
-	elseif p == 6 then
+	elseif p == 10 then
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint("RIGHT", right, -30, 0)
 		obj:SetPoint('TOP', right)
@@ -131,11 +146,20 @@ function TukuiDB.PP(p, obj)
 	end
 	
 	if TukuiMinimap then
-		if p == 7 then
+		if p == 11 and TukuiCF["map"].topinfo then
+			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
+			obj:SetPoint("LEFT", TukuiMinimapStatsTop, 20, 0.5)
+		elseif p == 12 and TukuiCF["map"].topinfo then
+			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
+			obj:SetPoint("RIGHT", TukuiMinimapStatsTop, -20, 0.5)
+		elseif p == 13 and TukuiCF["map"].location then
+			obj:SetHeight(TukuiLocationPanel:GetHeight())
+			obj:SetPoint("CENTER", TukuiLocationPanel, 0, 0.5)
+		elseif p == 14 then
 			obj:SetHeight(mapleft:GetHeight())
 			obj:SetPoint('TOP', mapleft)
 			obj:SetPoint('BOTTOM', mapleft)
-		elseif p == 8 then
+		elseif p == 15 then
 			obj:SetHeight(mapright:GetHeight())
 			obj:SetPoint('TOP', mapright)
 			obj:SetPoint('BOTTOM', mapright)
