@@ -98,6 +98,8 @@ function TukuiDB.PP(p, obj)
 	local left = TukuiInfoLeft
 	local right = TukuiInfoRight
 	local centre = TukuiInfoCentre
+	local top = TukuiMinimapStatsTop
+	local location = TukuiLocationPanel
 	local mapleft = TukuiMinimapStatsLeft
 	local mapright = TukuiMinimapStatsRight
 	
@@ -147,14 +149,14 @@ function TukuiDB.PP(p, obj)
 	
 	if TukuiMinimap then
 		if p == 11 and TukuiCF["map"].topinfo then
-			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
-			obj:SetPoint("LEFT", TukuiMinimapStatsTop, 20, 0.5)
+			obj:SetHeight(top:GetHeight())
+			obj:SetPoint("LEFT", top, 20, 0.5)
 		elseif p == 12 and TukuiCF["map"].topinfo then
-			obj:SetHeight(TukuiMinimapStatsTop:GetHeight())
-			obj:SetPoint("RIGHT", TukuiMinimapStatsTop, -20, 0.5)
+			obj:SetHeight(top:GetHeight())
+			obj:SetPoint("RIGHT", top, -20, 0.5)
 		elseif p == 13 and TukuiCF["map"].location then
-			obj:SetHeight(TukuiLocationPanel:GetHeight())
-			obj:SetPoint("CENTER", TukuiLocationPanel, 0, 0.5)
+			obj:SetHeight(location:GetHeight())
+			obj:SetPoint("CENTER", location, 0, 0.5)
 		elseif p == 14 then
 			obj:SetHeight(mapleft:GetHeight())
 			obj:SetPoint('TOP', mapleft)
