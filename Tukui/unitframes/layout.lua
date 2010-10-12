@@ -141,24 +141,24 @@ local function Shared(self, unit)
 			else
 				portrait:SetHeight(57)
 			end
-			portrait:SetWidth(33)
+			portrait:SetWidth(40)
 			portrait:SetAlpha(1)
 			if unit == "player" then
-				health:SetPoint("TOPLEFT", 34,0)
+				health:SetPoint("TOPLEFT", 41,0)
 				health:SetPoint("TOPRIGHT")
 				power:SetPoint("TOPLEFT", health, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPLEFT", power, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPRIGHT", power, "BOTTOMRIGHT", 0, -TukuiDB.mult)
-				portrait:SetPoint("TOPLEFT", health, "TOPLEFT", -34,0)
+				portrait:SetPoint("TOPLEFT", health, "TOPLEFT", -41,0)
 			elseif unit == "target" then
-				health:SetPoint("TOPRIGHT", -34,0)
+				health:SetPoint("TOPRIGHT", -41,0)
 				health:SetPoint("TOPLEFT")
 				power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				power:SetPoint("TOPLEFT", health, "BOTTOMLEFT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPRIGHT", power, "BOTTOMRIGHT", 0, -TukuiDB.mult)
 				panel:SetPoint("TOPLEFT", power, "BOTTOMLEFT", 0, -TukuiDB.mult)
-				portrait:SetPoint("TOPRIGHT", health, "TOPRIGHT", 34,0)
+				portrait:SetPoint("TOPRIGHT", health, "TOPRIGHT", 40,0)
 			end
 			table.insert(self.__elements, TukuiDB.HidePortrait)
 			self.Portrait = portrait
@@ -1285,18 +1285,19 @@ end
 -- for lower reso
 local adjustXY = 0
 local totdebuffs = 0
-if TukuiDB.lowversion then adjustXY = 24 end
+--if TukuiDB.lowversion then adjustXY = 24 end
 if db.totdebuffs then totdebuffs = 24 end
 
 oUF:RegisterStyle('Tukz', Shared)
 
 -- player
 local player = oUF:Spawn('player', "oUF_Tukz_player")
-player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", 0,8+adjustXY)
 if TukuiDB.lowversion then
 	player:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(51))
+	player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -80, 85)
 else
 	player:SetSize(TukuiDB.Scale(250), TukuiDB.Scale(57))
+	player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -225, 85)
 end
 
 -- focus
@@ -1306,30 +1307,31 @@ focus:SetSize(TukuiInfoRight:GetWidth() - TukuiDB.Scale(4), TukuiInfoRight:GetHe
 
 -- target
 local target = oUF:Spawn('target', "oUF_Tukz_target")
-target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,8+adjustXY)
 if TukuiDB.lowversion then
+	target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 80,85)
 	target:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(51))
 else
+	target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 225,85)
 	target:SetSize(TukuiDB.Scale(250), TukuiDB.Scale(57))
 end
 
 -- tot
 local tot = oUF:Spawn('targettarget', "oUF_Tukz_targettarget")
 if TukuiDB.lowversion then
-	tot:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,8)
+	tot:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 80, 65)
 	tot:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(18))
 else
-	tot:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,8)
+	tot:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,49)
 	tot:SetSize(TukuiDB.Scale(129), TukuiDB.Scale(36))
 end
 
 -- pet
 local pet = oUF:Spawn('pet', "oUF_Tukz_pet")
 if TukuiDB.lowversion then
-	pet:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", 0,8)
+	pet:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -80, 65)
 	pet:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(18))
 else
-	pet:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,49+totdebuffs)
+	pet:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,105+totdebuffs)
 	pet:SetSize(TukuiDB.Scale(129), TukuiDB.Scale(36))
 end
 
@@ -1344,7 +1346,7 @@ if TukuiCF.arena.unitframes then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "oUF_Arena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 252, 260)
+			arena[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 350, 350)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 10)
 		end
@@ -1366,7 +1368,7 @@ if db.showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "oUF_Boss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 252, 260)
+			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 350, 350)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)             
 		end
