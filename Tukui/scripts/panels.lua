@@ -156,28 +156,42 @@ local chatright = CreateFrame("Frame", "ChatRight", TukuiInfoRight)
 --RIGHT BAR BACKGROUND
 if TukuiCF["actionbar"].enable == true then
 	local barbgr = CreateFrame("Frame", "TukuiActionBarBackgroundRight", UIParent)
-	TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-13.5))
-	if TukuiCF["actionbar"].rightbars == 1 then
-		barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-	elseif TukuiCF["actionbar"].rightbars == 2 then
-		barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
-	--[[elseif TukuiCF["actionbar"].rightbars == 3 then
-		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))--]] 
+	
+	if TukuiCF["actionbar"].horizonbars == true then
+		TukuiDB.CreatePanel(barbgr, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), 1, "BOTTOMLEFT", ChatRight, "TOPLEFT", TukuiDB.Scale(0), TukuiDB.Scale(4))
+		if TukuiCF["actionbar"].rightbars == 1 then
+			barbgr:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
+		elseif TukuiCF["actionbar"].rightbars > 1 then
+			barbgr:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
+		else
+			barbgr:Hide()
+		end
 	else
-		barbgr:Hide()
+		TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-13.5))
+		if TukuiCF["actionbar"].rightbars == 1 then
+			barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
+		elseif TukuiCF["actionbar"].rightbars > 1 then
+			barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
+		else
+			barbgr:Hide()
+		end
 	end
 
-	local petbg = CreateFrame("Frame", "TukuiPetActionBarBackground", UIParent)
-	if TukuiCF["actionbar"].rightbars > 0 then
-		TukuiDB.CreatePanel(petbg, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), "RIGHT", barbgr, "LEFT", TukuiDB.Scale(-6), 0)
-	else
-		TukuiDB.CreatePanel(petbg, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-6), TukuiDB.Scale(-13.5))
+	local petbg = CreateFrame("Frame", "TukuiPetActionBarBackground", PetActionButton1)
+	if TukuiCF["actionbar"].horizonbars == true then
+		if TukuiCF["actionbar"].rightbars > 0 then
+			TukuiDB.CreatePanel(petbg, (TukuiDB.petbuttonsize * 10)+ (TukuiDB.petbuttonspacing * 11), TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), "BOTTOMRIGHT", barbgr, "TOPRIGHT", 0, TukuiDB.Scale(4))
+		else
+			TukuiDB.CreatePanel(petbg, (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), "BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+		end
+	
+	else 
+		if TukuiCF["actionbar"].rightbars > 0 then
+			TukuiDB.CreatePanel(petbg, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), "RIGHT", barbgr, "LEFT", TukuiDB.Scale(-6), 0)
+		else
+			TukuiDB.CreatePanel(petbg, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-6), TukuiDB.Scale(-13.5))
+		end
 	end
-
-	local ltpetbg1 = CreateFrame("Frame", "TukuiLineToPetActionBarBackground", petbg)
-	TukuiDB.CreatePanel(ltpetbg1, 30, 265, "TOPLEFT", petbg, "TOPRIGHT", 0, TukuiDB.Scale(-33))
-	ltpetbg1:SetFrameLevel(0)
-	ltpetbg1:SetAlpha(.8)
 end
 
 --BATTLEGROUND STATS FRAME
