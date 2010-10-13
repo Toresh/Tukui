@@ -37,7 +37,11 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			if i == 1 then
 				button:SetPoint("TOPLEFT", TukuiDB.Scale(4),TukuiDB.Scale(-4))
 			else
-				button:SetPoint("TOP", _G["PetActionButton"..(i - 1)], "BOTTOM", 0, TukuiDB.Scale(-4))
+				if TukuiCF["actionbar"].horizonbars == true then
+					button:SetPoint("LEFT", _G["PetActionButton"..(i - 1)], "RIGHT", TukuiDB.Scale(4), 0)
+				else
+					button:SetPoint("TOP", _G["PetActionButton"..(i - 1)], "BOTTOM", 0, TukuiDB.Scale(-4))					
+				end
 			end
 			button:Show()
 			self:SetAttribute("addchild", button)
