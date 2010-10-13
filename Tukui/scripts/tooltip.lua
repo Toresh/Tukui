@@ -50,7 +50,7 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", 0, TukuiDB.Scale(4))
 				
-			elseif PetActionBarFrame:IsShown() and TukuiCF["actionbar"].horizonbars == true then
+			elseif TukuiPetBar:IsShown() and TukuiCF["actionbar"].horizonbars == true then
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", TukuiPetActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(4))
 			
