@@ -58,7 +58,7 @@ local function StyleBuffs(buttonName, index, debuff)
 		count:SetFont(TukuiCF["media"].font, 12, "OUTLINE")
 		
 		local panel = CreateFrame("Frame", buttonName..index.."Panel", buff)
-		TukuiDB.CreatePanel(panel, 30, 30, "CENTER", buff, "CENTER", 0, 0)
+		TukuiDB.CreatePanel(panel, 22, 22, "CENTER", buff, "CENTER", 0, 0)
 		panel:SetFrameLevel(buff:GetFrameLevel() - 1)
 		panel:SetFrameStrata(buff:GetFrameStrata())
 	end
