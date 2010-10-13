@@ -1294,10 +1294,10 @@ oUF:RegisterStyle('Tukz', Shared)
 local player = oUF:Spawn('player', "oUF_Tukz_player")
 if TukuiDB.lowversion then
 	player:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(51))
-	player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -80, 85)
+	player:SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -80, 85)
 else
 	player:SetSize(TukuiDB.Scale(250), TukuiDB.Scale(57))
-	player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -225, 85)
+	player:SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -225, 85)
 end
 
 -- focus
@@ -1308,30 +1308,30 @@ focus:SetSize(TukuiInfoRight:GetWidth() - TukuiDB.Scale(4), TukuiInfoRight:GetHe
 -- target
 local target = oUF:Spawn('target', "oUF_Tukz_target")
 if TukuiDB.lowversion then
-	target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 80,85)
+	target:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 80,85)
 	target:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(51))
 else
-	target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 225,85)
+	target:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 225,85)
 	target:SetSize(TukuiDB.Scale(250), TukuiDB.Scale(57))
 end
 
 -- tot
 local tot = oUF:Spawn('targettarget', "oUF_Tukz_targettarget")
 if TukuiDB.lowversion then
-	tot:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 80, 65)
+	tot:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 80, 65)
 	tot:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(18))
 else
-	tot:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,49)
+	tot:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0,49)
 	tot:SetSize(TukuiDB.Scale(129), TukuiDB.Scale(36))
 end
 
 -- pet
 local pet = oUF:Spawn('pet', "oUF_Tukz_pet")
 if TukuiDB.lowversion then
-	pet:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -80, 65)
+	pet:SetPoint("BOTTOMLEFT", TukuiActionBarBackground, "TOPLEFT", -80, 65)
 	pet:SetSize(TukuiDB.Scale(186), TukuiDB.Scale(18))
 else
-	pet:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,105+totdebuffs)
+	pet:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0,105+totdebuffs)
 	pet:SetSize(TukuiDB.Scale(129), TukuiDB.Scale(36))
 end
 

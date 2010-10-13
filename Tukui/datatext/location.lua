@@ -35,7 +35,7 @@ if TukuiCF["datatext"].location and TukuiCF["datatext"].location > 0 then
 		
 		self:SetAllPoints(Text)
 		self:SetScript("OnEnter", function()
-			local x, y = GetPlayerMapPosition("player");
+			--[[local x, y = GetPlayerMapPosition("player");
 			local coords = format("%.1f - %.1f", x*100, y*100)
 			GameTooltip:SetOwner(this, "ANCHOR_TOP");
 			GameTooltip:ClearAllPoints()
@@ -43,7 +43,7 @@ if TukuiCF["datatext"].location and TukuiCF["datatext"].location > 0 then
 			GameTooltip:ClearLines()
 			--GameTooltip:AddDoubleLine(cStart .. "Sub Zone: " .. cEnd, GetMinimapZoneText(), _, _, _, 1, 1, 1)
 			--GameTooltip:AddDoubleLine(cStart .. "Coordinates: " .. cEnd, coords, _, _, _, 1, 1, 1)
-			GameTooltip:Show()
+			GameTooltip:Show()--]]
 		end)
 		self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 	end

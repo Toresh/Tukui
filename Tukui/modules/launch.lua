@@ -75,8 +75,8 @@ local function install()
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
 		FCF_OpenNewWindow("Spam")
-		FCF_SetLocked(ChatFrame3, 1)
 		FCF_DockFrame(ChatFrame3)
+		FCF_SetLocked(ChatFrame3, 1)
 
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
