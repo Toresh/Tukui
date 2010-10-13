@@ -35,9 +35,6 @@ TukuiDB.remindbuffs = {
 		28176, -- fel armor
 		687, -- demon armor
 	},
-	PALADIN = {
-
-	},
 	SHAMAN = {
 		52127, -- water shield
 		324, -- lightning shield
@@ -103,7 +100,6 @@ if TukuiCF["unitframes"].raidunitdebuffwatch == true then
 			},
 			PALADIN = {
 				{53563, "TOPLEFT", {0.7, 0.3, 0.7}}, -- Beacon of Light
-				{53601, "TOPRIGHT", {0.4, 0.7, 0.2}}, -- Sacred Shield
 			},
 			SHAMAN = {
 				{61295, "TOPLEFT", {0.7, 0.3, 0.7}}, -- Riptide 
