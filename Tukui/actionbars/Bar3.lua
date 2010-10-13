@@ -3,6 +3,7 @@ if not TukuiCF["actionbar"].enable == true then return end
 ---------------------------------------------------------------------------
 -- setup MultiBarLeft as bar #3
 ---------------------------------------------------------------------------
+--TOP BAR OF RIGHT SIDE
 
 local TukuiBar3 = CreateFrame("Frame","TukuiBar3",UIParent) -- bottomrightbar
 TukuiBar3:SetAllPoints(TukuiActionBarBackground)
@@ -34,7 +35,7 @@ if not TukuiDB.lowversion and TukuiCF.actionbar.bottomrows == 2 then
 	MultiBarLeftButton12:SetScale(0.0001)
 	MultiBarLeftButton12:SetAlpha(0)
 end
-
+TukuiBar3:Hide()
 -- hide it if needed
 if (TukuiCF.actionbar.bottomrows == 1 and TukuiCF.actionbar.rightbars < 3) or (TukuiDB.lowversion and TukuiCF.actionbar.rightbars < 3) then
 	TukuiBar3:Hide()

@@ -28,7 +28,7 @@ if TukuiDB.lowversion == true then
 		barbg:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
 	end
 else
-	barbg:SetWidth((TukuiDB.buttonsize * 22) + (TukuiDB.buttonspacing * 23))
+	barbg:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
 	if TukuiCF["actionbar"].bottomrows == 2 then
 		barbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 	else
@@ -156,7 +156,7 @@ local chatright = CreateFrame("Frame", "ChatRight", TukuiInfoRight)
 --RIGHT BAR BACKGROUND
 if TukuiCF["actionbar"].enable == true then
 	local barbgr = CreateFrame("Frame", "TukuiActionBarBackgroundRight", UIParent)
-	TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-23), TukuiDB.Scale(-13.5))
+	TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-13.5))
 	if TukuiCF["actionbar"].rightbars == 1 then
 		barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
 	elseif TukuiCF["actionbar"].rightbars == 2 then
@@ -165,15 +165,6 @@ if TukuiCF["actionbar"].enable == true then
 		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))--]] 
 	else
 		barbgr:Hide()
-	end
-	if TukuiCF["actionbar"].rightbars > 0 then
-		local rbl = CreateFrame("Frame", "TukuiRightBarLine", barbgr)
-		local crblu = CreateFrame("Frame", "TukuiCubeRightBarUP", barbgr)
-		local crbld = CreateFrame("Frame", "TukuiCubeRightBarDown", barbgr)
-		TukuiDB.CreatePanel(rbl, 2, (TukuiDB.buttonsize / 2 * 27) + (TukuiDB.buttonspacing * 6), "RIGHT", barbgr, "RIGHT", TukuiDB.Scale(1), 0)
-		rbl:SetWidth(TukuiDB.Scale(2))
-		TukuiDB.CreatePanel(crblu, 10, 10, "BOTTOM", rbl, "TOP", 0, 0)
-		TukuiDB.CreatePanel(crbld, 10, 10, "TOP", rbl, "BOTTOM", 0, 0)
 	end
 
 	local petbg = CreateFrame("Frame", "TukuiPetActionBarBackground", UIParent)
