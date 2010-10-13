@@ -83,18 +83,18 @@ local function install()
 			local chatFrameId = frame:GetID()
 			local chatName = FCF_GetChatWindowInfo(chatFrameId)
 			
-			frame:SetSize(TukuiDB.Scale(TukuiCF["panels"].tinfowidth + 1), TukuiDB.Scale(111))
+			frame:SetSize(TukuiDB.Scale(TukuiCF["panels"].tinfowidth ), TukuiDB.Scale(111))
 			
 			-- this is the default width and height of tukui chats.
-			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["panels"].tinfowidth + 1), TukuiDB.Scale(111))
+			SetChatWindowSavedDimensions(chatFrameId, TukuiDB.Scale(TukuiCF["panels"].tinfowidth - 7), TukuiDB.Scale(111))
 			
 			-- move general bottom left or Loot (if found) on right.
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", ChatLeft, "BOTTOM", 0, TukuiDB.Scale(6))
 			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", ChatRight, "BOTTOM", 0, TukuiDB.Scale(6))
 			end
 					
 			-- save new default position and dimension

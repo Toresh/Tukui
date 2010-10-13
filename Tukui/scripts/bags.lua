@@ -708,17 +708,17 @@ function Stuffing:Layout(lb)
 				
 				
 				--might need to chnage this below
-				xoff = 12 + (x * 31)
+				xoff = 4 + (x * 25)
 						+ (x * 4)
 
-				yoff = off + 12 + (y * 31)
+				yoff = off + 12 + (y * 25)
 						+ ((y - 1) * 4)
 				yoff = yoff * -1
 
 				b.frame:ClearAllPoints()
 				b.frame:SetPoint("TOPLEFT", f, "TOPLEFT", TukuiDB.Scale(xoff), TukuiDB.Scale(yoff))
-				b.frame:SetHeight(TukuiDB.Scale(31))
-				b.frame:SetWidth(TukuiDB.Scale(31))
+				b.frame:SetHeight(TukuiDB.Scale(25))
+				b.frame:SetWidth(TukuiDB.Scale(25))
 				b.frame:SetPushedTexture("")
 				b.frame:SetNormalTexture("")
 				b.frame:Show()

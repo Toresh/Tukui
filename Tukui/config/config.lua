@@ -75,7 +75,7 @@ TukuiCF["actionbar"] = {
 	["rightbars"] = 0,                     -- numbers of right bar you want
 	["showgrid"] = true,                   -- show grid on empty button
 	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
-	["horizonbars"] = true,				   -- enables horizontal right bars
+	["horizonbars"] = false,				   -- enables horizontal right bars
 	["splitbar"] = true,				   -- shows a 3x2 action bar on either side of main bars
 }
 

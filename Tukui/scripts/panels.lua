@@ -1,7 +1,7 @@
 -- ACTION BAR PANEL
-TukuiDB.buttonsize = TukuiDB.Scale(27)
+TukuiDB.buttonsize = TukuiDB.Scale(25)
 TukuiDB.buttonspacing = TukuiDB.Scale(4)
-TukuiDB.petbuttonsize = TukuiDB.Scale(29)
+TukuiDB.petbuttonsize = TukuiDB.Scale(25)
 TukuiDB.petbuttonspacing = TukuiDB.Scale(4)
 
 -- set left and right info panel width
@@ -19,7 +19,7 @@ end
 
 --action bar background
 local barbg = CreateFrame("Frame", "TukuiActionBarBackground", UIParent)
-TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", icentre, "TOP", 0, TukuiDB.Scale(14))--should be 4
+TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", icentre, "TOP", 0, TukuiDB.Scale(4))
 if TukuiDB.lowversion == true then
 	barbg:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
 	if TukuiCF["actionbar"].bottomrows == 2 then
@@ -90,13 +90,13 @@ end--]]
 
 -- INFO LEFT (FOR STATS)
 local ileft = CreateFrame("Frame", "TukuiInfoLeft", barbg)
-TukuiDB.CreatePanel(ileft, TukuiCF["panels"].tinfowidth, 23, "LEFT", ltoabl, "LEFT", TukuiDB.Scale(14), 0)
+TukuiDB.CreatePanel(ileft, TukuiCF["panels"].tinfowidth, 23, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", TukuiDB.Scale(14), TukuiDB.Scale(14))
 ileft:SetFrameLevel(2)
 ileft:SetFrameStrata("BACKGROUND")
 
 -- INFO RIGHT (FOR STATS)
 local iright = CreateFrame("Frame", "TukuiInfoRight", barbg)
-TukuiDB.CreatePanel(iright, TukuiCF["panels"].tinfowidth, 23, "RIGHT", ltoabr, "RIGHT", TukuiDB.Scale(-14), 0)
+TukuiDB.CreatePanel(iright, TukuiCF["panels"].tinfowidth, 23, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(14))
 iright:SetFrameLevel(2)
 iright:SetFrameStrata("BACKGROUND")
 
@@ -162,7 +162,7 @@ if TukuiCF["actionbar"].enable == true then
 	elseif TukuiCF["actionbar"].rightbars == 2 then
 		barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 	--[[elseif TukuiCF["actionbar"].rightbars == 3 then
-		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))--]]
+		barbgr:SetWidth((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))--]] 
 	else
 		barbgr:Hide()
 	end
