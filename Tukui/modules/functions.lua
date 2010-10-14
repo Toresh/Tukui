@@ -718,13 +718,17 @@ do
 	TukuiDB.Phasing = function(self, event)
 		local inPhase = UnitInPhase(self.unit)
 		local picon = self.PhaseIcon
+		
+		-- I don't want this icon show on non-player unit
+		-- also fix bug where phase icon is always show on pet/vehicle very far away from you
+		if not UnitIsPlayer(self.unit) then picon:Hide() return end
 
 		if(inPhase) then
 			picon:Hide()
-			if self.Health.value then self.Health.value:SetAlpha(1) end
+			if self:GetName():match("oUF_TukuiHealRaid2540") then self.Health.value:SetAlpha(1) end
 		else
 			picon:Show()
-			if self.Health.value then self.Health.value:SetAlpha(0) end
+			if self:GetName():match("oUF_TukuiHealRaid2540") then self.Health.value:SetAlpha(0) end
 		end
 	end
 
