@@ -93,10 +93,10 @@ local function install()
 			-- move general bottom left or Loot (if found) on right.
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOM", ChatLeft, "BOTTOM", TukuiDB.Scale(-3), TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", TukuiInfoLeft, "TOP", 0, TukuiDB.Scale(8))
 			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOM", ChatRight, "BOTTOM", TukuiDB.Scale(-3), TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(8))
 			end
 					
 			-- save new default position and dimension

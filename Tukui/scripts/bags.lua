@@ -573,8 +573,8 @@ function Stuffing:Layout(lb)
 			cols = 12
 		else
 			cols = 8
-		end
-		f = self.bankFrame--]]
+		end--]]
+		f = self.bankFrame
 	else
 		bs = bags_BACKPACK
 		cols = 12

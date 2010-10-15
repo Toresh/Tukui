@@ -14,17 +14,18 @@ for i= 1, 12 do
 	local b2 = _G["MultiBarLeftButton"..i-1]
 	b:ClearAllPoints()
 	if i == 1 then
-		if TukuiCF.actionbar.rightbars > 2 then
+		if TukuiCF["actionbar"].rightbars > 1 then
 			b:SetPoint("TOP", TukuiActionBarBackgroundRight, "TOP", 0, TukuiDB.Scale(-4))
 		end
 	else
-		if TukuiCF.actionbar.rightbars > 2 then
+		if TukuiCF["actionbar"].rightbars > 1 then
 			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
 		end
+		
 	end
 end
 
 -- hide it if needed
-if TukuiCF.actionbar.rightbars < 3 then
+if TukuiCF["actionbar"].rightbars < 2 then
 	TukuiBar3:Hide()
 end
