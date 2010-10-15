@@ -163,7 +163,7 @@ if TukuiCF["actionbar"].enable == true then
 		TukuiDB.CreatePanel(barbgr, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), 1, "BOTTOMLEFT", ChatRight, "TOPLEFT", TukuiDB.Scale(0), TukuiDB.Scale(4))
 		if TukuiCF["actionbar"].rightbars == 1 then
 			barbgr:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-		elseif TukuiCF["actionbar"].rightbars > 1 then
+		elseif TukuiCF["actionbar"].rightbars == 2 then
 			barbgr:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 		else
 			barbgr:Hide()
@@ -172,7 +172,7 @@ if TukuiCF["actionbar"].enable == true then
 		TukuiDB.CreatePanel(barbgr, 1, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", TukuiDB.Scale(-14), TukuiDB.Scale(-13.5))
 		if TukuiCF["actionbar"].rightbars == 1 then
 			barbgr:SetWidth(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-		elseif TukuiCF["actionbar"].rightbars > 1 then
+		elseif TukuiCF["actionbar"].rightbars == 2 then
 			barbgr:SetWidth((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 		else
 			barbgr:Hide()
