@@ -54,7 +54,7 @@ local function install()
 	SetCVar("removeChatDelay", 1)
 	SetCVar("showVKeyCastbar", 1)
 	SetCVar("colorblindMode", 0)
-	SetCVar("bloatthreat", 0)
+	--SetCVar("bloatthreat", 0)
 	
 	--call functions to set up addons
 	Setup_DXE()

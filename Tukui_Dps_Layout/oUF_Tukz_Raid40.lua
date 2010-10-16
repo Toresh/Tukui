@@ -69,12 +69,12 @@ local function Shared(self, unit)
 	--ReadyCheck:SetPoint('CENTER')
 	--self.ReadyCheck = ReadyCheck
 	
-	local picon = self.Health:CreateTexture(nil, 'OVERLAY')
-	picon:SetPoint('CENTER', self.Health)
-	picon:SetSize(16, 16)
-	picon:SetTexture[[Interface\AddOns\Tukui\media\textures\picon]]
-	picon.Override = TukuiDB.Phasing
-	self.PhaseIcon = picon
+	--local picon = self.Health:CreateTexture(nil, 'OVERLAY')
+	--picon:SetPoint('CENTER', self.Health)
+	--picon:SetSize(16, 16)
+	--picon:SetTexture[[Interface\AddOns\Tukui\media\textures\picon]]
+	--picon.Override = TukuiDB.Phasing
+	--self.PhaseIcon = picon
 	
 	self.DebuffHighlightAlpha = 1
 	self.DebuffHighlightBackdrop = true
@@ -101,7 +101,6 @@ oUF:Factory(function(self)
 			local header = self:GetParent()
 			self:SetWidth(header:GetAttribute('initial-width'))
 			self:SetHeight(header:GetAttribute('initial-height'))
-			RegisterUnitWatch(self)
 		]],
 		'initial-width', TukuiDB.Scale(100*TukuiDB.raidscale),
 		'initial-height', TukuiDB.Scale(12*TukuiDB.raidscale),

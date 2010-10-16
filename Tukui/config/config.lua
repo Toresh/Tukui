@@ -72,10 +72,10 @@ TukuiCF["actionbar"] = {
 	["hotkey"] = true,                     -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,            -- hide shapeshift or totembar because it was a lot requested.
 	["bottomrows"] = 2,                    -- numbers of row you want to show at the bottom (select between 1 and 2 only)
-	["rightbars"] = 2,                     -- numbers of right bar you want 0-1-2
+	["rightbars"] = 0,                     -- numbers of right bar you want 0-1-2
 	["showgrid"] = true,                   -- show grid on empty button
 	["cooldownbar"] = true,                -- enables a bar to place cooldown timer in
-	["horizonbars"] = false,				   -- enables horizontal right bars
+	["horizonbars"] = true,				   -- enables horizontal right bars
 	["splitbar"] = true,				   -- shows a 3x2 action bar on either side of main bars
 	["chatbackground"] = true,				--turn off chat background
 }

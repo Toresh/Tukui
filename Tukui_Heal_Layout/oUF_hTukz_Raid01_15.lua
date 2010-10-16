@@ -140,12 +140,12 @@ local function Shared(self, unit)
 	self.DebuffHighlightBackdrop = true
 	self.DebuffHighlightFilter = true
 	
-	local picon = self.Health:CreateTexture(nil, 'OVERLAY')
-	picon:SetPoint('CENTER', self.Health)
-	picon:SetSize(16, 16)
-	picon:SetTexture[[Interface\AddOns\Tukui\media\textures\picon]]
-	picon.Override = TukuiDB.Phasing
-	self.PhaseIcon = picon
+	--local picon = self.Health:CreateTexture(nil, 'OVERLAY')
+	--picon:SetPoint('CENTER', self.Health)
+	--picon:SetSize(16, 16)
+	--picon:SetTexture[[Interface\AddOns\Tukui\media\textures\picon]]
+	--picon.Override = TukuiDB.Phasing
+	--self.PhaseIcon = picon
 	
 	if TukuiCF["unitframes"].showrange == true then
 		local range = {insideAlpha = 1, outsideAlpha = TukuiCF["unitframes"].raidalphaoor}
@@ -191,7 +191,6 @@ oUF:Factory(function(self)
 		local header = self:GetParent()
 		self:SetWidth(header:GetAttribute('initial-width'))
 		self:SetHeight(header:GetAttribute('initial-height'))
-		RegisterUnitWatch(self)
 	]],
 	'initial-width', TukuiDB.Scale(150*TukuiDB.raidscale),
 	'initial-height', TukuiDB.Scale(32*TukuiDB.raidscale),	
