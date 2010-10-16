@@ -29,7 +29,16 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 		self:SetOwner(parent, "ANCHOR_CURSOR")
 	else
 		self:SetOwner(parent, "ANCHOR_NONE")
-		self:SetPoint("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, TukuiDB.Scale(5))
+		if TukuiPetBar:IsShown() and TukuiCF["actionbar"].horizonbars == true then
+			self:ClearAllPoints()
+			self:SetPoint("BOTTOMRIGHT", TukuiPetActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(4))
+		elseif TukuiCF["actionbar"].horizonbars == true then
+			self:ClearAllPoints()
+			self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+		else
+			self:ClearAllPoints()
+			self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(3))
+		end
 	end
 	self.default = 1
 end)

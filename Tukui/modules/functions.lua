@@ -119,9 +119,7 @@ function TukuiDB.PP(p, obj)
 		obj:SetPoint('BOTTOM', left)
 	elseif p == 4 then
 		obj:SetHeight(centre:GetHeight())
-		obj:SetPoint("LEFT", left, 30, 0)
-		obj:SetPoint('TOP', left)
-		obj:SetPoint('BOTTOM', left)
+		obj:SetPoint("LEFT", centre, "LEFT", 30, .5)
 	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
 		obj:SetHeight(centre:GetHeight())
 		obj:SetPoint("CENTER", centre, "CENTER", -75, .5)
