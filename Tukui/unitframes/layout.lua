@@ -563,6 +563,9 @@ local function Shared(self, unit)
 			debuffs.PostCreateIcon = TukuiDB.PostCreateAura
 			debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
 			self.Debuffs = debuffs
+			if TukuiCF["unitframes"].playerdebuffonly == true then
+				self.Debuffs.onlyShowPlayer = true
+			end
 		end
 		
 		-- cast bar for player and target
