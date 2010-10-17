@@ -141,7 +141,7 @@ if TukuiCF["actionbar"].cooldownbar then
 end
 
 --Chat background
-if TukuiCF["actionbar"].chatbackground == true then
+if TukuiCF["chat"].chatbackground == true then
 -- CHAT LEFT
 local chatleft = CreateFrame("Frame", "ChatLeft", TukuiInfoLeft)
 	TukuiDB.CreatePanel(chatleft, TukuiCF["panels"].tinfowidth, TukuiDB.Scale(125), "BOTTOM", TukuiInfoLeft, "TOP", 0, TukuiDB.Scale(3))
