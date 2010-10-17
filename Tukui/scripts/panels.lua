@@ -1,7 +1,7 @@
 -- ACTION BAR PANEL
-TukuiDB.buttonsize = TukuiDB.Scale(25)
+TukuiDB.buttonsize = TukuiDB.Scale(TukuiCF["general"].actionbarbuttonsize)
 TukuiDB.buttonspacing = TukuiDB.Scale(4)
-TukuiDB.petbuttonsize = TukuiDB.Scale(25)
+TukuiDB.petbuttonsize = TukuiDB.Scale(TukuiCF["general"].petbarbuttonsize)
 TukuiDB.petbuttonspacing = TukuiDB.Scale(4)
 
 -- set left and right info panel width

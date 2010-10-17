@@ -5,6 +5,8 @@
 	["multisampleprotect"] = true,         -- i don't recommend this because of shitty border but, voila!
 	["buffsize"] = 22,					   --Change the size of your player buffs / debuffs (Use at your own risk)
 	["rowbuffs"] = 16,					   --How many buffs to display in each line
+	["actionbarbuttonsize"] = 25,		   -- Change the size of action bar buttons. This effectively makes your bars bigger.
+	["petbarbuttonsize"] = 25,			   -- Same as above, but for pet bar
 }
 
 TukuiCF["unitframes"] = {
