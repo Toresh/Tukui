@@ -3,6 +3,8 @@
 	["uiscale"] = 0.71,                    -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,         -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = true,         -- i don't recommend this because of shitty border but, voila!
+	["buffsize"] = 22,					   --Change the size of your player buffs / debuffs (Use at your own risk)
+	["rowbuffs"] = 16,					   --How many buffs to display in each line
 }
 
 TukuiCF["unitframes"] = {
@@ -34,17 +36,16 @@ TukuiCF["unitframes"] = {
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
 	["healcomm"] = true,                  -- enable healprediction support.
 	["playerdebuffonly"] = true,		   -- Fillters debuffs to only show important ones. Found at bottom of aurawatch.lua
-	
 
 	-- raid layout
 	["showrange"] = true,                  -- show range opacity on raidframes
 	["raidalphaoor"] = 0.3,                -- alpha of unitframes when unit is out of range
-	["gridonly"] = false,                  -- enable grid only mode for all healer mode raid layout.
+	["gridonly"] = true,                  -- enable grid only mode for all healer mode raid layout.
 	["showsymbols"] = true,	               -- show symbol.
 	["aggro"] = true,                      -- show aggro on all raids layouts
 	["raidunitdebuffwatch"] = true,        -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,         -- enable vertical grow on health bar for grid mode.
-	["showplayerinparty"] = false,         -- show my player frame in party
+	["showplayerinparty"] = true,         -- show my player frame in party
 	["gridscale"] = 1,                     -- set the healing grid scaling
 	
 	-- boss frames

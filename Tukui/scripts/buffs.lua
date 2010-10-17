@@ -7,7 +7,7 @@ ConsolidatedBuffs.SetPoint = TukuiDB.dummy
 if TukuiCF.unitframes.playerauras == true then return end
 
 local mainhand, _, _, offhand = GetWeaponEnchantInfo()
-local rowbuffs = 16
+local rowbuffs = TukuiCF["general"].rowbuffs
 
 TemporaryEnchantFrame:ClearAllPoints()
 TemporaryEnchantFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 0, TukuiDB.Scale(-16))
@@ -23,13 +23,13 @@ WorldStateAlwaysUpFrame:SetFrameLevel(0)
 
 for i = 1, 3 do
 	local f = CreateFrame("Frame", nil, _G["TempEnchant"..i])
-	TukuiDB.CreatePanel(f, 30, 30, "CENTER", _G["TempEnchant"..i], "CENTER", 0, 0)	
+	TukuiDB.CreatePanel(f, TukuiCF["general"].buffsize, TukuiCF["general"].buffsize, "CENTER", _G["TempEnchant"..i], "CENTER", 0, 0)	
 	_G["TempEnchant"..i.."Border"]:Hide()
 	_G["TempEnchant"..i.."Icon"]:SetTexCoord(.08, .92, .08, .92)
 	_G["TempEnchant"..i.."Icon"]:SetPoint("TOPLEFT", _G["TempEnchant"..i], TukuiDB.Scale(2), TukuiDB.Scale(-2))
 	_G["TempEnchant"..i.."Icon"]:SetPoint("BOTTOMRIGHT", _G["TempEnchant"..i], TukuiDB.Scale(-2), TukuiDB.Scale(2))
-	_G["TempEnchant"..i]:SetHeight(TukuiDB.Scale(30))
-	_G["TempEnchant"..i]:SetWidth(TukuiDB.Scale(30))	
+	_G["TempEnchant"..i]:SetHeight(TukuiDB.Scale(TukuiCF["general"].buffsize))
+	_G["TempEnchant"..i]:SetWidth(TukuiDB.Scale(TukuiCF["general"].buffsize))	
 	_G["TempEnchant"..i.."Duration"]:ClearAllPoints()
 	_G["TempEnchant"..i.."Duration"]:SetPoint("BOTTOM", 0, TukuiDB.Scale(-13))
 	_G["TempEnchant"..i.."Duration"]:SetFont(TukuiCF["media"].font, 12)
@@ -46,8 +46,8 @@ local function StyleBuffs(buttonName, index, debuff)
 		icon:SetPoint("TOPLEFT", buff, TukuiDB.Scale(2), TukuiDB.Scale(-2))
 		icon:SetPoint("BOTTOMRIGHT", buff, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 		
-		buff:SetHeight(TukuiDB.Scale(22))
-		buff:SetWidth(TukuiDB.Scale(22))
+		buff:SetHeight(TukuiDB.Scale(TukuiCF["general"].buffsize))
+		buff:SetWidth(TukuiDB.Scale(TukuiCF["general"].buffsize))
 				
 		duration:ClearAllPoints()
 		duration:SetPoint("BOTTOM", 0, TukuiDB.Scale(-13))
@@ -58,7 +58,7 @@ local function StyleBuffs(buttonName, index, debuff)
 		count:SetFont(TukuiCF["media"].font, 12, "OUTLINE")
 		
 		local panel = CreateFrame("Frame", buttonName..index.."Panel", buff)
-		TukuiDB.CreatePanel(panel, 22, 22, "CENTER", buff, "CENTER", 0, 0)
+		TukuiDB.CreatePanel(panel, TukuiCF["general"].buffsize, TukuiCF["general"].buffsize, "CENTER", buff, "CENTER", 0, 0)
 		panel:SetFrameLevel(buff:GetFrameLevel() - 1)
 		panel:SetFrameStrata(buff:GetFrameStrata())
 	end
