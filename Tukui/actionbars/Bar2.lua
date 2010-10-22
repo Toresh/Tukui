@@ -26,6 +26,6 @@ MultiBarBottomLeftButton10:ClearAllPoints()
 MultiBarBottomLeftButton10:SetPoint("BOTTOMLEFT", MultiBarBottomLeftButton4,"TOPLEFT", 0, TukuiDB.Scale(4));
 
 -- hide it if needed
-if TukuiCF.actionbar.bottomrows == 1 then
+if TukuiCF.actionbar.bottomrows == 1 or TukuiCF.actionbar.splitbar == false then
 	TukuiBar2:Hide()
 end
