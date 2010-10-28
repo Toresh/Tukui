@@ -3,14 +3,9 @@ if not TukuiCF["nameplate"].enable == true then return end
  
 local tNamePlates = CreateFrame("Frame", nil, UIParent)
 tNamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
-SetCVar("bloatthreat", 0) -- stop resizing nameplate according to threat level.
-SetCVar("bloattest", 1)
-if TukuiCF["nameplate"].overlap == true then
-	SetCVar("spreadnameplates", "0")
-else
-	SetCVar("spreadnameplates", "1")
-end
- 
+
+SetCVar("bloatthreat", 0) -- 0 = stop resizing nameplate according to threat level.
+
 local barTexture = TukuiCF["media"].normTex
 local overlayTexture = [=[Interface\Tooltips\Nameplate-Border]=]
 local font, fontSize, fontOutline = TukuiCF["media"].font, 10, "OUTLINE"
