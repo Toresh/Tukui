@@ -90,6 +90,9 @@ function TukuiDB.CreateShadow(f)
 end
 
 function TukuiDB.Kill(object)
+	if object.UnregisterAllEvents then
+		object:UnregisterAllEvents()
+	end
 	object.Show = TukuiDB.dummy
 	object:Hide()
 end
@@ -781,15 +784,28 @@ do
 			end
 		end
 	end
+
+	TukuiDB.EclipseDirection = function(self)
+		if ( GetEclipseDirection() == "sun" ) then
+				self.Text:SetText("|cffE5994C"..BALANCE_POSITIVE_ENERGY.."|r")
+		elseif ( GetEclipseDirection() == "moon" ) then
+				self.Text:SetText("|cff4478BC"..BALANCE_NEGATIVE_ENERGY.."|r")
+		else
+		        self.Text:SetText("")
+		end
+	end
 	
 	TukuiDB.EclipseDisplay = function(self, login)
 		local eb = self.EclipseBar
+		local txt = self.EclipseBar.Text
 
 		if login then
 			eb:SetScript("OnUpdate", nil)
 		end
 		
 		if eb:IsShown() then
+			txt:Show()
+			self.FlashInfo:Hide()
 			self.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(13))
 			if TukuiDB.lowversion then
 				if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 34) end
@@ -797,6 +813,8 @@ do
 				if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 38) end
 			end				
 		else
+			txt:Hide()
+			self.FlashInfo:Show()
 			self.shadow:SetPoint("TOPLEFT", TukuiDB.Scale(-4), TukuiDB.Scale(4))
 			if TukuiDB.lowversion then
 				if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 26) end
@@ -1024,3 +1042,4 @@ RoleUpdater:RegisterEvent("UNIT_INVENTORY_CHANGED")
 RoleUpdater:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
 RoleUpdater:SetScript("OnEvent", CheckRole)
 CheckRole()
+

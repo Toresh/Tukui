@@ -14,6 +14,7 @@ MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "BO
 for i=2, 12 do
 	local b = _G["MultiBarBottomLeftButton"..i]
 	local b2 = _G["MultiBarBottomLeftButton"..i-1]
+	b:SetSize(TukuiDB.buttonsize, TukuiDB.buttonsize)
 	b:ClearAllPoints()
 		b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
 end
