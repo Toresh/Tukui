@@ -59,7 +59,7 @@ end
 
 -- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
 local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", icentre)
-TukuiDB.CreatePanel(cubeleft, 10, 10, "LEFT", icentre, "RIGHT", -TukuiDB.Scale(4), 0)
+TukuiDB.CreatePanel(cubeleft, 10, 10, "RIGHT", icentre, "LEFT", -TukuiDB.Scale(4), 0)
 cubeleft:EnableMouse(true)
 cubeleft:SetScript("OnMouseDown", function(self, btn)
 	if TukuiInfoLeftBattleGround then
@@ -79,13 +79,28 @@ end)
 
 -- CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
 local cuberight = CreateFrame("Frame", "TukuiCubeRight", icentre)
-TukuiDB.CreatePanel(cuberight, 10, 10, "BOTTOM", icentre, "TOP", TukuiDB.Scale(4), 0)
-if TukuiCF["bags"].enable then
-	cuberight:EnableMouse(true)
-	cuberight:SetScript("OnMouseDown", function(self)
-		ToggleKeyRing()
-	end)
-end
+TukuiDB.CreatePanel(cuberight, 10, 10, "LEFT", icentre, "RIGHT", TukuiDB.Scale(4), 0)
+cuberight:EnableMouse(true)
+cuberight:SetScript("OnMouseDown", function(self, btn)
+	if btn == "RightButton" then
+		if TukuiCF["bags"].enable then
+			ToggleKeyRing()
+		end
+	elseif btn == "LeftButton" then
+		if IsAddOnLoaded("Recount") then
+			if Recount.MainWindow:IsShown() or OmenBarList:IsShown() then
+				Recount.MainWindow:Hide()
+				OmenBarList:Hide()
+				OmenTitle:Hide()
+			else
+				Recount.MainWindow:Show()
+				Recount:RefreshMainWindow()
+				OmenBarList:Show()
+				OmenTitle:Show()
+			end
+		end
+	end
+end)
 
 
 -- INFO LEFT (FOR STATS)
