@@ -60,14 +60,16 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", 0, TukuiDB.Scale(4))
 				
-			elseif TukuiPetBar:IsShown() and TukuiCF["actionbar"].horizonbars == true then
-				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", TukuiPetActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(4))
-			
-			elseif TukuiCF["actionbar"].horizonbars == true then
-				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
-			
+				if TukuiCF["actionbar"].enable == true then
+					if TukuiPetBar:IsShown() and TukuiCF["actionbar"].horizonbars == true then
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", TukuiPetActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					
+					elseif TukuiCF["actionbar"].horizonbars == true then
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					end
+				end		
 			else
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(3))
