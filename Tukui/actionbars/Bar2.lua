@@ -11,6 +11,7 @@ MultiBarBottomLeft:SetParent(TukuiBar2)
 
 MultiBarBottomLeftButton1:ClearAllPoints()
 MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT", TukuiLeftSplitABBackground, "BOTTOMLEFT", TukuiDB.Scale(4), TukuiDB.Scale(4))
+MultiBarBottomLeftButton1:SetSize(TukuiDB.buttonsize, TukuiDB.buttonsize)
 for i=2, 12 do
 	local b = _G["MultiBarBottomLeftButton"..i]
 	local b2 = _G["MultiBarBottomLeftButton"..i-1]
