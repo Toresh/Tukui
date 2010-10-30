@@ -57,9 +57,9 @@ if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 
 	rightbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
 end
 
---[[ CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
-local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", barbg)
-TukuiDB.CreatePanel(cubeleft, 10, 10, "BOTTOM", ileftlv, "TOP", 0, 0)
+-- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
+local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", icentre)
+TukuiDB.CreatePanel(cubeleft, 10, 10, "LEFT", icentre, "RIGHT", -TukuiDB.Scale(4), 0)
 cubeleft:EnableMouse(true)
 cubeleft:SetScript("OnMouseDown", function(self, btn)
 	if TukuiInfoLeftBattleGround then
@@ -75,17 +75,17 @@ cubeleft:SetScript("OnMouseDown", function(self, btn)
 	if btn == "LeftButton" then	
 		ToggleFrame(ChatMenu)
 	end
-end)--]]
+end)
 
---[[ CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
-local cuberight = CreateFrame("Frame", "TukuiCubeRight", barbg)
-TukuiDB.CreatePanel(cuberight, 10, 10, "BOTTOM", irightlv, "TOP", 0, 0)
+-- CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
+local cuberight = CreateFrame("Frame", "TukuiCubeRight", icentre)
+TukuiDB.CreatePanel(cuberight, 10, 10, "BOTTOM", icentre, "TOP", TukuiDB.Scale(4), 0)
 if TukuiCF["bags"].enable then
 	cuberight:EnableMouse(true)
 	cuberight:SetScript("OnMouseDown", function(self)
 		ToggleKeyRing()
 	end)
-end--]]
+end
 
 
 -- INFO LEFT (FOR STATS)
