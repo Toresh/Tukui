@@ -18,6 +18,12 @@ if TukuiDB.client == "deDE" then
 	tukuilocal.chat_ERR_FRIEND_ONLINE_SS = "ist jetzt |cff298F00online|r"
 	tukuilocal.chat_ERR_FRIEND_OFFLINE_S = "ist jetzt |cffff0000offline|r"
 	
+	tukuilocal.chat_general = "Allgemein"
+	tukuilocal.chat_trade = "Handel"
+	tukuilocal.chat_defense = "LokaleVerteidigung"
+	tukuilocal.chat_recrutment = "Gildenrekrutierung"
+	tukuilocal.chat_lfg = "SucheNachGruppe"
+	
 	tukuilocal.disband = "Gruppe wird aufgelöst."  
  
 	tukuilocal.datatext_guild = "Gilde"
@@ -82,6 +88,13 @@ if TukuiDB.client == "deDE" then
 	tukuilocal.datatext_gatesdestroyed = "Tore zerstört:"
 	tukuilocal.datatext_totalmemusage = "Gesamte Speichernutzung:"
 	tukuilocal.datatext_control = "Kontrolliert von:"
+	
+	tukuilocal.bg_warsong = "Kriegshymnenschlucht"
+	tukuilocal.bg_arathi = "Arathibecken"
+	tukuilocal.bg_eye = "Auge des Sturms"
+	tukuilocal.bg_alterac = "Alteractal"
+	tukuilocal.bg_strand = "Strand der Uralten"
+	tukuilocal.bg_isle = "Insel der Eroberung"
  
 	tukuilocal.Slots = {
 		[1] = {1, "Kopf", 1000},

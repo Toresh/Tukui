@@ -62,7 +62,7 @@ local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", icentre)
 TukuiDB.CreatePanel(cubeleft, 10, 10, "RIGHT", icentre, "LEFT", -TukuiDB.Scale(4), 0)
 cubeleft:EnableMouse(true)
 cubeleft:SetScript("OnMouseDown", function(self, btn)
-	if TukuiInfoLeftBattleGround then
+	if TukuiInfoLeftBattleGround and UnitInBattleground("player") then
 		if btn == "RightButton" then
 			if TukuiInfoLeftBattleGround:IsShown() then
 				TukuiInfoLeftBattleGround:Hide()

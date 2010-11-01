@@ -207,7 +207,7 @@ local function SetupChatPosAndFont(self)
 			chat:ClearAllPoints()
 			chat:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, TukuiDB.Scale(6))
 			FCF_SavePositionAndDimensions(chat)
-		elseif i == 3 and name == "Spam" then
+		elseif i == 3 and name == Spam then
 			if not chat.isDocked then
 				chat:ClearAllPoints()
 				chat:SetPoint("BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(8))

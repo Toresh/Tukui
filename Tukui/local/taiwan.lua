@@ -18,6 +18,12 @@ if TukuiDB.client == "zhTW" then
 	tukuilocal.chat_ERR_FRIEND_ONLINE_SS = "is now |cff298F00online|r"
 	tukuilocal.chat_ERR_FRIEND_OFFLINE_S = "is now |cffff0000offline|r"
 	
+	tukuilocal.chat_general = "General"
+	tukuilocal.chat_trade = "Trade"
+	tukuilocal.chat_defense = "LocalDefense"
+	tukuilocal.chat_recrutment = "GuildRecruitment"
+	tukuilocal.chat_lfg = "LookingForGroup"
+	
 	tukuilocal.disband = "正在解散隊伍."
  
 	tukuilocal.datatext_guild = "公會"
@@ -82,6 +88,13 @@ if TukuiDB.client == "zhTW" then
 	tukuilocal.datatext_gatesdestroyed = "大門摧毀:"
 	tukuilocal.datatext_totalmemusage = "總共記憶體使用:"
 	tukuilocal.datatext_control = "Controlled by:"
+	
+	tukuilocal.bg_warsong = "戰歌峽谷"
+	tukuilocal.bg_arathi = "阿拉希盆地"
+	tukuilocal.bg_eye = "暴風之眼"
+	tukuilocal.bg_alterac = "奧特蘭克山谷"
+	tukuilocal.bg_strand = "Strand of the Ancients"
+	tukuilocal.bg_isle = "征服之島"
  
 	tukuilocal.Slots = {
 		[1] = {1, "頭部", 1000},

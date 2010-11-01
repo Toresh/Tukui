@@ -75,11 +75,12 @@ local function install()
 		FCF_SetLocked(ChatFrame1, 1)
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
-		FCF_OpenNewWindow("Spam")
+		FCF_OpenNewWindow(Spam)
 		FCF_UnDockFrame(ChatFrame3)
 		FCF_SetLocked(ChatFrame3, 1)
-		ChatFrame3:Show();
-		
+		ChatFrame3:Show()
+
+
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
 			local chatFrameId = frame:GetID()
@@ -94,7 +95,8 @@ local function install()
 			if i == 1 then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, TukuiDB.Scale(6))
-			elseif i == 3 and chatName == "Spam" then
+
+			elseif i == 3 and chatName == Spam then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(8))
 			end
@@ -111,11 +113,11 @@ local function install()
 		end
 		
 		ChatFrame_RemoveAllMessageGroups(ChatFrame1)
-		ChatFrame_RemoveChannel(ChatFrame1, "Trade")
-		ChatFrame_RemoveChannel(ChatFrame1, "General")
-		ChatFrame_RemoveChannel(ChatFrame1, "LocalDefense")
-		ChatFrame_RemoveChannel(ChatFrame1, "GuildRecruitment")
-		ChatFrame_RemoveChannel(ChatFrame1, "LookingForGroup")
+		ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_trade) -- erf, it seem we need to localize this now
+		ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_general) -- erf, it seem we need to localize this now
+		ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_defense) -- erf, it seem we need to localize this now
+		ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_recrutment) -- erf, it seem we need to localize this now
+		ChatFrame_RemoveChannel(ChatFrame1, tukuilocal.chat_lfg) -- erf, it seem we need to localize this now
 		ChatFrame_AddMessageGroup(ChatFrame1, "SAY")
 		ChatFrame_AddMessageGroup(ChatFrame1, "EMOTE")
 		ChatFrame_AddMessageGroup(ChatFrame1, "YELL")
@@ -150,11 +152,11 @@ local function install()
 					
 		-- Setup the right spam chat frame
 		ChatFrame_RemoveAllMessageGroups(ChatFrame3)
-		ChatFrame_AddChannel(ChatFrame3, "Trade")
-		ChatFrame_AddChannel(ChatFrame3, "General")
-		ChatFrame_AddChannel(ChatFrame3, "LocalDefense")
-		ChatFrame_AddChannel(ChatFrame3, "GuildRecruitment")
-		ChatFrame_AddChannel(ChatFrame3, "LookingForGroup")
+		ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_trade) -- erf, it seem we need to localize this now
+		ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_general) -- erf, it seem we need to localize this now
+		ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_defense) -- erf, it seem we need to localize this now
+		ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_recrutment) -- erf, it seem we need to localize this now
+		ChatFrame_AddChannel(ChatFrame3, tukuilocal.chat_lfg) -- erf, it seem we need to localize this now
 		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_XP_GAIN")
 		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_HONOR_GAIN")
 		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_FACTION_CHANGE")

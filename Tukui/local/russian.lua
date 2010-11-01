@@ -17,6 +17,12 @@ if TukuiDB.client == "ruRU" then
 	tukuilocal.chat_FLAG_GM = "[ГМ]"
 	tukuilocal.chat_ERR_FRIEND_ONLINE_SS = "|cff298F00входит|r"
 	tukuilocal.chat_ERR_FRIEND_OFFLINE_S = "|cffff0000выходит|r"
+	
+	tukuilocal.chat_general = "Общий"
+	tukuilocal.chat_trade = "Торговля"
+	tukuilocal.chat_defense = "ОборонаЛокальный"
+	tukuilocal.chat_recrutment = "Гильдии"
+	tukuilocal.chat_lfg = "ПоискСпутников"
  
 	tukuilocal.disband = "Роспуск группы."
  
@@ -82,6 +88,13 @@ if TukuiDB.client == "ruRU" then
 	tukuilocal.datatext_gatesdestroyed = "Врат разрушено:"
 	tukuilocal.datatext_totalmemusage = "Общее использование памяти:"
 	tukuilocal.datatext_control = "Под контролем:"
+	
+	tukuilocal.bg_warsong = "Ущелье Песни Войны"
+	tukuilocal.bg_arathi = "Низина Арати"
+	tukuilocal.bg_eye = "Око Бури"
+	tukuilocal.bg_alterac = "Альтеракская долина"
+	tukuilocal.bg_strand = "Берег Древних"
+	tukuilocal.bg_isle = "Остров Завоеваний"
  
 	tukuilocal.Slots = {
 	  [1] = {1, "Голова", 1000},

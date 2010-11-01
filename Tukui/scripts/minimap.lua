@@ -172,9 +172,8 @@ m_zone:Hide()
 
 local m_zone_text = m_zone:CreateFontString(nil,"Overlay")
 m_zone_text:SetFont(TukuiCF["media"].font,12)
-m_zone_text:SetPoint("Center",0,0)
-m_zone_text:SetJustifyH("CENTER")
-m_zone_text:SetJustifyV("MIDDLE")
+m_zone_text:SetPoint("TOP", 0, -TukuiDB.mult)
+m_zone_text:SetPoint("BOTTOM")
 m_zone_text:SetHeight(TukuiDB.Scale(12))
 m_zone_text:SetWidth(m_zone:GetWidth()-6)
 
@@ -196,8 +195,11 @@ Minimap:SetScript("OnEnter",function()
 	m_zone.anim_o:Stop()
 	m_coord.anim_o:Stop()
 	m_zone:Show()
-	m_coord:Show()
-	m_coord.anim:Play()
+	local x,y = GetPlayerMapPosition("player")
+	if x ~= 0 and y ~= 0 then
+		m_coord:Show()
+		m_coord.anim:Play()
+	end
 	m_zone.anim:Play()
 end)
  

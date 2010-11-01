@@ -18,6 +18,12 @@ tukuilocal.chat_FLAG_GM = "[GM]"
 tukuilocal.chat_ERR_FRIEND_ONLINE_SS = "is now |cff298F00online|r"
 tukuilocal.chat_ERR_FRIEND_OFFLINE_S = "is now |cffff0000offline|r"
 
+tukuilocal.chat_general = "General"
+tukuilocal.chat_trade = "Trade"
+tukuilocal.chat_defense = "LocalDefense"
+tukuilocal.chat_recrutment = "GuildRecruitment"
+tukuilocal.chat_lfg = "LookingForGroup"
+
 tukuilocal.disband = "Disbanding group."
 
 tukuilocal.datatext_guild = "Guild"
@@ -82,6 +88,13 @@ tukuilocal.datatext_demolishersdestroyed = "Demolishers Destroyed:"
 tukuilocal.datatext_gatesdestroyed = "Gates Destroyed:"
 tukuilocal.datatext_totalmemusage = "Total Memory Usage:"
 tukuilocal.datatext_control = "Controlled by:"
+
+tukuilocal.bg_warsong = "Warsong Gulch"
+tukuilocal.bg_arathi = "Arathi Basin"
+tukuilocal.bg_eye = "Eye of the Storm"
+tukuilocal.bg_alterac = "Alterac Valley"
+tukuilocal.bg_strand = "Strand of the Ancients"
+tukuilocal.bg_isle = "Isle of Conquest"
 
 tukuilocal.Slots = {
 	[1] = {1, "Head", 1000},
