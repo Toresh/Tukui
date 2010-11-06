@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # WowAddonStudio Solution File, Format Version 10.00
 Project("{E6E1D386-69D8-4755-9E61-0950293915FC}") = "Tukui", "Tukui.wowproj", "{EE7AB797-91A5-451F-921C-3E1849F3ADDE}"
 EndProject
-Project("{E6E1D386-69D8-4755-9E61-0950293915FC}") = "Tukui_ConfigUI", "..\..\Tukui_ConfigUI\Tukui_ConfigUI.wowproj", "{0717B5FE-19E0-48F6-9F2C-8517A09EA51F}"
+Project("{E6E1D386-69D8-4755-9E61-0950293915FC}") = "Tukui_ConfigUI", "..\..\Tukui_ConfigUI\Tukui_ConfigUI.wowproj", "{10DF7F76-987A-4979-8917-BFB11F273CAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,8 +12,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EE7AB797-91A5-451F-921C-3E1849F3ADDE}.Default|Any CPU.ActiveCfg = Default|Any CPU
 		{EE7AB797-91A5-451F-921C-3E1849F3ADDE}.Default|Any CPU.Build.0 = Default|Any CPU
-		{0717B5FE-19E0-48F6-9F2C-8517A09EA51F}.Default|Any CPU.ActiveCfg = Default|Any CPU
-		{0717B5FE-19E0-48F6-9F2C-8517A09EA51F}.Default|Any CPU.Build.0 = Default|Any CPU
+		{10DF7F76-987A-4979-8917-BFB11F273CAA}.Default|Any CPU.ActiveCfg = Default|Any CPU
+		{10DF7F76-987A-4979-8917-BFB11F273CAA}.Default|Any CPU.Build.0 = Default|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
