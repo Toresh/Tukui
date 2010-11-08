@@ -410,26 +410,6 @@ function Setup_Omen()
 	end
 end
 
-function Setup_Quartz()
-	if IsAddOnLoaded ("Quartz") then
-		Quartz3DB.namespaces.Player.profiles.Default.y = 282
-		Quartz3DB.namespaces.Player.profiles.Default.x = 711
-		Quartz3DB.namespaces.Player.profiles.Default.icongap = 8
-		Quartz3DB.namespaces.Player.profiles.Default.hideicon = true
-		Quartz3DB.namespaces.Player.profiles.Default.border = "Tukui Border"
-		Quartz3DB.namespaces.Player.profiles.Default.texture = "Tukui StatusBar"
-		Quartz3DB.profiles.Default.modules.Buff = false
-		Quartz3DB.profiles.Default.modules.Interrupt = false
-		Quartz3DB.profiles.Default.modules.GCD = false
-		Quartz3DB.profiles.Default.modules.Pet = false
-		Quartz3DB.profiles.Default.modules.Focus = false
-		Quartz3DB.profiles.Default.modules.Target = false
-		Quartz3DB.profiles.Default.modules.Range = false
-		Quartz3DB.profiles.Default.modules.Timer = false
-		Quartz3DB.profiles.Default.modules.Mirror = false
-	end
-end
-
 function Setup_Coolline()
 	if IsAddOnLoaded ("CoolLine") then	
 		CoolLineDB.x = 0
