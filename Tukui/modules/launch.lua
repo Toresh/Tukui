@@ -95,7 +95,7 @@ local function install()
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(6), TukuiDB.Scale(6))
 
-			elseif i == 3 and chatName == Spam then
+			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
 				frame:SetPoint("BOTTOM", TukuiInfoRight, "TOP", 0, TukuiDB.Scale(8))
 			end
