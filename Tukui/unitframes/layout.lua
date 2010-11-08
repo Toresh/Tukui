@@ -610,14 +610,22 @@ local function Shared(self, unit)
 			if unit == "player" then
 				castbar:SetHeight(TukuiDB.Scale(20))
 				castbar:SetWidth(TukuiDB.Scale(240))
-				--castbar:SetFrameLevel(6)
+				castbar:SetFrameLevel(6)
 				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, TukuiDB.Scale(250))	
 				
-				castbar.bg = castbar:CreateTexture(nil, "BORDER")
+				--[[castbar.bg = castbar:CreateTexture(nil, "BORDER")
+				TukuiDB.SetTemplate(castbar.bg)
 				castbar.bg:SetPoint("TOPLEFT", castbar, TukuiDB.Scale(-1), TukuiDB.Scale(1))
 				castbar.bg:SetPoint("BOTTOMRIGHT", castbar, TukuiDB.Scale(1), -TukuiDB.Scale(1))
 				castbar.bg:SetTexture(normTex)
-				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
+				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)--]]
+				
+				castbar.bg = CreateFrame("Frame", nil, castbar)
+				TukuiDB.SetTemplate(castbar.bg)
+				castbar.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
+				castbar.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
+				castbar.bg:SetFrameLevel(5)
+				TukuiDB.CreateShadow(castbar.bg)
 				
 				castbar.CustomTimeText = TukuiDB.CustomCastTimeText
 				castbar.CustomDelayText = TukuiDB.CustomCastDelayText
@@ -633,7 +641,6 @@ local function Shared(self, unit)
 				castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0.5)	
 				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
 				
-				TukuiDB.SetTemplate(castbar)
 				
 				if db.cbicons == true then
 					castbar.button = CreateFrame("Frame", nil, castbar)
