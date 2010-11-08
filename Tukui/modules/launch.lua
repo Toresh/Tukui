@@ -61,7 +61,6 @@ local function install()
 	Setup_Recount()
 	Setup_Omen()
 	Setup_Coolline()
-	Setup_Quartz()
 	
 	-- setting this the creator or tukui only, because a lot of people don't like this change.		
 	if TukuiDB.myname == "Tukz" then	
@@ -74,7 +73,7 @@ local function install()
 		FCF_SetLocked(ChatFrame1, 1)
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
-		FCF_OpenNewWindow(Spam)
+		FCF_OpenNewWindow("Spam")
 		FCF_UnDockFrame(ChatFrame3)
 		FCF_SetLocked(ChatFrame3, 1)
 		ChatFrame3:Show()
@@ -93,7 +92,7 @@ local function install()
 			-- move general bottom left or Loot (if found) on right.
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(6), TukuiDB.Scale(6))
+				frame:SetPoint("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(8))
 
 			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
