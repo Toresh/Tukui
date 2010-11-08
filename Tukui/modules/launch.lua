@@ -319,30 +319,32 @@ function Setup_DXE()
 		local namespace = DXE.db:GetNamespace("Alerts").profile
 		
 		DXEIconDB.hide = true
-		DXE.db.profile.Globals.BarTexture = "TukTex"
-		DXE.db.profile.Globals.BackgroundColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		--DXE.db.profile.Globals.BarTexture = "TukTex"
+		--DXE.db.profile.Globals.BackgroundColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
 		DXE.db.profile.Pane.TitleFontSize = 12
 		DXE.db.profile.Pane.Width = 352
-		DXE.db.profile.Pane.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
-		DXE.db.profile.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		--DXE.db.profile.Pane.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		--DXE.db.profile.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		DXE.db.profile.Pane.OnlyInRaid = true
+		DXE.db.profile.Pane.OnlyInRaidInstance = true
 		
-		DXE.db.profile.Positions.DXEPane.yOfs = 187
-		DXE.db.profile.Positions.DXEPane.xOfs = 14
+		DXE.db.profile.Positions.DXEPane.yOfs = TukuiDB.Scale(187)
+		DXE.db.profile.Positions.DXEPane.xOfs = TukuiDB.Scale(14)
 		DXE.db.profile.Positions.DXEPane.point = "BOTTOMLEFT"
 		DXE.db.profile.Positions.DXEPane.relativePoint = "BOTTOMLEFT"
 		
-		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.yOfs = 8.99
-		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.xOfs = -305.49
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.yOfs = TukuiDB.Scale(8.99)
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.xOfs = TukuiDB.Scale(-305.49)
 		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.point = "RIGHT"
 		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.relativePoint = "RIGHT"
 		
-		namespace.CenterScale = 1
-		namespace.CenterAlpha = 1
+		--namespace.CenterScale = 1
+		--namespace.CenterAlpha = 1
 		namespace.CenterGrowth = "UP"
-		namespace.TopAlpha = 1
-		namespace.TopScale = 1
+		--namespace.TopAlpha = 1
+		--namespace.TopScale = 1
 
-		DXE.db.profile.Windows.TitleBarColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		--DXE.db.profile.Windows.TitleBarColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
 	end
 
 end
@@ -358,8 +360,8 @@ function Setup_Recount()
 		Recount.db.profile.ReportLines = 4
 		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
 		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
-		Recount.db.profile.MainWindow.Position.y = -430.250643299163
-		Recount.db.profile.MainWindow.Position.x = 371
+		Recount.db.profile.MainWindow.Position.y = TukuiDB.Scale(-430.250643299163)
+		Recount.db.profile.MainWindow.Position.x = TukuiDB.Scale(371)
 		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
 		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
 		Recount.db.profile.MainWindowHeight = 159.8336667240456
@@ -399,8 +401,8 @@ function Setup_Omen()
 	if IsAddOnLoaded("Omen") then
 		Omen.db.profile.MinimapIcon.hide = true
 		Omen.db.profile.ShowWith.UseShowWith = false	
-		Omen.db.profile.PositionX = 372--359.4994234613777
-		Omen.db.profile.PositionY = 165--146.9990649412748
+		Omen.db.profile.PositionX = TukuiDB.Scale(372)--359.4994234613777
+		Omen.db.profile.PositionY = TukuiDB.Scale(165)--146.9990649412748
 		Omen.db.profile.PositionW = 192--199.0000127884138
 		Omen.db.profile.PositionH = 152--142.9999017275369		
 		Omen.db.profile.Shown = true
@@ -412,7 +414,7 @@ end
 function Setup_Coolline()
 	if IsAddOnLoaded ("CoolLine") then	
 		CoolLineDB.x = 0
-		CoolLineDB.y = -403
+		CoolLineDB.y = TukuiDB.Scale(-403)
 		CoolLineDB.h = 23
 		CoolLineDB.w = 512
 		CoolLineDB.bgcolor.a = 0
