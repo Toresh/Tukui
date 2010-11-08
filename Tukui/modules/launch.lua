@@ -60,8 +60,7 @@ local function install()
 	Setup_DXE()
 	Setup_Recount()
 	Setup_Omen()
-	Setup_Skinner()
-	Setup_Forte()
+	Setup_Coolline()
 	Setup_Quartz()
 	
 	-- setting this the creator or tukui only, because a lot of people don't like this change.		
@@ -312,7 +311,7 @@ SlashCmdList.CONFIGURE = function() StaticPopup_Show("INSTALL_UI") end
 
 function Setup_DXE()
 
-	-- force DXE to load so that we can skin it
+	-- force DXE to load so that we can set it up it
 	if IsAddOnLoadOnDemand("DXE") then
 		LoadAddOn("DXE")
 	end
@@ -361,7 +360,7 @@ function Setup_Recount()
 		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
 		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
 		Recount.db.profile.MainWindow.Position.y = -430.250643299163
-		Recount.db.profile.MainWindow.Position.x = 372.0003691559128
+		Recount.db.profile.MainWindow.Position.x = 371
 		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
 		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
 		Recount.db.profile.MainWindowHeight = 159.8336667240456
@@ -411,49 +410,6 @@ function Setup_Omen()
 	end
 end
 
-function Setup_Skinner()
-	if IsAddOnLoaded("Skinner") then
-		Skinner.db.profile.MinimapIcon.hide = true
-	end
-end
-
-function Setup_Forte()
-	if IsAddOnLoaded ("Forte_Core")and IsAddOnLoaded ("Forte_Casting") then
-		if IsAddOnLoaded ("Forte_Timer")then
-			FC_Saved.Profiles.Profile.Timer.y = 188.8039247910538
-			FC_Saved.Profiles.Profile.Timer.x = 412.5257419558476
-			FC_Saved.Profiles.Profile.Timer.Width = 247
-			FC_Saved.Profiles.Profile.Timer.lock = true
-			FC_Saved.Profiles.Profile.Timer.Expand = true
-			FC_Saved.Profiles.Profile.Timer.BuffEnable = false
-			FC_Saved.Profiles.Profile.Timer.CooldownsOtherEnable = false
-			FC_Saved.Profiles.Profile.Timer.CoolDownsEnable = false
-			FC_Saved.Profiles.Profile.Timer.DebuffsEnable = false
-			FC_Saved.Profiles.Profile.Timer.DebuffsOtherEnable = false
-			FC_Saved.Profiles.Profile.Timer.SelfDebuffOtherEnable = false
-			FC_Saved.Profiles.Profile.Timer.BuffOtherEnable = false
-			FC_Saved.Profiles.Profile.Timer.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
-			FC_Saved.Profiles.Profile.Timer.LabelFont = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
-			FC_Saved.Profiles.Profile.Timer.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
-			FC_Saved.Profiles.Profile.Timer.Backdrop = { "Interface\\AddOns\\Tukui\\media\\textures\\blank", "Interface\\AddOns\\Tukui\\media\\textures\\blank", false, 16, 5, 3 }
-			FC_Saved.Profiles.Profile.Timer.NormalBgColor = { 0.1, 0.1, 0.1, 1 }
-			end
-		
-		if IsAddOnLoaded ("Forte_Cooldown") then
-			FC_Saved.Profiles.Profile.Cooldown.IconSize = 16
-			FC_Saved.Profiles.Profile.Cooldown.x = 614.3999600954436
-			FC_Saved.Profiles.Profile.Cooldown.y = 89.26663520305853
-			FC_Saved.Profiles.Profile.Cooldown.Height = 22
-			FC_Saved.Profiles.Profile.Cooldown.Vertical = false
-			FC_Saved.Profiles.Profile.Cooldown.Width = 534
-			FC_Saved.Profiles.Profile.Cooldown.Flip = false
-			FC_Saved.Profiles.Profile.Cooldown.Texture = "Interface\\AddOns\\Tukui\\media\\textures\\normTex"
-			FC_Saved.Profiles.Profile.Cooldown.Font = "Interface\\AddOns\\Tukui\\media\\fonts\\uf_font"
-			FC_Saved.Profiles.Profile.Cooldown.Backdrop = { "Interface\\AddOns\\Tukui\\media\\textures\\blank", "Interface\\AddOns\\Tukui\\media\\textures\\blank", false, 16, 5, 3 }
-		end
-	end
-end
-
 function Setup_Quartz()
 	if IsAddOnLoaded ("Quartz") then
 		Quartz3DB.namespaces.Player.profiles.Default.y = 282
@@ -471,5 +427,25 @@ function Setup_Quartz()
 		Quartz3DB.profiles.Default.modules.Range = false
 		Quartz3DB.profiles.Default.modules.Timer = false
 		Quartz3DB.profiles.Default.modules.Mirror = false
+	end
+end
+
+function Setup_Coolline()
+	if IsAddOnLoaded ("CoolLine") then	
+		CoolLineDB.x = 0
+		CoolLineDB.y = -403
+		CoolLineDB.h = 23
+		CoolLineDB.w = 512
+		CoolLineDB.bgcolor.a = 0
+		CoolLineDB.bgcolor.r = 0
+		CoolLineDB.bgcolor.g = 0
+		CoolLineDB.bgcolor.b = 0
+		CoolLineDB.spellcolor.a = 1
+		CoolLineDB.spellcolor.b = 0.94
+		CoolLineDB.spellcolor.g = 0.96
+		CoolLineDB.spellcolor.r = 0.95
+		CoolLineDB.border = "none"
+		CoolLineDB.iconplus = 2
+		CoolLineDB.activealpha = 0.9999999999999999
 	end
 end

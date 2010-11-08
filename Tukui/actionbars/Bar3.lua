@@ -15,9 +15,17 @@ for i= 1, 12 do
 	b:SetSize(TukuiDB.buttonsize, TukuiDB.buttonsize)
 	b:ClearAllPoints()
 	if i == 1 then
+		if TukuiCF["actionbar"].horizonbars == true then
+			b:SetPoint("TOP", MultiBarRightButton1, "BOTTOM", 0, TukuiDB.Scale(-4))
+		else
 			b:SetPoint("RIGHT", MultiBarRightButton1, "LEFT", TukuiDB.Scale(-4), 0)
+		end
 	else
+		if TukuiCF["actionbar"].horizonbars == true then
+			b:SetPoint("LEFT", b2, "RIGHT", TukuiDB.buttonspacing, 0)
+		else
 			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
+		end
 	end
 end
 
