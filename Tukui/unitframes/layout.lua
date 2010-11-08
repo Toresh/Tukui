@@ -607,54 +607,55 @@ local function Shared(self, unit)
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
 			
-			castbar.bg = castbar:CreateTexture(nil, "BORDER")
-			castbar.bg:SetAllPoints(castbar)
-			castbar.bg:SetTexture(normTex)
-			castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
-			castbar:SetFrameLevel(6)
-			castbar:SetPoint("TOPLEFT", panel, TukuiDB.Scale(2), TukuiDB.Scale(-2))
-			castbar:SetPoint("BOTTOMRIGHT", panel, TukuiDB.Scale(-2), TukuiDB.Scale(2))
-			
-			castbar.CustomTimeText = TukuiDB.CustomCastTimeText
-			castbar.CustomDelayText = TukuiDB.CustomCastDelayText
-			castbar.PostCastStart = TukuiDB.CheckCast
-			castbar.PostChannelStart = TukuiDB.CheckChannel
-
-			castbar.time = TukuiDB.SetFontString(castbar, font1, 12)
-			castbar.time:SetPoint("RIGHT", panel, "RIGHT", TukuiDB.Scale(-4), 0)
-			castbar.time:SetTextColor(0.84, 0.75, 0.65)
-			castbar.time:SetJustifyH("RIGHT")
-
-			castbar.Text = TukuiDB.SetFontString(castbar, font1, 12)
-			castbar.Text:SetPoint("LEFT", panel, "LEFT", TukuiDB.Scale(4), 0)
-			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
-			
-			if db.cbicons == true then
-				castbar.button = CreateFrame("Frame", nil, castbar)
-				castbar.button:SetHeight(TukuiDB.Scale(26))
-				castbar.button:SetWidth(TukuiDB.Scale(26))
-				TukuiDB.SetTemplate(castbar.button)
-				TukuiDB.CreateShadow(castbar.button)
-
-				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
-				castbar.icon:SetPoint("TOPLEFT", castbar.button, TukuiDB.Scale(2), TukuiDB.Scale(-2))
-				castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, TukuiDB.Scale(-2), TukuiDB.Scale(2))
-				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
-			
+				castbar:SetHeight(TukuiDB.Scale(20))
+				castbar:SetWidth(TukuiDB.Scale(240))
+				castbar:SetFrameLevel(6)
 				if unit == "player" then
-					if db.charportrait == true then
-						castbar.button:SetPoint("LEFT", -82.5, 26.5)
-					else
-						castbar.button:SetPoint("LEFT", -46.5, 26.5)
-					end
+					castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, TukuiDB.Scale(250))	
 				elseif unit == "target" then
-					if db.charportrait == true then
-						castbar.button:SetPoint("RIGHT", 82.5, 26.5)
-					else
-						castbar.button:SetPoint("RIGHT", 46.5, 26.5)
-					end					
+					castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, TukuiDB.Scale(500))				
+				end	
+				
+				castbar.bg = castbar:CreateTexture(nil, "BORDER")
+				castbar.bg:SetPoint("TOPLEFT", castbar, TukuiDB.Scale(-1), TukuiDB.Scale(1))
+				castbar.bg:SetPoint("BOTTOMRIGHT", castbar, TukuiDB.Scale(1), -TukuiDB.Scale(1))
+				castbar.bg:SetTexture(normTex)
+				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
+				
+				castbar.CustomTimeText = TukuiDB.CustomCastTimeText
+				castbar.CustomDelayText = TukuiDB.CustomCastDelayText
+				castbar.PostCastStart = TukuiDB.CheckCast
+				castbar.PostChannelStart = TukuiDB.CheckChannel
+				
+				castbar.time = TukuiDB.SetFontString(castbar, font1, 12)
+				castbar.time:SetPoint("RIGHT", castbar, "RIGHT", -4, 0.5)	
+				castbar.time:SetTextColor(0.84, 0.75, 0.65)
+				castbar.time:SetJustifyH("RIGHT")
+
+				castbar.Text = TukuiDB.SetFontString(castbar, font1, 12)
+				castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0.5)	
+				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+				
+				TukuiDB.SetTemplate(castbar)
+				
+				if db.cbicons == true then
+					castbar.button = CreateFrame("Frame", nil, castbar)
+					castbar.button:SetHeight(TukuiDB.Scale(27))
+					castbar.button:SetWidth(TukuiDB.Scale(27))
+					if unit == "player" then
+						castbar.button:SetPoint("RIGHT", castbar, "LEFT", TukuiDB.Scale(-4), 0)
+					elseif unit == "target" then
+						castbar.button:SetPoint("LEFT", castbar, "RIGHT", TukuiDB.Scale(4) , 0)		
+					end
+					TukuiDB.SetTemplate(castbar.button)
+
+					castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+					castbar.icon:SetPoint("TOPLEFT", castbar.button, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+					castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+					
+					TukuiDB.CreateShadow(castbar.button)
 				end
-			end
 			
 			-- cast bar latency on player
 			if unit == "player" and db.cblatency == true then
