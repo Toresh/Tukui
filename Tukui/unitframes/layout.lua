@@ -607,6 +607,8 @@ local function Shared(self, unit)
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
 			
+			if unit == "player" then
+			
 				castbar:SetHeight(TukuiDB.Scale(20))
 				castbar:SetWidth(TukuiDB.Scale(240))
 				castbar:SetFrameLevel(6)
@@ -655,6 +657,49 @@ local function Shared(self, unit)
 					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 					
 					TukuiDB.CreateShadow(castbar.button)
+				end
+			else
+			
+			castbar.bg = castbar:CreateTexture(nil, "BORDER")
+			castbar.bg:SetAllPoints(castbar)
+			castbar.bg:SetTexture(normTex)
+			castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
+			castbar:SetFrameLevel(6)
+			castbar:SetPoint("TOPLEFT", panel, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+			castbar:SetPoint("BOTTOMRIGHT", panel, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+			
+			castbar.CustomTimeText = TukuiDB.CustomCastTimeText
+			castbar.CustomDelayText = TukuiDB.CustomCastDelayText
+			castbar.PostCastStart = TukuiDB.CheckCast
+			castbar.PostChannelStart = TukuiDB.CheckChannel
+
+			castbar.time = TukuiDB.SetFontString(castbar, font1, 12)
+			castbar.time:SetPoint("RIGHT", panel, "RIGHT", TukuiDB.Scale(-4), 0)
+			castbar.time:SetTextColor(0.84, 0.75, 0.65)
+			castbar.time:SetJustifyH("RIGHT")
+
+			castbar.Text = TukuiDB.SetFontString(castbar, font1, 12)
+			castbar.Text:SetPoint("LEFT", panel, "LEFT", TukuiDB.Scale(4), 0)
+			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+			
+			if db.cbicons == true then
+				castbar.button = CreateFrame("Frame", nil, castbar)
+				castbar.button:SetHeight(TukuiDB.Scale(26))
+				castbar.button:SetWidth(TukuiDB.Scale(26))
+				TukuiDB.SetTemplate(castbar.button)
+				TukuiDB.CreateShadow(castbar.button)
+
+				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+				castbar.icon:SetPoint("TOPLEFT", castbar.button, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+				castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+			
+					if db.charportrait == true then
+						castbar.button:SetPoint("RIGHT", 82.5, 26.5)
+					else
+						castbar.button:SetPoint("RIGHT", 46.5, 26.5)
+					end					
+				end
 				end
 			
 			-- cast bar latency on player
