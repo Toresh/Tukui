@@ -609,7 +609,7 @@ local function Shared(self, unit)
 			
 			if unit == "player" then
 				castbar:SetHeight(TukuiDB.Scale(20))
-				castbar:SetWidth(TukuiDB.Scale(235))
+				castbar:SetWidth(TukuiDB.Scale(230))
 				castbar:SetFrameLevel(6)
 				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(200))	
 				
@@ -703,12 +703,12 @@ local function Shared(self, unit)
 					self.Swing = Swing
 					
 					self.Swing:SetHeight(TukuiDB.Scale(4))
-					self.Swing:SetWidth(TukuiDB.Scale(235))
+					self.Swing:SetWidth(TukuiDB.Scale(230))
 					self.Swing:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(226))
 					
 					self.Swing.bg = CreateFrame("Frame", nil, self.Swing)
-					self.Swing.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
-					self.Swing.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
+					self.Swing.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(1))
+					self.Swing.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(1), TukuiDB.Scale(-1))
 					self.Swing.bg:SetFrameStrata("BACKGROUND")
 					self.Swing.bg:SetFrameLevel(self.Swing:GetFrameLevel() - 1)
 					TukuiDB.SetTemplate(self.Swing.bg)
