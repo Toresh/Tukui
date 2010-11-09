@@ -19,7 +19,7 @@ if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 		if IsInGuild() then
 			GuildRoster()
 			local total = (GetNumGuildMembers())
-			local numOnline = 0
+			local numOnline = 1
 			for i = 1, total do
 				local name, _, _, _, _, _, _, _, online, _, _ = GetGuildRosterInfo(i)
 				if (online and name ~= UnitName'player') then
