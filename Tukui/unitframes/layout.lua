@@ -609,16 +609,9 @@ local function Shared(self, unit)
 			
 			if unit == "player" then
 				castbar:SetHeight(TukuiDB.Scale(20))
-				castbar:SetWidth(TukuiDB.Scale(240))
+				castbar:SetWidth(TukuiDB.Scale(235))
 				castbar:SetFrameLevel(6)
 				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, TukuiDB.Scale(250))	
-				
-				--[[castbar.bg = castbar:CreateTexture(nil, "BORDER")
-				TukuiDB.SetTemplate(castbar.bg)
-				castbar.bg:SetPoint("TOPLEFT", castbar, TukuiDB.Scale(-1), TukuiDB.Scale(1))
-				castbar.bg:SetPoint("BOTTOMRIGHT", castbar, TukuiDB.Scale(1), -TukuiDB.Scale(1))
-				castbar.bg:SetTexture(normTex)
-				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)--]]
 				
 				castbar.bg = CreateFrame("Frame", nil, castbar)
 				TukuiDB.SetTemplate(castbar.bg)
