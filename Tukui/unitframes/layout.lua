@@ -693,7 +693,20 @@ local function Shared(self, unit)
 				end
 			end
 			
-			--swing bar
+			-- cast bar latency on player
+			if unit == "player" and db.cblatency == true then
+				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
+				castbar.safezone:SetTexture(normTex)
+				castbar.safezone:SetVertexColor(0.69, 0.31, 0.31, 0.75)
+				castbar.SafeZone = castbar.safezone
+			end
+					
+			self.Castbar = castbar
+			self.Castbar.Time = castbar.time
+			self.Castbar.Icon = castbar.icon
+		end
+		
+		--swing bar, based on Elv22 code
 			if db.unitswingbar == true then
 				if unit =="player" then
 					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", TukuiActionBarBackground)
@@ -714,19 +727,6 @@ local function Shared(self, unit)
 					TukuiDB.SetTemplate(self.Swing.bg)
 				end
 			end
-			
-			-- cast bar latency on player
-			if unit == "player" and db.cblatency == true then
-				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
-				castbar.safezone:SetTexture(normTex)
-				castbar.safezone:SetVertexColor(0.69, 0.31, 0.31, 0.75)
-				castbar.SafeZone = castbar.safezone
-			end
-					
-			self.Castbar = castbar
-			self.Castbar.Time = castbar.time
-			self.Castbar.Icon = castbar.icon
-		end
 		
 		-- add combat feedback support
 		if db.combatfeedback == true then
