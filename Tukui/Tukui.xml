@@ -26,9 +26,10 @@
 	<Script file="libs\oUF_ThreatBar\oUF_ThreatBar.lua"/>
 	<Script file="libs\oUF_TotemBar\oUF_TotemBar.lua"/>
 	<Script file="libs\oUF_Trinkets\oUF_Trinkets.lua"/>
-	<Script file="libs\oUF_RaidDebuffs\oUF_RaidDebuffs.lua"/>	
-	
-	<Script file="config\watch.lua"/>
+	<Script file="libs\oUF_RaidDebuffs\oUF_RaidDebuffs.lua"/>
+  <Script file="libs\oUF_Swing\oUF_Swing.lua"/>
+
+  <Script file="config\watch.lua"/>
 		
 	<Script file="modules\colors.lua"/>	
 	<Script file="modules\functions.lua"/>

@@ -611,7 +611,7 @@ local function Shared(self, unit)
 				castbar:SetHeight(TukuiDB.Scale(20))
 				castbar:SetWidth(TukuiDB.Scale(235))
 				castbar:SetFrameLevel(6)
-				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, TukuiDB.Scale(250))	
+				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(200))	
 				
 				castbar.bg = CreateFrame("Frame", nil, castbar)
 				TukuiDB.SetTemplate(castbar.bg)
@@ -690,6 +690,28 @@ local function Shared(self, unit)
 						else
 							castbar.button:SetPoint("RIGHT", 46.5, 26.5)
 						end					
+				end
+			end
+			
+			--swing bar
+			if db.unitswingbar == true then
+				if unit =="player" then
+					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", TukuiActionBarBackground)
+					Swing:SetStatusBarTexture(normTex)
+					Swing:SetStatusBarColor(unpack(TukuiCF["media"].bordercolor))
+					Swing:GetStatusBarTexture():SetHorizTile(false)
+					self.Swing = Swing
+					
+					self.Swing:SetHeight(TukuiDB.Scale(4))
+					self.Swing:SetWidth(TukuiDB.Scale(235))
+					self.Swing:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", 0, TukuiDB.Scale(226))
+					
+					self.Swing.bg = CreateFrame("Frame", nil, self.Swing)
+					self.Swing.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-2), TukuiDB.Scale(2))
+					self.Swing.bg:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(2), TukuiDB.Scale(-2))
+					self.Swing.bg:SetFrameStrata("BACKGROUND")
+					self.Swing.bg:SetFrameLevel(self.Swing:GetFrameLevel() - 1)
+					TukuiDB.SetTemplate(self.Swing.bg)
 				end
 			end
 			
