@@ -36,6 +36,16 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 			if TukuiCF["bags"].enable == true and StuffingFrameBags:IsShown() then
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", StuffingFrameBags, "TOPRIGHT", 0, TukuiDB.Scale(4))
+				
+			elseif TukuiCF["actionbar"].enable == true then
+					if TukuiPetBar:IsShown() and TukuiCF["actionbar"].horizonbars == true then
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", TukuiPetActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					
+					elseif TukuiCF["actionbar"].horizonbars == true then
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					end	
 			else
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
