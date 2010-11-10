@@ -39,6 +39,7 @@ TukuiCF["unitframes"] = {
 	["positionbychar"] = true,             -- save X, Y position with /uf (movable frame) per character instead of per account.
 	["healcomm"] = true,                  -- enable healprediction support.
 	["playerdebuffonly"] = true,		   -- Fillters debuffs to only show important ones. Found at bottom of aurawatch.lua
+	["classTimerLayout"] = 1,			   --Chose class timer layout 1-4
 
 	-- raid layout
 	["showrange"] = true,                  -- show range opacity on raidframes
