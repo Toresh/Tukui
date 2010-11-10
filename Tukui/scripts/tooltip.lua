@@ -45,6 +45,9 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 					elseif TukuiCF["actionbar"].horizonbars == true then
 						self:ClearAllPoints()
 						self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					else
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
 					end	
 			else
 				self:ClearAllPoints()
@@ -78,6 +81,9 @@ GameTooltip:HookScript("OnUpdate",function(self, ...)
 					elseif TukuiCF["actionbar"].horizonbars == true then
 						self:ClearAllPoints()
 						self:SetPoint("BOTTOMRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
+					else
+						self:ClearAllPoints()
+						self:SetPoint("BOTTOMRIGHT", ChatRight, "TOPRIGHT", 0, TukuiDB.Scale(4))
 					end	
 			else
 				self:ClearAllPoints()
