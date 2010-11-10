@@ -2,7 +2,11 @@
 -- prevent action bar users config errors
 ------------------------------------------------------------------------
 
-if TukuiCF["actionbar"].bottomrows == 0 or TukuiCF["actionbar"].bottomrows > 2 then
+if TukuiCF["actionbar"].bottomrows == 0 then
+	TukuiCF["actionbar"].bottomrows = 1
+end
+
+if TukuiCF["actionbar"].bottomrows > 2 then
 	TukuiCF["actionbar"].bottomrows = 1
 end
 
