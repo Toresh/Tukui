@@ -92,7 +92,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 			menuList[3].menuList = {}
 			self.hovered = true
 			local online, total = 0, GetNumFriends()
-			local name, level, class, zone, connected, status, note, classc, levelc, zone_r, zone_g, zone_b, grouped
+			local name, level, class, zone, connected, status, note, classc, levelc, zone_r, zone_g, zone_b, grouped, isAFK, isDND
 			for i = 0, total do if select(5, GetFriendInfo(i)) then online = online + 1 end end
 			local BNonline, BNtotal = 0, BNGetNumFriends()
 			local presenceID, givenName, surname, toonName, toonID, client, isOnline
@@ -110,7 +110,6 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 				if online > 0 then
 					GameTooltip:AddLine' '
 					GameTooltip:AddLine("World of Warcraft")
-					-- name, level, class, area, connected, status, note
 					for i = 1, total do
 						name, level, class, zone, connected, status, note = GetFriendInfo(i)
 						if not connected then break end
@@ -154,7 +153,6 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
  
 						if client == "WoW" then
 							local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level= BNGetToonInfo(toonID)
- 
 							for k,v in pairs(LOCALIZED_CLASS_NAMES_MALE) do if class == v then class = k end end
 							if GetLocale() ~= "enUS" then -- feminine class localization (unsure if it's really needed)
 								for k,v in pairs(LOCALIZED_CLASS_NAMES_FEMALE) do if class == v then class = k end end
