@@ -685,11 +685,19 @@ local function Shared(self, unit)
 					castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 				
-						if db.charportrait == true then
-							castbar.button:SetPoint("RIGHT", 82.5, 26.5)
-						else
-							castbar.button:SetPoint("RIGHT", 46.5, 26.5)
-						end					
+						if unit == "player" then
+							if db.charportrait == true then
+								castbar.button:SetPoint("LEFT", -82.5, 26.5)
+							else
+								castbar.button:SetPoint("LEFT", -46.5, 26.5)
+							end
+						elseif unit == "target" then
+							if db.charportrait == true then
+								castbar.button:SetPoint("RIGHT", 82.5, 26.5)
+							else
+								castbar.button:SetPoint("RIGHT", 46.5, 26.5)
+							end					
+						end				
 				end
 			end
 			
