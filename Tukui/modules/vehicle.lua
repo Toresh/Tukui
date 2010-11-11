@@ -1,8 +1,6 @@
 --------------------------------------------------------------------------
 -- move vehicle indicator
 --------------------------------------------------------------------------
---Temp hack fix for WG seige bug.
-		TukuiDB.numSeat = 1
 		
 hooksecurefunc(VehicleSeatIndicator,"SetPoint",function(_,_,parent) -- vehicle seat indicator
     if (parent == "MinimapCluster") or (parent == _G["MinimapCluster"]) then
