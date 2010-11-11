@@ -31,6 +31,7 @@ local function VehicleNumSeatIndicator()
 	elseif VehicleSeatIndicatorButton1 then
 		TukuiDB.numSeat = 1
 	else
+		--Temp hack fix for WG seige bug.
 		TukuiDB.numSeat = 1
 	end
 end
