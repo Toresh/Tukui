@@ -172,7 +172,7 @@ end
 
 --RIGHT BAR BACKGROUND
 if TukuiCF["actionbar"].enable == true then
-	local barbgr = CreateFrame("Frame", "TukuiActionBarBackgroundRight", MultiBarRight) --UIParent)
+	local barbgr = CreateFrame("Frame", "TukuiActionBarBackgroundRight", MultiBarRight)
 	
 	if TukuiCF["actionbar"].horizonbars == true then
 		TukuiDB.CreatePanel(barbgr, (TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13), 1, "BOTTOMLEFT", ChatRight, "TOPLEFT", TukuiDB.Scale(0), TukuiDB.Scale(4))

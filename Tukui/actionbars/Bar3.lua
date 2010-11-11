@@ -1,24 +1,24 @@
 if not TukuiCF["actionbar"].enable == true then return end
 
 ---------------------------------------------------------------------------
--- setup MultiBarLeft as bar #3
+-- setup MultiBarRight as bar #3
 ---------------------------------------------------------------------------
---Second right bar
+--First right bar (Done)
 
 local TukuiBar3 = CreateFrame("Frame","TukuiBar3",UIParent) -- bottomrightbar
 TukuiBar3:SetAllPoints(TukuiActionBarBackground)
-MultiBarLeft:SetParent(TukuiBar3)
+MultiBarRight:SetParent(TukuiBar3)
 
 for i= 1, 12 do
-	local b = _G["MultiBarLeftButton"..i]
-	local b2 = _G["MultiBarLeftButton"..i-1]
+	local b = _G["MultiBarRightButton"..i]
+	local b2 = _G["MultiBarRightButton"..i-1]
 	b:SetSize(TukuiDB.buttonsize, TukuiDB.buttonsize)
 	b:ClearAllPoints()
 	if i == 1 then
 		if TukuiCF["actionbar"].horizonbars == true then
-			b:SetPoint("TOP", MultiBarRightButton1, "BOTTOM", 0, TukuiDB.Scale(-4))
-		else
-			b:SetPoint("RIGHT", MultiBarRightButton1, "LEFT", TukuiDB.Scale(-4), 0)
+			b:SetPoint("TOPLEFT", TukuiActionBarBackgroundRight, "TOPLEFT", TukuiDB.Scale(4), TukuiDB.Scale(-4))
+		else	
+			b:SetPoint("TOPRIGHT", TukuiActionBarBackgroundRight, "TOPRIGHT", TukuiDB.Scale(-4), TukuiDB.Scale(-4))
 		end
 	else
 		if TukuiCF["actionbar"].horizonbars == true then
@@ -26,10 +26,10 @@ for i= 1, 12 do
 		else
 			b:SetPoint("TOP", b2, "BOTTOM", 0, -TukuiDB.buttonspacing)
 		end
-	end
+	end	
 end
 
 -- hide it if needed
-if TukuiCF.actionbar.rightbars < 2 then
+if TukuiCF.actionbar.rightbars < 1 then
 	TukuiBar3:Hide()
 end
