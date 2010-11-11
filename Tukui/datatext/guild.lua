@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
 -- GUILD ROSTER
 --------------------------------------------------------------------
+--rewritten by Cecile
  
 if TukuiCF["datatext"].guild and TukuiCF["datatext"].guild > 0 then
 	local Stat = CreateFrame("Frame")

@@ -1006,6 +1006,7 @@ do
 end
 
 --Check Player's Role
+--written by Elv22
 local RoleUpdater = CreateFrame("Frame")
 local function CheckRole(self, event, unit)
 	local resilience

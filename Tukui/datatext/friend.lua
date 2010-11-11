@@ -1,6 +1,7 @@
 --------------------------------------------------------------------
 -- FRIEND
 --------------------------------------------------------------------
+--re-written by Cecile
  
 if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 	local Stat = CreateFrame("Frame")

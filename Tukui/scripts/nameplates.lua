@@ -1,4 +1,6 @@
 -- credits : Caellian - CaelNamePlates !
+--rewritten by Elv22
+
 if not TukuiCF["nameplate"].enable == true then return end
  
 local tNamePlates = CreateFrame("Frame", nil, UIParent)
