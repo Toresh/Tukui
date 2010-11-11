@@ -14,6 +14,7 @@ TukuiCF["unitframes"] = {
 	["enable"] = true,                     -- do i really need to explain this?
 	["enemyhcolor"] = false,               -- enemy target (players) color by hostility, very useful for healer.
 	["unitcastbar"] = true,                -- enable tukui castbar
+	["standAloneCast"] = true,			   -- enable standalone cast bar. Disable to have standed on uintframe
 	["unitswingbar"] = true,			   -- enable player swing bar
 	["cblatency"] = true,                  -- enable castbar latency
 	["cbicons"] = true,                    -- enable icons on castbar
