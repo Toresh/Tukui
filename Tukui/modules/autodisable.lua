@@ -7,7 +7,7 @@ if TukuiCF["actionbar"].bottomrows == 0 then
 end
 
 if TukuiCF["actionbar"].bottomrows > 2 then
-	TukuiCF["actionbar"].bottomrows = 1
+	TukuiCF["actionbar"].bottomrows = 2
 end
 
 if TukuiCF["actionbar"].rightbars > 2 then
