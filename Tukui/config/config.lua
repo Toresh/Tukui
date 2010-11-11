@@ -154,6 +154,7 @@ TukuiCF["broker_datatext"] = {
 	["Broker_HudMap"] = 11,
 	["Skinner"] = 0,
 	["ZOMGBuffs"] = 12,
+	["BugSack"] = 0,
 }
 
 TukuiCF["chat"] = {

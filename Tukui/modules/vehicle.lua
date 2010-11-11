@@ -30,6 +30,8 @@ local function VehicleNumSeatIndicator()
 		TukuiDB.numSeat = 2
 	elseif VehicleSeatIndicatorButton1 then
 		TukuiDB.numSeat = 1
+	else
+		TukuiDB.numSeat = 1
 	end
 end
 
