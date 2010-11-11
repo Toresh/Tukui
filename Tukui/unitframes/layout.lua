@@ -607,7 +607,7 @@ local function Shared(self, unit)
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
 			
-			if unit == "player" then
+			if unit == "player" and TukuiCF["unitframes"].standAloneCast == true then
 				castbar:SetHeight(TukuiDB.Scale(20))
 				castbar:SetWidth(TukuiDB.Scale(230))
 				castbar:SetFrameLevel(6)
