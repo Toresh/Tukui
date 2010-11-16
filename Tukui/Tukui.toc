@@ -3,13 +3,8 @@
 ## Editor: Toresh
 ## Credits to: Caith, Caellian, Shestak, Haste, Tekkub, Alza, Roth, P3lim, Tulla, Hungtar, hankthetank, Ishtara and others...
 ## Special Thanks to: Admins, Moderator and VIP's from tukui.org
-<<<<<<< HEAD
 ## Version: 2.12
 ## Title: |cffC495DDTukui|r Toresh's Edit
-=======
-## Version: 12.35
-## Title: |cffC495DDTukui|r
->>>>>>> tukz/master
 ## Notes: UI of awesomeness!
 ## SavedVariables: TukuiData, TukuiArena
 ## SavedVariablesPerCharacter: TukuiInstallv1200, TukuiUFpos
