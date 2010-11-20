@@ -25,7 +25,7 @@ local function Shared(self, unit)
 	self.colors = TukuiDB.oUF_colors
 	
 	-- register click
-	self:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	self:RegisterForClicks("AnyUp")
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 	
@@ -990,9 +990,6 @@ local function Shared(self, unit)
 				self.Castbar.Time = castbar.time
 			end
 		end
-		
-		-- update pet name, this should fix "UNKNOWN" pet names on pet unit.
-		self:RegisterEvent("UNIT_PET", TukuiDB.UpdatePetInfo)
 	end
 
 

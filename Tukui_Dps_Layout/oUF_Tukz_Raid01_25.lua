@@ -5,7 +5,7 @@ local font1 = TukuiCF["media"].font
 
 local function Shared(self, unit)
 	self.colors = TukuiDB.oUF_colors
-	self:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	self:RegisterForClicks("AnyUp")
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 	
@@ -69,6 +69,7 @@ local function Shared(self, unit)
 	local name = health:CreateFontString(nil, 'OVERLAY')
 	name:SetFont(font2, 13*TukuiDB.raidscale, "THINOUTLINE")
 	name:SetPoint("LEFT", self, "RIGHT", TukuiDB.Scale(5), 0)
+	name.frequentUpdates = 0.2
 	self:Tag(name, '[Tukui:namemedium] [Tukui:dead][Tukui:afk]')
 	self.Name = name
 	
