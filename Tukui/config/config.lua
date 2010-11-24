@@ -73,6 +73,12 @@ TukuiCF["castbar"] = {
 	["castBarWidth"] = 230,				   -- sets the width of the castbar
 	["castBarX"] = 0,					   -- set the X pos of the castbar
 	["castBarY"] = 200,					   -- sets the Y pos of the cast bar.
+	["iconHeight"] = 27,				   -- Sets the castbar icon height
+	["iconWidth"] = 27,					   -- Sets castbar icon width
+	["swingBarHeight"] = 4,				   -- Sets the swingbar height
+	["swingBarWidth"] = 230,			   -- sets the width of the swingbar
+	["swingBarX"] = 0,					   -- set the X pos of the swingbar
+	["swingBarY"] = 226,				   -- set the y pos of the swingbar
 }
 
 TukuiCF["arena"] = {
