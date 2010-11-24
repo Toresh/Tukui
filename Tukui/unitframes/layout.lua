@@ -602,16 +602,16 @@ local function Shared(self, unit)
 		end
 		
 		-- cast bar for player and target
-		if (db.unitcastbar == true) then
+		if (TukuiCF["castbar"].unitcastbar == true) then
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
 			
 			if unit == "player" and TukuiCF["castbar"].standAloneCast == true then
-				castbar:SetHeight(TukuiDB.Scale(TukuiCF["castBar"].castBarHeight))
-				castbar:SetWidth(TukuiDB.Scale(TukuiCF["castBar"].castBarWidth))
+				castbar:SetHeight(TukuiDB.Scale(TukuiCF["castbar"].castBarHeight))
+				castbar:SetWidth(TukuiDB.Scale(TukuiCF["castbar"].castBarWidth))
 				castbar:SetFrameLevel(6)
-				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", TukuiDB.Scale(TukuiCF["castBar"].castBarX), TukuiDB.Scale(TukuiCF["castBar"].castBarY))	
+				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", TukuiDB.Scale(TukuiCF["castbar"].castBarX), TukuiDB.Scale(TukuiCF["castbar"].castBarY))	
 				
 				castbar.bg = CreateFrame("Frame", nil, castbar)
 				TukuiDB.SetTemplate(castbar.bg)
@@ -635,10 +635,10 @@ local function Shared(self, unit)
 				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
 				
 				
-				if db.cbicons == true then
+				if TukuiCF["castbar"].cbicons == true then
 					castbar.button = CreateFrame("Frame", nil, castbar)
-					castbar.button:SetHeight(TukuiDB.Scale(TukuiCF["castBar"].iconHeight))
-					castbar.button:SetWidth(TukuiDB.Scale(TukuiCF["castBar"].iconBarWidth))
+					castbar.button:SetHeight(TukuiDB.Scale(TukuiCF["castbar"].iconHeight))
+					castbar.button:SetWidth(TukuiDB.Scale(TukuiCF["castbar"].iconWidth))
 					castbar.button:SetPoint("RIGHT", castbar, "LEFT", TukuiDB.Scale(-4), 0)
 					TukuiDB.SetTemplate(castbar.button)
 
@@ -673,7 +673,7 @@ local function Shared(self, unit)
 				castbar.Text:SetPoint("LEFT", panel, "LEFT", TukuiDB.Scale(4), 0)
 				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
 				
-				if db.cbicons == true then
+				if TukuiCF["castbar"].cbicons == true then
 					castbar.button = CreateFrame("Frame", nil, castbar)
 					castbar.button:SetHeight(TukuiDB.Scale(26))
 					castbar.button:SetWidth(TukuiDB.Scale(26))
@@ -686,13 +686,13 @@ local function Shared(self, unit)
 					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 				
 						if unit == "player" then
-							if db.charportrait == true then
+							if TukuiCF["castbar"].charportrait == true then
 								castbar.button:SetPoint("LEFT", -82.5, 26.5)
 							else
 								castbar.button:SetPoint("LEFT", -46.5, 26.5)
 							end
 						elseif unit == "target" then
-							if db.charportrait == true then
+							if TukuiCF["castbar"].charportrait == true then
 								castbar.button:SetPoint("RIGHT", 82.5, 26.5)
 							else
 								castbar.button:SetPoint("RIGHT", 46.5, 26.5)
@@ -702,7 +702,7 @@ local function Shared(self, unit)
 			end
 			
 			-- cast bar latency on player
-			if unit == "player" and db.cblatency == true then
+			if unit == "player" and TukuiCF["castbar"].cblatency == true then
 				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
 				castbar.safezone:SetTexture(normTex)
 				castbar.safezone:SetVertexColor(0.69, 0.31, 0.31, 0.75)
@@ -715,7 +715,7 @@ local function Shared(self, unit)
 		end
 		
 		--swing bar, based on Elv22 code
-			if db.unitswingbar == true then
+			if TukuiCF["castbar"].unitswingbar == true then
 				if unit =="player" then
 					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", TukuiActionBarBackground)
 					Swing:SetStatusBarTexture(normTex)
@@ -723,9 +723,9 @@ local function Shared(self, unit)
 					Swing:GetStatusBarTexture():SetHorizTile(false)
 					self.Swing = Swing
 					
-					self.Swing:SetHeight(TukuiDB.Scale(TukuiCF["castBar"].swingBarHeight))
-					self.Swing:SetWidth(TukuiDB.Scale(TukuiCF["castBar"].swingBarWidth))
-					self.Swing:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", TukuiDB.Scale(TukuiCF["castBar"].swingBarX), TukuiDB.Scale(TukuiCF["castBar"].swingBarY))
+					self.Swing:SetHeight(TukuiDB.Scale(TukuiCF["castbar"].swingBarHeight))
+					self.Swing:SetWidth(TukuiDB.Scale(TukuiCF["castbar"].swingBarWidth))
+					self.Swing:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", TukuiDB.Scale(TukuiCF["castbar"].swingBarX), TukuiDB.Scale(TukuiCF["castbar"].swingBarY))
 					
 					self.Swing.bg = CreateFrame("Frame", nil, self.Swing)
 					self.Swing.bg:SetPoint("TOPLEFT", TukuiDB.Scale(-1), TukuiDB.Scale(1))
