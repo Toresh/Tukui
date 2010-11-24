@@ -13,11 +13,6 @@ TukuiCF["unitframes"] = {
 	-- general options
 	["enable"] = true,                     -- do i really need to explain this?
 	["enemyhcolor"] = false,               -- enemy target (players) color by hostility, very useful for healer.
-	["unitcastbar"] = true,                -- enable tukui castbar
-	["standAloneCast"] = true,			   -- enable standalone cast bar. Disable to have standed on uintframe
-	["unitswingbar"] = true,			   -- enable player swing bar
-	["cblatency"] = true,                  -- enable castbar latency
-	["cbicons"] = true,                    -- enable icons on castbar
 	["auratimer"] = true,                  -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                -- the font size of buffs/debuffs timers on unitframes
 	["playerauras"] = false,               -- enable auras
@@ -66,6 +61,18 @@ TukuiCF["unitframes"] = {
 	
 	-- shaman only plugin
 	["totemtimer"] = true,                 -- enable tukui totem timer plugin
+}
+
+TukuiCF["castbar"] = {
+	["unitcastbar"] = true,                -- enable tukui castbar
+	["standAloneCast"] = true,			   -- enable standalone cast bar. Disable to have standed on uintframe
+	["unitswingbar"] = true,			   -- enable player swing bar
+	["cblatency"] = true,                  -- enable castbar latency
+	["cbicons"] = true,                    -- enable icons on castbar
+	["castBarHeight"] = 20,				   -- sets the hright of the cast bar
+	["castBarWidth"] = 230,				   -- sets the width of the castbar
+	["castBarX"] = 0,					   -- set the X pos of the castbar
+	["castBarY"] = 200,					   -- sets the Y pos of the cast bar.
 }
 
 TukuiCF["arena"] = {
