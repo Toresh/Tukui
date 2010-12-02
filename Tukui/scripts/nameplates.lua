@@ -415,8 +415,8 @@ local createPlate = function(frame)
 
 	raidIconRegion:ClearAllPoints()
 	raidIconRegion:SetPoint("CENTER", healthBar, "CENTER", 0, TukuiDB.Scale(35))
-	raidIconRegion:SetSize(TukuiDB.Scale(30), TukuiDB.Scale(30))
-	raidIconRegion:SetTexture(TukuiCF["media"].raidicons)	
+	raidIconRegion:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\raidicons.blp")
+	raidIconRegion:SetSize(TukuiDB.Scale(30), TukuiDB.Scale(30))	
 
 	frame.oldglow = glowRegion
 	frame.elite = stateIconRegion
