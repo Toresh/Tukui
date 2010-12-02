@@ -26,7 +26,7 @@ local Page = {
 	["WARRIOR"] = "[bonusbar:1] 7; [bonusbar:2] 8; [bonusbar:3] 9;",
 	["PRIEST"] = "[bonusbar:1] 7;",
 	["ROGUE"] = "[bonusbar:1] 7; [form:3] 7;",
-	["DEFAULT"] = "[bar:2] 2; [bar:3] 3; [bar:4] 4; [bar:5] 5; [bar:6] 6; [bonusbar:5] 11;",
+	["DEFAULT"] = "[bonusbar:5] 11; [bar:2] 2; [bar:3] 3; [bar:4] 4; [bar:5] 5; [bar:6] 6;",
 }
 
 local function GetBar()
@@ -65,14 +65,7 @@ bar:SetScript("OnEvent", function(self, event, ...)
 				button:SetAttribute("actionpage", tonumber(newstate))
 			end
 		]])
-		
-		self:SetAttribute("_onstate-bonus", [[
-			for i, button in ipairs(buttons) do
-				button:SetAttribute("actionpage", tonumber(newstate))
-			end
-		]])
-
-		RegisterStateDriver(self, "bonus", "[bonusbar:5] 11;")		
+			
 		RegisterStateDriver(self, "page", GetBar())
 	elseif event == "PLAYER_ENTERING_WORLD" then
 		MainMenuBar_UpdateKeyRing()

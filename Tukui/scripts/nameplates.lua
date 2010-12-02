@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 -- credits : Caellian - CaelNamePlates !
 --rewritten by Elv22
+=======
+﻿-- credits : Caellian - CaelNamePlates !
+>>>>>>> tukz/master
 
 if not TukuiCF["nameplate"].enable == true then return end
  
@@ -177,10 +181,65 @@ local threatUpdate = function(self, elapsed)
 end
  
 local updatePlate = function(self)
+<<<<<<< HEAD
 	--Filter Nameplates
 	if TukuiDB.NPCList[self.oldname:GetText()] and not InCombatLockdown() then
 		self:Hide()
 		return
+=======
+	local r, g, b = self.healthBar:GetStatusBarColor()
+	local newr, newg, newb
+	if g + b == 0 then
+		-- Hostile unit
+		newr, newg, newb = 0.69, 0.31, 0.31
+		self.healthBar:SetStatusBarColor(0.69, 0.31, 0.31)
+	elseif r + b == 0 then
+		-- Friendly unit
+		newr, newg, newb = 0.33, 0.59, 0.33
+		self.healthBar:SetStatusBarColor(0.33, 0.59, 0.33)
+	elseif r + g == 0 then
+		-- Friendly player
+		newr, newg, newb = 0.31, 0.45, 0.63
+		self.healthBar:SetStatusBarColor(0.31, 0.45, 0.63)
+	elseif 2 - (r + g) < 0.05 and b == 0 then
+		-- Neutral unit
+		newr, newg, newb = 0.65, 0.63, 0.35
+		self.healthBar:SetStatusBarColor(0.65, 0.63, 0.35)
+	else
+		-- Hostile player - class colored.
+		newr, newg, newb = r, g, b
+	end
+
+	self.r, self.g, self.b = newr, newg, newb
+
+	self.healthBar:ClearAllPoints()
+	self.healthBar:SetPoint("CENTER", self.healthBar:GetParent())
+	self.healthBar:SetHeight(TukuiDB.Scale(7))
+	self.healthBar:SetWidth(TukuiDB.Scale(110))
+
+	self.healthBar.hpBackground:SetVertexColor(self.r * 0.20, self.g * 0.20, self.b * 0.20)
+
+	self.castBar:ClearAllPoints()
+	self.castBar:SetPoint("TOP", self.healthBar, "BOTTOM", 0, TukuiDB.Scale(-4))
+	self.castBar:SetHeight(TukuiDB.Scale(5))
+	self.castBar:SetWidth(TukuiDB.Scale(110))
+
+	self.highlight:ClearAllPoints()
+	self.highlight:SetAllPoints(self.healthBar)
+
+	local nameString = self.oldname:GetText()
+	self.name:SetText(nameString)
+
+	local level, elite, mylevel = tonumber(self.level:GetText()), self.elite:IsShown(), UnitLevel("player")
+	self.level:ClearAllPoints()
+	self.level:SetPoint("RIGHT", self.healthBar, "LEFT", TukuiDB.Scale(-2), 0)
+	if self.boss:IsShown() then
+		self.level:SetText("B")
+		self.level:SetTextColor(0.8, 0.05, 0)
+		self.level:Show()
+	elseif not elite and level == mylevel then
+		self.level:Hide()
+>>>>>>> tukz/master
 	else
 		if not InCombatLockdown() then self:Show() end
 		local r, g, b = self.healthBar:GetStatusBarColor()
