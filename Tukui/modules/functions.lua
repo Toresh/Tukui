@@ -123,16 +123,16 @@ function TukuiDB.PP(p, obj)
 		obj:SetPoint('BOTTOM', left)
 	elseif p == 4 then
 		obj:SetHeight(centre:GetHeight())
-		obj:SetPoint("LEFT", centre, "LEFT", 30, .5)
+		obj:SetPoint("LEFT", centre, "LEFT", 30, 0)
 	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
 		obj:SetHeight(centre:GetHeight())
-		obj:SetPoint("CENTER", centre, "CENTER", -75, .5)
+		obj:SetPoint("CENTER", centre, "CENTER", -75, 0)
 	elseif p == 6 and TukuiCF["actionbar"].splitbar == true then
 		obj:SetHeight(centre:GetHeight())
-		obj:SetPoint("CENTER", centre, "CENTER", 75, .5)
+		obj:SetPoint("CENTER", centre, "CENTER", 75, 0)
 	elseif p == 7 then
 		obj:SetHeight(centre:GetHeight())
-		obj:SetPoint("RIGHT", centre, "RIGHT", -30, .5)
+		obj:SetPoint("RIGHT", centre, "RIGHT", -30, 0)
 	elseif p == 8 then
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint("LEFT", right, 30, 0)
@@ -152,13 +152,13 @@ function TukuiDB.PP(p, obj)
 	if TukuiMinimap then
 		if p == 11 and TukuiCF["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
-			obj:SetPoint("LEFT", top, 20, 0.5)
+			obj:SetPoint("LEFT", top, 20, 0)
 		elseif p == 12 and TukuiCF["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
-			obj:SetPoint("RIGHT", top, -20, 0.5)
+			obj:SetPoint("RIGHT", top, -20, 0)
 		elseif p == 13 and TukuiCF["map"].location then
 			obj:SetHeight(location:GetHeight())
-			obj:SetPoint("CENTER", location, 0, 0.5)
+			obj:SetPoint("CENTER", location, 0, 0)
 		elseif p == 14 then
 			obj:SetHeight(mapleft:GetHeight())
 			obj:SetPoint('TOP', mapleft)
