@@ -3,7 +3,6 @@
 ## Editor: Toresh
 ## Credits to: Caith, Caellian, Shestak, Haste, Tekkub, Alza, Roth, P3lim, Tulla, Hungtar, hankthetank, Ishtara and others...
 ## Special Thanks to: Admins, Moderator and VIP's from tukui.org
-<<<<<<< HEAD
 ## Version: 2.13
 ## Title: |cffC495DDTukui|r Toresh's Edit
 ## Notes: UI of awesomeness!
