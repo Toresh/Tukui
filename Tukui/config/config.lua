@@ -183,6 +183,7 @@ TukuiCF["tooltip"] = {
 	["hidebuttons"] = false,               -- always hide action bar buttons tooltip.
 	["hideuf"] = false,                    -- hide tooltip on unitframes
 	["cursor"] = false,                    -- tooltip via cursor only
+	["spellid"] = true,					   -- have spellids on tooltip
 }
 
 TukuiCF["merchant"] = {
