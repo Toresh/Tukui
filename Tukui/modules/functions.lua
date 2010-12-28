@@ -89,6 +89,15 @@ function TukuiDB.CreateShadow(f)
 	f.shadow = shadow
 end
 
+TukuiDB.SetFontString = function(parent, fontName, fontHeight, fontStyle)
+	local fs = parent:CreateFontString(nil, "OVERLAY")
+	fs:SetFont(fontName, fontHeight, fontStyle)
+	fs:SetJustifyH("LEFT")
+	fs:SetShadowColor(0, 0, 0)
+	fs:SetShadowOffset(1.25, -1.25)
+	return fs
+end
+
 function TukuiDB.Kill(object)
 	if object.UnregisterAllEvents then
 		object:UnregisterAllEvents()
@@ -387,15 +396,6 @@ do
 
 	function TukuiDB.PostUpdatePower(element, unit, min, max)
 		element:GetParent().Health:SetHeight(max ~= 0 and 20 or 22)
-	end
-
-	TukuiDB.SetFontString = function(parent, fontName, fontHeight, fontStyle)
-		local fs = parent:CreateFontString(nil, "OVERLAY")
-		fs:SetFont(fontName, fontHeight, fontStyle)
-		fs:SetJustifyH("LEFT")
-		fs:SetShadowColor(0, 0, 0)
-		fs:SetShadowOffset(1.25, -1.25)
-		return fs
 	end
 
 	local ShortValue = function(value)
@@ -855,6 +855,9 @@ do
 	end
 
 	local delay = 0
+
+	local ifire = GetSpellInfo(588)
+	local iwill = GetSpellInfo(73413)
 	
 	TukuiDB.UpdateManaLevel = function(self, elapsed)
 		delay = delay + elapsed
@@ -867,8 +870,21 @@ do
 			self.ManaLevel:SetText("|cffaf5050"..tukuilocal.unitframes_ouf_lowmana.."|r")
 			Flash(self, 0.3)
 		else
-			self.ManaLevel:SetText()
 			StopFlash(self)
+
+			-- need this for armor swap in arena
+			if TukuiDB.myclass == "PRIEST" then
+				if UnitBuff("player", ifire) then
+					self.ManaLevel:SetText(ifire)
+				elseif UnitBuff("player", iwill) then
+					self.ManaLevel:SetText(iwill)
+				else
+					self.ManaLevel:SetText()
+				end
+			else
+				self.ManaLevel:SetText()
+			end
+			
 		end
 	end
 

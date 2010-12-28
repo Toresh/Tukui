@@ -194,6 +194,7 @@ local function Shared(self, unit)
 
 			-- custom info (low mana warning)
 			FlashInfo = CreateFrame("Frame", "FlashInfo", self)
+			FlashInfo:SetFrameStrata("HIGH")
 			FlashInfo:SetScript("OnUpdate", TukuiDB.UpdateManaLevel)
 			FlashInfo.parent = self
 			FlashInfo:SetToplevel(true)
@@ -1274,19 +1275,21 @@ local function Shared(self, unit)
 			self.Buffs = buffs
 		end
 
-		-- create debuff for both arena and boss units
-		local debuffs = CreateFrame("Frame", nil, self)
-		debuffs:SetHeight(26)
-		debuffs:SetWidth(200)
-		debuffs:SetPoint('LEFT', self, 'RIGHT', TukuiDB.Scale(4), 0)
-		debuffs.size = 26
-		debuffs.num = 5
-		debuffs.spacing = 2
-		debuffs.initialAnchor = 'LEFT'
-		debuffs["growth-x"] = "RIGHT"
-		debuffs.PostCreateIcon = TukuiDB.PostCreateAura
-		debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
-		self.Debuffs = debuffs	
+		-- create debuff for arena units
+		if (unit and unit:find("arena%d")) then
+			local debuffs = CreateFrame("Frame", nil, self)
+			debuffs:SetHeight(26)
+			debuffs:SetWidth(200)
+			debuffs:SetPoint('LEFT', self, 'RIGHT', TukuiDB.Scale(4), 0)
+			debuffs.size = 26
+			debuffs.num = 5
+			debuffs.spacing = 2
+			debuffs.initialAnchor = 'LEFT'
+			debuffs["growth-x"] = "RIGHT"
+			debuffs.PostCreateIcon = TukuiDB.PostCreateAura
+			debuffs.PostUpdateIcon = TukuiDB.PostUpdateAura
+			self.Debuffs = debuffs	
+		end
 				
 		-- trinket feature via trinket plugin
 		if (TukuiCF.arena.unitframes) and (unit and unit:find('arena%d')) then
@@ -1456,6 +1459,15 @@ if db.showboss then
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)             
 		end
 		boss[i]:SetSize(TukuiDB.Scale(200), TukuiDB.Scale(29))
+		
+		--Special PowerBar for Boss frames
+		local pf = _G["Boss"..i.."TargetFramePowerBarAlt"]
+		pf:ClearAllPoints()
+		pf:SetPoint("LEFT", _G["oUF_Boss"..i], "RIGHT", 10, 0)
+		pf:SetParent(_G["oUF_Boss"..i])
+		pf.ClearAllPoints = TukuiDB.dummy
+		pf.SetPoint = TukuiDB.dummy
+		pf.SetParent = TukuiDB.dummy
 	end
 end
 
@@ -1528,7 +1540,7 @@ SLASH_TestUI1 = "/testui"
 ------------------------------------------------------------------------
 
 do
-	UnitPopupMenus["SELF"] = { "PVP_FLAG", "LOOT_METHOD", "LOOT_THRESHOLD", "OPT_OUT_LOOT_TITLE", "LOOT_PROMOTE", "DUNGEON_DIFFICULTY", "RAID_DIFFICULTY", "RESET_INSTANCES", "RAID_TARGET_ICON", "SELECT_ROLE", "LEAVE", "CANCEL" };
+	UnitPopupMenus["SELF"] = { "PVP_FLAG", "LOOT_METHOD", "LOOT_THRESHOLD", "OPT_OUT_LOOT_TITLE", "LOOT_PROMOTE", "DUNGEON_DIFFICULTY", "RAID_DIFFICULTY", "RESET_INSTANCES", "RAID_TARGET_ICON", "SELECT_ROLE", "CONVERT_TO_PARTY", "CONVERT_TO_RAID", "LEAVE", "CANCEL" };
 	UnitPopupMenus["PET"] = { "PET_PAPERDOLL", "PET_RENAME", "PET_ABANDON", "PET_DISMISS", "CANCEL" };
 	UnitPopupMenus["PARTY"] = { "MUTE", "UNMUTE", "PARTY_SILENCE", "PARTY_UNSILENCE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "PROMOTE", "PROMOTE_GUIDE", "LOOT_PROMOTE", "VOTE_TO_KICK", "UNINVITE", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
 	UnitPopupMenus["PLAYER"] = { "WHISPER", "INSPECT", "INVITE", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
