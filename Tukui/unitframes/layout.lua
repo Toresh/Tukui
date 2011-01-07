@@ -981,7 +981,7 @@ local function Shared(self, unit)
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level]')
 		self.Name = Name
 		
-		if (db.unitcastbar == true) then
+		if (TukuiCF["castbar"].unitcastbar == true) then
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetStatusBarTexture(normTex)
 			self.Castbar = castbar
@@ -1091,7 +1091,7 @@ local function Shared(self, unit)
 		end
 		
 		-- focus cast bar in the center of the screen
-		if db.unitcastbar == true then
+		if (TukuiCF["castbar"].unitcastbar == true) then
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			castbar:SetHeight(TukuiDB.Scale(20))
 			castbar:SetWidth(TukuiDB.Scale(240))
