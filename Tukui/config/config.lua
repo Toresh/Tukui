@@ -189,6 +189,7 @@ TukuiCF["tooltip"] = {
 TukuiCF["merchant"] = {
 	["sellgrays"] = true,                  -- automaticly sell grays?
 	["autorepair"] = true,                 -- automaticly repair?
+	["sellmisc"] = true,                   -- sell defined items automatically
 }
 
 TukuiCF["error"] = {

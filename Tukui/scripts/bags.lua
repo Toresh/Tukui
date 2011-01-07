@@ -291,7 +291,7 @@ end
 
 -- from OneBag
  
-local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400
+local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400 + 0x100000
 
 function Stuffing:BagType(bag)
 	local bagType = select(2, GetContainerNumFreeSlots(bag))
@@ -1125,7 +1125,35 @@ end
 
 
 function Stuffing:SortBags()
-	if (UnitAffectingCombat("player")) then return end;
+	if (UnitAffectingCombat("player")) then return end
+	
+	local free
+	local total = 0
+	local bagtypeforfree
+	
+	if StuffingFrameBank and StuffingFrameBank:IsShown() then
+		for i = 5, 11 do
+			free, bagtypeforfree = GetContainerNumFreeSlots(i)
+			if bagtypeforfree == 0 then			
+				total = free + total
+			end
+		end
+		
+		total = select(1, GetContainerNumFreeSlots(-1)) + total
+	else
+		for i = 0, 4 do
+			free, bagtypeforfree = GetContainerNumFreeSlots(i)
+			if bagtypeforfree == 0 then			
+				total = free + total
+			end
+		end
+	end
+
+	if total == 0 then
+		print("|cffff0000"..ERROR_CAPS.." - "..ERR_INV_FULL.."|r")
+		return	
+	end
+	
 	local bs = self.sortBags
 	if #bs < 1 then
 		Print (tukuilocal.bags_nothingsort)
@@ -1358,6 +1386,24 @@ function Stuffing.Menu(self, level)
 			Stuffing:Layout(true)
 		end
 
+	end
+	UIDropDownMenu_AddButton(info, level)
+
+	wipe(info)
+	info.text = KEYRING
+	info.checked = function()
+		return key_ring == 1
+	end
+
+	info.func = function()
+		if key_ring == 1 then
+			key_ring = 0
+		else
+			key_ring = 1
+		end
+		Stuffing_Toggle()
+		ToggleKeyRing()
+		Stuffing:Layout()
 	end
 	UIDropDownMenu_AddButton(info, level)
 

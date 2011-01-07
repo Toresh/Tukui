@@ -160,6 +160,12 @@ if TukuiCF["datatext"].wowtime and TukuiCF["datatext"].wowtime > 0 then
 	Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 	Stat:SetScript("OnUpdate", Update)
 	Stat:RegisterEvent("UPDATE_INSTANCE_INFO")
-	Stat:SetScript("OnMouseDown", function() GameTimeFrame:Click() end)
+	Stat:SetScript("OnMouseDown", function(self, btn)
+		if btn == 'RightButton'  then
+			ToggleTimeManager()
+		else
+			ToggleCalendar()
+		end
+	end)
 	Update(Stat, 10)
 end
