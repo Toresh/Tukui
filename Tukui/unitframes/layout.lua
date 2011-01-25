@@ -1541,11 +1541,7 @@ if db.showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "oUF_Boss"..i)
 		if i == 1 then
-<<<<<<< HEAD
 			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 350, 350)
-=======
-			boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 244, 294)
->>>>>>> tukz/master
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 35)             
 		end
