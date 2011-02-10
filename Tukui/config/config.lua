@@ -13,9 +13,6 @@ C["unitframes"] = {
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
-	["unitcastbar"] = true,                             -- enable tukui castbar
-	["cblatency"] = true,                              -- enable castbar latency
-	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
 	["playerauras"] = false,                            -- enable auras
@@ -70,7 +67,7 @@ C["castbar"] = {
 	["swingBarHeight"] = 4,				   -- Sets the swingbar height
 	["swingBarWidth"] = 230,			   -- sets the width of the swingbar
 	["swingBarX"] = 0,					   -- set the X pos of the swingbar
-	["swingBarY"] = 226,				   -- set the y pos of the swingbar
+	["swingBarY"] = 170,				   -- set the y pos of the swingbar
 }
 
 C["arena"] = {

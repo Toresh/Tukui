@@ -635,7 +635,7 @@ local function Shared(self, unit)
 		end
 		
 		-- cast bar for player and target
-		if (C["unitframes"].unitcastbar == true) then
+		if (C["castbar"].unitcastbar == true) then
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 			castbar:SetStatusBarTexture(normTex)
@@ -669,7 +669,7 @@ local function Shared(self, unit)
 			castbar.border:Point("BOTTOMRIGHT", castbar, "BOTTOMRIGHT", 2, -2)
 			castbar.border:CreateShadow("Default")
 			
-			if C["unitframes"].cbicons == true then
+			if C["castbar"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
 				castbar.button:SetTemplate("Default")
 				castbar.button:CreateShadow("Default")
@@ -689,7 +689,7 @@ local function Shared(self, unit)
 			end
 			
 			-- cast bar latency on player
-			if unit == "player" and C["unitframes"].cblatency == true then
+			if unit == "player" and C["castbar"].cblatency == true then
 				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
 				castbar.safezone:SetTexture(normTex)
 				castbar.safezone:SetVertexColor(0.69, 0.31, 0.31, 0.75)
@@ -704,15 +704,15 @@ local function Shared(self, unit)
 		--swing bar, based on Elv22 code
 			if C["castbar"].unitswingbar == true then
 				if unit =="player" then
-					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", invbarbg)
+					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", InvTukuiActionBarBackground)
 					Swing:SetStatusBarTexture(normTex)
-					Swing:SetStatusBarColor(unpack(TukuiCF["media"].bordercolor))
+					Swing:SetStatusBarColor(unpack(C["media"].bordercolor))
 					Swing:GetStatusBarTexture():SetHorizTile(false)
 					self.Swing = Swing
 					
 					self.Swing:SetHeight(T.Scale(C["castbar"].swingBarHeight))
 					self.Swing:SetWidth(T.Scale(C["castbar"].swingBarWidth))
-					self.Swing:SetPoint("BOTTOM", invbarbg, "TOP", T.Scale(C["castbar"].swingBarX), T.Scale(C["castbar"].swingBarY))
+					self.Swing:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", T.Scale(C["castbar"].swingBarX), T.Scale(C["castbar"].swingBarY))
 					
 					self.Swing.bg = CreateFrame("Frame", nil, self.Swing)
 					self.Swing.bg:SetPoint("TOPLEFT", T.Scale(-1), T.Scale(1))
@@ -1555,7 +1555,7 @@ end
 
 -- focus
 local focus = oUF:Spawn('focus', "TukuiFocus")
-focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", 0, 246)
+focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -250, 250)
 focus:Size(200, 29)
 
 -- target
@@ -1598,7 +1598,7 @@ if C.arena.unitframes then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "TukuiArena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0, 246)
+			arena[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 250, 250)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 35)
 		end
@@ -1620,7 +1620,7 @@ if C["unitframes"].showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "TukuiBoss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,246)
+			boss[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 250,250)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 35)             
 		end

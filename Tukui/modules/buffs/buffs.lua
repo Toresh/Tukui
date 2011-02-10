@@ -45,7 +45,7 @@ local function UpdateWeapons(button, slot, active, expiration)
 		button.time:SetFont(C.media.font, 12, "OUTLINE")
 				
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", 26, 26, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 		button.bg:SetAlpha(0)
@@ -83,7 +83,7 @@ local function UpdateAuras(header, button, weapon)
 		button:SetScript("OnUpdate", UpdateTime)
 		
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", 26, 26, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 	end
@@ -184,8 +184,8 @@ local function CreateAuraHeader(filter, ...)
 	return header
 end
 
-ScanAuras(CreateAuraHeader("HELPFUL", "TOPRIGHT", -184, -24))
-ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -184, -160))
+ScanAuras(CreateAuraHeader("HELPFUL", "TOPRIGHT", -175, -24))
+ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -175, -160))
 
 -- create our aura
 local start = CreateFrame("Frame")
