@@ -80,8 +80,8 @@ end
 
 
 -- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
-local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", TukuiBar1)
-cubeleft:CreatePanel("Default", 10, 10, "RIGHT", TukuiBar2, "LEFT", -4, 0)
+local cubeleft = CreateFrame("Frame", "TukuiCubeLeft", icentre)
+cubeleft:CreatePanel("Default", 10, 10, "RIGHT", icentre, "LEFT", -4, 0)
 cubeleft:EnableMouse(true)
 cubeleft:SetScript("OnMouseDown", function(self, btn)
 	if TukuiInfoLeftBattleGround and UnitInBattleground("player") then
@@ -100,8 +100,8 @@ cubeleft:SetScript("OnMouseDown", function(self, btn)
 end)
 
 -- CUBE AT RIGHT, ACT AS A BUTTON (CONFIGUI or BG'S)
-local cuberight = CreateFrame("Frame", "TukuiCubeRight", TukuiBar1)
-cuberight:CreatePanel("Default", 10, 10, "LEFT", TukuiBar3, "RIGHT", 4, 0)
+local cuberight = CreateFrame("Frame", "TukuiCubeRight", icentre)
+cuberight:CreatePanel("Default", 10, 10, "LEFT", icentre, "RIGHT", 4, 0)
 if C["bags"].enable then
 	cuberight:EnableMouse(true)
 	cuberight:SetScript("OnMouseDown", function(self)
@@ -137,15 +137,15 @@ if C.chat.background then
 	chatrightbg:Hide() --This will get shown if a chat exists in the bottomright corner	
 end
 
-if C.actionbar.cooldownbar then
-	local cooldown = CreateFrame("Frame", "cooldown", barbg)
-	cooldown.CreatePanel(cooldown, 1, 30, "Bottom", TukuiBar1, "TOP", 0, TukuiDB.Scale(4))
+if C["actionbar"].cooldownbar then
+	local cooldown = CreateFrame("Frame", "Tukuicooldown", invbarbg)
+	cooldown:CreatePanel("Default", 1, 30, "Bottom", TukuiBar1, "TOP", 0, 4)
 	
-	if TukuiCF["actionbar"].splitbar == true and TukuiCF["actionbar"].bottomrows == 2 then
-		cooldown:SetWidth(((TukuiDB.buttonsize * 18) + (TukuiDB.buttonspacing * 21))+ (TukuiDB.Scale(4) * 2))
-	else
-		cooldown:SetWidth((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13))
-	end
+	--if C["actionbar"].splitbar == true and C["actionbar"].bottomrows == 2 then
+		cooldown:SetWidth(((T.buttonsize * 18) + (T.buttonspacing * 21))+ (T.Scale(4) * 2))
+	--else
+		--cooldown:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
+	--end
 end
 
 if TukuiMinimap then
@@ -154,6 +154,11 @@ if TukuiMinimap then
 
 	local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
 	minimapstatsright:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, -2)
+	
+	if C["map"].topinfo == true then
+		local minimapstatstop = CreateFrame("Frame", "TukuiMinimapStatsTop", TukuiMinimap)
+		minimapstatstop:CreatePanel("Default", (TukuiMinimap:GetWidth() ), 19, "TOPLEFT", TukuiMinimap, "TOPLEFT", 0, T.Scale(22))
+	end
 end
 
 --BATTLEGROUND STATS FRAME

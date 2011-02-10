@@ -3,8 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- I really hope you'll understand the code, because I was totally drunk when I wrote this file.
 -- At least, it work fine. :P (lol)
 
-return end
-
 local function ShowOrHideBar(bar, button)
 	local db = TukuiDataPerChar
 	

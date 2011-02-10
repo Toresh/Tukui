@@ -14,6 +14,9 @@ end
 T.PP = function(p, obj)
 	local left = TukuiInfoLeft
 	local right = TukuiInfoRight
+	local centre = TukuiInfoCentre
+	local top = TukuiMinimapStatsTop
+	local location = TukuiLocationPanel
 	local mapleft = TukuiMinimapStatsLeft
 	local mapright = TukuiMinimapStatsRight
 	
@@ -35,17 +38,29 @@ T.PP = function(p, obj)
 		obj:SetPoint('TOP', left)
 		obj:SetPoint('BOTTOM', left)
 	elseif p == 4 then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("LEFT", centre, "LEFT", 30, 0)
+	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("CENTER", centre, "CENTER", -75, 0)
+	elseif p == 6 and TukuiCF["actionbar"].splitbar == true then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("CENTER", centre, "CENTER", 75, 0)
+	elseif p == 7 then
+		obj:SetHeight(centre:GetHeight())
+		obj:SetPoint("RIGHT", centre, "RIGHT", -30, 0)
+	elseif p == 8 then
 		obj:SetParent(right)
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint("LEFT", right, 30, 0)
 		obj:SetPoint('TOP', right)
 		obj:SetPoint('BOTTOM', right)
-	elseif p == 5 then
+	elseif p == 9 then
 		obj:SetParent(right)
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint('TOP', right)
 		obj:SetPoint('BOTTOM', right)
-	elseif p == 6 then
+	elseif p == 10 then
 		obj:SetParent(right)
 		obj:SetHeight(right:GetHeight())
 		obj:SetPoint("RIGHT", right, -30, 0)
@@ -54,12 +69,19 @@ T.PP = function(p, obj)
 	end
 	
 	if TukuiMinimap then
-		if p == 7 then
+		if p == 11 and TukuiCF["map"].topinfo then
+			obj:SetHeight(top:GetHeight())
+			obj:SetPoint("LEFT", top, 20, 0)
+		elseif p == 12 and TukuiCF["map"].topinfo then
+			obj:SetHeight(top:GetHeight())
+			obj:SetPoint("RIGHT", top, -20, 0)
+
+		elseif p == 14 then
 			obj:SetParent(mapleft)
 			obj:SetHeight(mapleft:GetHeight())
 			obj:SetPoint('TOP', mapleft)
 			obj:SetPoint('BOTTOM', mapleft)
-		elseif p == 8 then
+		elseif p == 15 then
 			obj:SetParent(mapright)
 			obj:SetHeight(mapright:GetHeight())
 			obj:SetPoint('TOP', mapright)

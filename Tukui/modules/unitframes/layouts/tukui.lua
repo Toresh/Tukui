@@ -639,97 +639,53 @@ local function Shared(self, unit)
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 			castbar:SetStatusBarTexture(normTex)
+			if unit == "player" then
+				castbar:Width(TukuiBar1:GetWidth() - 120)
+				castbar:Height(21)
+				castbar:Point("BOTTOM" ,TukuiBar1, "TOP", 14, 180)
+			elseif unit == "target" then
+				castbar:Width(240)
+				castbar:Height(18)
+				castbar:Point("BOTTOM", UIParent, "BOTTOM", 0, 80)
+			end
 			
-			if unit == "player" and C["castbar"].standAloneCast == true then
-				castbar:SetHeight(T.Scale(C["castbar"].castBarHeight))
-				castbar:SetWidth(T.Scale(C["castbar"].castBarWidth))
-				castbar:SetFrameLevel(6)
-				castbar:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", T.Scale(C["castbar"].castBarX), T.Scale(C["castbar"].castBarY))	
-				
-				castbar.bg = CreateFrame("Frame", nil, castbar)
-				T.SetTemplate(castbar.bg)
-				castbar.bg:SetPoint("TOPLEFT", T.Scale(-2), T.Scale(2))
-				castbar.bg:SetPoint("BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-				castbar.bg:SetFrameLevel(5)
-				T.CreateShadow(castbar.bg)
-				
-				castbar.CustomTimeText = T.CustomCastTimeText
-				castbar.CustomDelayText = T.CustomCastDelayText
-				castbar.PostCastStart = T.CheckCast
-				castbar.PostChannelStart = T.CheckChannel
-				
-				castbar.time = T.SetFontString(castbar, font1, 12)
-				castbar.time:SetPoint("RIGHT", castbar, "RIGHT", -4, 0.5)	
-				castbar.time:SetTextColor(0.84, 0.75, 0.65)
-				castbar.time:SetJustifyH("RIGHT")
+			castbar.CustomTimeText = T.CustomCastTimeText
+			castbar.CustomDelayText = T.CustomCastDelayText
+			castbar.PostCastStart = T.CheckCast
+			castbar.PostChannelStart = T.CheckChannel
 
-				castbar.Text = T.SetFontString(castbar, font1, 12)
-				castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0.5)	
-				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
-				
-				
-				if TukuiCF["castbar"].cbicons == true then
-					castbar.button = CreateFrame("Frame", nil, castbar)
-					castbar.button:SetHeight(T.Scale(C["castbar"].iconHeight))
-					castbar.button:SetWidth(T.Scale(C["castbar"].iconWidth))
-					castbar.button:SetPoint("RIGHT", castbar, "LEFT", T.Scale(-4), 0)
-					T.SetTemplate(castbar.button)
+			castbar.time = T.SetFontString(castbar, font1, 12)
+			castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
+			castbar.time:SetTextColor(0.84, 0.75, 0.65)
+			castbar.time:SetJustifyH("RIGHT")
 
-					castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
-					castbar.icon:SetPoint("TOPLEFT", castbar.button, T.Scale(2), T.Scale(-2))
-					castbar.icon:SetPoint("BOTTOMRIGHT", castbar.button, T.Scale(-2), T.Scale(2))
-					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
-					
-					T.CreateShadow(castbar.button)
+			castbar.Text = T.SetFontString(castbar, font1, 12)
+			castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
+			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+			
+			-- Border
+			castbar.border = CreateFrame("Frame", nil, castbar)
+			castbar.border:CreatePanel("Default",1,1,"TOPLEFT", castbar, "TOPLEFT", -2, 2)
+			castbar.border:Point("BOTTOMRIGHT", castbar, "BOTTOMRIGHT", 2, -2)
+			castbar.border:CreateShadow("Default")
+			
+			if C["unitframes"].cbicons == true then
+				castbar.button = CreateFrame("Frame", nil, castbar)
+				castbar.button:SetTemplate("Default")
+				castbar.button:CreateShadow("Default")
+				
+				if unit == "player" then
+					castbar.button:Size(25)
+					castbar.button:Point("RIGHT",castbar,"LEFT", -5, 0)
+				elseif unit == "target" then
+					castbar.button:Size(27)
+					castbar.button:Point("BOTTOM", castbar, "TOP", 0, 5)
 				end
-			else
-				castbar.bg = castbar:CreateTexture(nil, "BORDER")
-				castbar.bg:SetAllPoints(castbar)
-				castbar.bg:SetTexture(normTex)
-				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
-				castbar:SetFrameLevel(6)
-				castbar:Point("TOPLEFT", panel, 2, -2)
-				castbar:Point("BOTTOMRIGHT", panel, -2, 2)
-				
-				castbar.CustomTimeText = T.CustomCastTimeText
-				castbar.CustomDelayText = T.CustomCastDelayText
-				castbar.PostCastStart = T.CheckCast
-				castbar.PostChannelStart = T.CheckChannel
 
-				castbar.time = T.SetFontString(castbar, font1, 12)
-				castbar.time:Point("RIGHT", panel, "RIGHT", -4, 0)
-				castbar.time:SetTextColor(0.84, 0.75, 0.65)
-				castbar.time:SetJustifyH("RIGHT")
-
-				castbar.Text = T.SetFontString(castbar, font1, 12)
-				castbar.Text:Point("LEFT", panel, "LEFT", 4, 0)
-				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
-				
-				if C["unitframes"].cbicons == true then
-					castbar.button = CreateFrame("Frame", nil, castbar)
-					castbar.button:Size(26)
-					castbar.button:SetTemplate("Default")
-					castbar.button:CreateShadow("Default")
-
-					castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
-					castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
-					castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
-					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
-				
-					if unit == "player" then
-						if C["unitframes"].charportrait == true then
-							castbar.button:SetPoint("LEFT", -82.5, 26.5)
-						else
-							castbar.button:SetPoint("LEFT", -46.5, 26.5)
-						end
-					elseif unit == "target" then
-						if C["unitframes"].charportrait == true then
-							castbar.button:SetPoint("RIGHT", 82.5, 26.5)
-						else
-							castbar.button:SetPoint("RIGHT", 46.5, 26.5)
-						end					
-					end
-				end
+				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+				castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
+				castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
+				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 			end
 			
 			-- cast bar latency on player
@@ -748,7 +704,7 @@ local function Shared(self, unit)
 		--swing bar, based on Elv22 code
 			if C["castbar"].unitswingbar == true then
 				if unit =="player" then
-					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", TukuiActionBarBackground)
+					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", invbarbg)
 					Swing:SetStatusBarTexture(normTex)
 					Swing:SetStatusBarColor(unpack(TukuiCF["media"].bordercolor))
 					Swing:GetStatusBarTexture():SetHorizTile(false)
@@ -756,7 +712,7 @@ local function Shared(self, unit)
 					
 					self.Swing:SetHeight(T.Scale(C["castbar"].swingBarHeight))
 					self.Swing:SetWidth(T.Scale(C["castbar"].swingBarWidth))
-					self.Swing:SetPoint("BOTTOM", TukuiActionBarBackground, "TOP", T.Scale(C["castbar"].swingBarX), T.Scale(C["castbar"].swingBarY))
+					self.Swing:SetPoint("BOTTOM", invbarbg, "TOP", T.Scale(C["castbar"].swingBarX), T.Scale(C["castbar"].swingBarY))
 					
 					self.Swing.bg = CreateFrame("Frame", nil, self.Swing)
 					self.Swing.bg:SetPoint("TOPLEFT", T.Scale(-1), T.Scale(1))

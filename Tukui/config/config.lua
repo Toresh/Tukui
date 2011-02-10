@@ -5,7 +5,9 @@ C["general"] = {
 	["uiscale"] = 0.71,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
-}
+	["buffsize"] = 22,					   				--Change the size of your player buffs / debuffs (Use at your own risk)
+	["rowbuffs"] = 16,					  				--How many buffs to display in each line
+	}
 
 C["unitframes"] = {
 	-- general options
@@ -80,10 +82,12 @@ C["auras"] = {
 }
 
 C["actionbar"] = {
-	["enable"] = true,                                  -- enable tukui action bars
+	["enable"] = true,                              	-- enable tukui action bars
 	["hotkey"] = false,                                 -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
+	["cooldownbar"] = true,                				-- enables a bar to place cooldown timer in
+	["horizonbars"] = true,				   				-- enables horizontal right bars
 	["buttonsize"] = 25,                                -- normal buttons size
 	["petbuttonsize"] = 25,                             -- pet & stance buttons size
 	["buttonspacing"] = 4,                              -- buttons spacing
@@ -95,6 +99,7 @@ C["bags"] = {
 
 C["map"] = {
 	["enable"] = true,                                  -- reskin the map to fit tukui
+	["topinfo"] = true,					   -- enables info panel above minimap
 }
 
 C["loot"] = {
@@ -109,30 +114,48 @@ C["cooldown"] = {
 }
 
 C["datatext"] = {
-	["fps_ms"] = 4,                                     -- show fps and ms on panels
-	["system"] = 5,                                     -- show total memory and others systems infos on panels
+	["fps_ms"] = 8,                                     -- show fps and ms on panels
+	["system"] = 9,                                     -- show total memory and others systems infos on panels
 	["bags"] = 0,                                       -- show space used in bags on panels
-	["gold"] = 6,                                       -- show your current gold on panels
-	["wowtime"] = 8,                                    -- show time on panels
-	["guild"] = 1,                                      -- show number on guildmate connected on panels
+	["gold"] = 3,                                       -- show your current gold on panels
+	["wowtime"] = 10,                                    -- show time on panels
+	["guild"] = 14,                                      -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
-	["friends"] = 3,                                    -- show number of friends connected.
+	["friends"] = 15,                                    -- show number of friends connected.
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
-	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 0,                                      -- show your haste rating on panels.
-	["crit"] = 0,                                       -- show your crit rating on panels.
-	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
+	["power"] = 0,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["haste"] = 4,                                      -- show your haste rating on panels.
+	["crit"] = 5,                                       -- show your crit rating on panels.
+	["avd"] = 6,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
-	["currency"] = 0,                                   -- show your tracked currency on panels
-	["hit"] = 0,
+	["currency"] = 11,                                   -- show your tracked currency on panels
+	["hit"] = 12,
 	["mastery"] = 0,
 	["micromenu"] = 0,
 
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
-	["time24"] = true,                                  -- set time to 24h format.
-	["localtime"] = false,                              -- set time to local time instead of server time.
+	["time24"] = false,                                  -- set time to 24h format.
+	["localtime"] = true,                              -- set time to local time instead of server time.
 	["fontsize"] = 12,                                  -- font size for panels.
+}
+
+C["broker_datatext"] = {
+	["Skada"] = 0,					  --This is an example of how to add broker addons. To find the name, type /showldb in game.
+	["RaidBuffStatus"] = 5,
+	["Cashflow"] = 3,
+	["clsaver"] = 0,
+	["WIM"] = 7,
+	["Altoholic"] = 4,
+	["Outfitter"] = 0,
+	["DXE"] = 0,
+	["AtlasLoot"] = 6,
+	["Omen"] = 0,
+	["Spamalyzer"] = 1,
+	["Broker_HudMap"] = 11,
+	["Skinner"] = 0,
+	["ZOMGBuffs"] = 12,
+	["BugSack"] = 0,
 }
 
 C["chat"] = {
