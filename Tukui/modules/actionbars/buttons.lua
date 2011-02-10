@@ -3,6 +3,8 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- I really hope you'll understand the code, because I was totally drunk when I wrote this file.
 -- At least, it work fine. :P (lol)
 
+return end
+
 local function ShowOrHideBar(bar, button)
 	local db = TukuiDataPerChar
 	
@@ -199,7 +201,7 @@ TukuiBar3Button.text:SetText("|cff4BAF4C<|r")
 local TukuiBar4Button = CreateFrame("Button", "TukuiBar4Button", UIParent)
 TukuiBar4Button:SetWidth(TukuiBar1:GetWidth())
 TukuiBar4Button:Height(10)
-TukuiBar4Button:Point("TOP", TukuiBar1, "BOTTOM", 0, -2)
+TukuiBar4Button:Point("TOP", TukuiBar1, "BOTTOM", 0, -30)
 TukuiBar4Button:SetTemplate("Default")
 TukuiBar4Button:RegisterForClicks("AnyUp")
 TukuiBar4Button:SetAlpha(0)

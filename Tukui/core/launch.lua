@@ -26,6 +26,8 @@ local function install()
 	SetCVar("bloatthreat", 0)
 	SetCVar("bloattest", 0)
 	SetCVar("showArenaEnemyFrames", 0)
+	SetCVar("cameraDistanceMax", 50)
+	SetCVar("cameraDistanceMaxFactor", 3.4)
 	
 	-- setting this the creator or tukui only, because a lot of people don't like this.		
 	if T.myname == "Tukz" then	
@@ -65,20 +67,23 @@ local function install()
 		SetCVar("cameraDistanceMaxFactor", 3.4)
 	end
 	
+	--call functions to set up addons
+	Setup_DXE()
+	Setup_Recount()
+	Setup_Omen()
+	Setup_Coolline()
+
 	-- Var ok, now setting chat frames if using Tukui chats.	
 	if (C.chat.enable == true) and (not IsAddOnLoaded("Prat") or not IsAddOnLoaded("Chatter")) then					
 		FCF_ResetChatWindows()
 		FCF_SetLocked(ChatFrame1, 1)
 		FCF_DockFrame(ChatFrame2)
 		FCF_SetLocked(ChatFrame2, 1)
-		FCF_OpenNewWindow(L.chat_general)
-		FCF_SetLocked(ChatFrame3, 1)
-		FCF_DockFrame(ChatFrame3)
 
-		FCF_OpenNewWindow(LOOT)
-		FCF_UnDockFrame(ChatFrame4)
-		FCF_SetLocked(ChatFrame4, 1)
-		ChatFrame4:Show()
+		FCF_OpenNewWindow("Spam")
+		FCF_UnDockFrame(ChatFrame3)
+		FCF_SetLocked(ChatFrame3, 1)
+		ChatFrame3:Show()
 
 		for i = 1, NUM_CHAT_WINDOWS do
 			local frame = _G[format("ChatFrame%s", i)]
@@ -86,18 +91,18 @@ local function install()
 			local chatName = FCF_GetChatWindowInfo(chatFrameId)
 			
 			-- set the size of chat frames
-			frame:Size(T.InfoLeftRightWidth + 1, 111)
+			frame:Size(T.InfoLeftRightWidth, 111)
 			
 			-- tell wow that we are using new size
-			SetChatWindowSavedDimensions(chatFrameId, T.Scale(T.InfoLeftRightWidth + 1), T.Scale(111))
+			SetChatWindowSavedDimensions(chatFrameId, T.Scale(T.InfoLeftRightWidth - 4), T.Scale(111))
 			
 			-- move general bottom left or Loot (if found) on right
 			if i == 1 then
 				frame:ClearAllPoints()
-				frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
-			elseif i == 4 and chatName == LOOT then
+				frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 2, 6)
+			elseif i == 3 and chatName == "Spam" then
 				frame:ClearAllPoints()
-				frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)
+				frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 2, 6)
 			end
 					
 			-- save new default position and dimension
@@ -156,14 +161,11 @@ local function install()
 		ChatFrame_AddChannel(ChatFrame3, L.chat_defense) -- erf, it seem we need to localize this now
 		ChatFrame_AddChannel(ChatFrame3, L.chat_recrutment) -- erf, it seem we need to localize this now
 		ChatFrame_AddChannel(ChatFrame3, L.chat_lfg) -- erf, it seem we need to localize this now
-				
-		-- Setup the right chat
-		ChatFrame_RemoveAllMessageGroups(ChatFrame4)
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_XP_GAIN")
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_HONOR_GAIN")
-		ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_FACTION_CHANGE")
-		ChatFrame_AddMessageGroup(ChatFrame4, "LOOT")
-		ChatFrame_AddMessageGroup(ChatFrame4, "MONEY")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_XP_GAIN")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_HONOR_GAIN")
+		ChatFrame_AddMessageGroup(ChatFrame3, "COMBAT_FACTION_CHANGE")
+		ChatFrame_AddMessageGroup(ChatFrame3, "LOOT")
+		ChatFrame_AddMessageGroup(ChatFrame3, "MONEY")
 				
 		-- enable classcolor automatically on login and on each character without doing /configure each time.
 		ToggleChatColorNamesByClassGroup(true, "SAY")
@@ -342,3 +344,132 @@ SlashCmdList["UIHELP"] = UIHelp
 
 SLASH_CONFIGURE1 = "/resetui"
 SlashCmdList.CONFIGURE = function() StaticPopup_Show("TUKUIRESET_UI") end
+
+
+
+--------------------------------------------------------------------------
+--  Set up addons
+-------------------------------------------------------------------------
+
+function Setup_DXE()
+
+	-- force DXE to load so that we can set it up it
+	if IsAddOnLoadOnDemand("DXE") then
+		LoadAddOn("DXE")
+	end
+
+	if IsAddOnLoaded("DXE") then
+		local namespace = DXE.db:GetNamespace("Alerts").profile
+		
+		DXEIconDB.hide = true
+		--DXE.db.profile.Globals.BarTexture = "TukTex"
+		--DXE.db.profile.Globals.BackgroundColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		DXE.db.profile.Pane.TitleFontSize = 12
+		DXE.db.profile.Pane.Width = 352
+		--DXE.db.profile.Pane.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		--DXE.db.profile.NeutralColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+		DXE.db.profile.Pane.OnlyInRaid = true
+		DXE.db.profile.Pane.OnlyInRaidInstance = true
+		
+		DXE.db.profile.Positions.DXEPane.yOfs = TukuiDB.Scale(187)
+		DXE.db.profile.Positions.DXEPane.xOfs = TukuiDB.Scale(14)
+		DXE.db.profile.Positions.DXEPane.point = "BOTTOMLEFT"
+		DXE.db.profile.Positions.DXEPane.relativePoint = "BOTTOMLEFT"
+		
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.yOfs = TukuiDB.Scale(8.99)
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.xOfs = TukuiDB.Scale(-305.49)
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.point = "RIGHT"
+		DXE.db.profile.Positions.DXEAlertsCenterStackAnchor.relativePoint = "RIGHT"
+		
+		--namespace.CenterScale = 1
+		--namespace.CenterAlpha = 1
+		namespace.CenterGrowth = "UP"
+		--namespace.TopAlpha = 1
+		--namespace.TopScale = 1
+
+		--DXE.db.profile.Windows.TitleBarColor = { 0.1529411764705883, 0.1607843137254902, 0.1647058823529412 }
+	end
+
+end
+
+function Setup_Recount()
+	if IsAddOnLoaded("Recount") then		
+		Recount.db.profile.MainWindow.ShowScrollbar = false	
+		Recount.db.profile.BarTextColorSwap = false
+		Recount.db.profile.ConfirmDeleteRaid = false
+		Recount.db.profile.ConfirmDeleteInstance = false
+		Recount.db.profile.ConfirmDeleteGroup = false
+		Recount.db.profile.MainWindow.ShowScrollbar = false
+		Recount.db.profile.ReportLines = 4
+		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
+		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
+		Recount.db.profile.MainWindow.Position.y = TukuiDB.Scale(-430.250643299163)
+		Recount.db.profile.MainWindow.Position.x = TukuiDB.Scale(371)
+		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
+		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
+		Recount.db.profile.MainWindowHeight = 159.8336667240456
+		Recount.db.profile.MainWindowWidth = 188.0000255850633
+		
+		local function RecountSetColor(Branch,Name,r,g,b,a)
+			Recount.db.profile.Colors[Branch][Name].r=r
+			Recount.db.profile.Colors[Branch][Name].g=g
+			Recount.db.profile.Colors[Branch][Name].b=b
+			Recount.db.profile.Colors[Branch][Name].a=a
+		end
+		
+		RecountSetColor("Window","Title",0.1333333333333333,0.1333333333333333,0.1333333333333333,0)			
+		Recount:LockWindows(false)
+		Recount.MainWindow:SetResizable(true)
+		Recount.db.profile.MainWindowHeight = 245
+		Recount.db.profile.MainWindowWidth = 197
+		Recount:SetBarTextures(Recount.db.profile.BarTexture)
+		Recount:RestoreMainWindowPosition(Recount.db.profile.MainWindow.Position.x,Recount.db.profile.MainWindow.Position.y,Recount.db.profile.MainWindow.Position.w,Recount.db.profile.MainWindow.Position.h)
+		Recount:ResizeMainWindow()
+		Recount:FullRefreshMainWindow()
+		Recount:SetupMainWindowButtons()
+		Recount.profilechange = true
+		Recount:CloseAllRealtimeWindows()
+		Recount.Colors:UpdateAllColors()
+		Recount.profilechange = nil
+		Recount:SetStrataAndClamp()
+		Recount.db.profile.Locked = true
+		Recount:LockWindows(true)
+		
+		TukuiDB.SetTemplate(Recount_MainWindow)
+	end
+
+end
+
+function Setup_Omen()
+	if IsAddOnLoaded("Omen") then
+		Omen.db.profile.MinimapIcon.hide = true
+		Omen.db.profile.ShowWith.UseShowWith = false	
+		Omen.db.profile.PositionX = TukuiDB.Scale(372)--359.4994234613777
+		Omen.db.profile.PositionY = TukuiDB.Scale(165)--146.9990649412748
+		Omen.db.profile.PositionW = 192--199.0000127884138
+		Omen.db.profile.PositionH = 152--142.9999017275369		
+		Omen.db.profile.Shown = true
+		Omen.db.profile.Locked = true
+		
+	end
+end
+
+function Setup_Coolline()
+	if IsAddOnLoaded ("CoolLine") then	
+		CoolLineDB.x = 0
+		CoolLineDB.y = TukuiDB.Scale(-403)
+		CoolLineDB.h = 23
+		CoolLineDB.w = 512
+		CoolLineDB.bgcolor.a = 0
+		CoolLineDB.bgcolor.r = 0
+		CoolLineDB.bgcolor.g = 0
+		CoolLineDB.bgcolor.b = 0
+		CoolLineDB.spellcolor.a = 1
+		CoolLineDB.spellcolor.b = 0.94
+		CoolLineDB.spellcolor.g = 0.96
+		CoolLineDB.spellcolor.r = 0.95
+		CoolLineDB.border = "none"
+		CoolLineDB.iconplus = 2
+		CoolLineDB.activealpha = 0.9999999999999999
+	end
+end

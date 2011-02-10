@@ -4,6 +4,8 @@ if not C["actionbar"].enable == true then return end
 ---------------------------------------------------------------------------
 -- setup MultiBarLeft as bar #3 
 ---------------------------------------------------------------------------
+--right split
+return end
 
 local bar = TukuiBar3
 MultiBarBottomRight:SetParent(bar)

@@ -5,8 +5,10 @@ if not C["actionbar"].enable == true then return end
 ---------------------------------------------------------------------------
 -- setup MultiBarBottomLeft as bar #2
 ---------------------------------------------------------------------------
+--left split
 
 local bar = TukuiBar2
+local bar1 = TukuiBar3
 MultiBarBottomLeft:SetParent(bar)
 
 -- setup the bar
@@ -19,9 +21,13 @@ for i=1, 12 do
 	b:SetFrameLevel(15)
 	
 	if i == 1 then
-		b:SetPoint("BOTTOMLEFT", bar, T.buttonspacing, T.buttonspacing)
+		b:SetPoint("BOTTOMLEFT", bar, "BOTTOMLEFT", T.buttonspacing, T.buttonspacing)
+	elseif i == 4 then
+		b:SetPoint("BOTTOMLEFT", bar1, "BOTTOMLEFT", T.buttonspacing, T.buttonspacing)
 	elseif i == 7 then
-		b:SetPoint("TOPLEFT", bar, T.buttonspacing, -T.buttonspacing)
+		b:SetPoint("BOTTOMLEFT", MultiBarBottomLeftButton1, "TOPLEFT", 0, T.buttonspacing)
+	elseif i == 10 then
+		b:SetPoint("BOTTOMLEFT", MultiBarBottomLeftButton4, "TOPLEFT", 0, T.buttonspacing)
 	else
 		b:SetPoint("LEFT", b2, "RIGHT", T.buttonspacing, 0)
 	end

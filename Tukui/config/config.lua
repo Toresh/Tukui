@@ -12,7 +12,7 @@ C["unitframes"] = {
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
 	["unitcastbar"] = true,                             -- enable tukui castbar
-	["cblatency"] = false,                              -- enable castbar latency
+	["cblatency"] = true,                              -- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
@@ -23,13 +23,13 @@ C["unitframes"] = {
 	["totdebuffs"] = false,                             -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                              -- enable smooth bar
-	["charportrait"] = false,                           -- do i really need to explain this?
+	["charportrait"] = true,                           -- do i really need to explain this?
 	["maintank"] = false,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = false,                               -- enable unicolor theme
 	["combatfeedback"] = true,                          -- enable combattext on player and target.
 	["playeraggro"] = true,                             -- color player border to red if you have aggro on current target.
-	["healcomm"] = false,                               -- enable healprediction support.
+	["healcomm"] = true,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = false,                        -- display only our own debuffs applied on target
 
 	-- raid layout (if one of them is enabled)
@@ -40,7 +40,7 @@ C["unitframes"] = {
 	["aggro"] = true,                                   -- show aggro on all raids layouts
 	["raidunitdebuffwatch"] = true,                     -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,                      -- enable vertical grow on health bar for grid mode.
-	["showplayerinparty"] = false,                      -- show my player frame in party
+	["showplayerinparty"] = true,                      -- show my player frame in party
 	["gridscale"] = 1,                                  -- set the healing grid scaling
 	
 	-- boss frames
@@ -51,6 +51,24 @@ C["unitframes"] = {
 	
 	-- class bar
 	["classbar"] = true,                                -- enable tukui classbar over player unit
+}
+
+C["castbar"] = {
+	["unitcastbar"] = true,                -- enable tukui castbar
+	["standAloneCast"] = true,			   -- enable standalone cast bar. Disable to have standed on uintframe
+	["unitswingbar"] = true,			   -- enable player swing bar
+	["cblatency"] = true,                  -- enable castbar latency
+	["cbicons"] = true,                    -- enable icons on castbar
+	["castBarHeight"] = 20,				   -- sets the hright of the cast bar
+	["castBarWidth"] = 230,				   -- sets the width of the castbar
+	["castBarX"] = 0,					   -- set the X pos of the castbar
+	["castBarY"] = 200,					   -- sets the Y pos of the cast bar.
+	["iconHeight"] = 27,				   -- Sets the castbar icon height
+	["iconWidth"] = 27,					   -- Sets castbar icon width
+	["swingBarHeight"] = 4,				   -- Sets the swingbar height
+	["swingBarWidth"] = 230,			   -- sets the width of the swingbar
+	["swingBarX"] = 0,					   -- set the X pos of the swingbar
+	["swingBarY"] = 226,				   -- set the y pos of the swingbar
 }
 
 C["arena"] = {
@@ -66,8 +84,8 @@ C["actionbar"] = {
 	["hotkey"] = false,                                 -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
-	["buttonsize"] = 27,                                -- normal buttons size
-	["petbuttonsize"] = 29,                             -- pet & stance buttons size
+	["buttonsize"] = 25,                                -- normal buttons size
+	["petbuttonsize"] = 25,                             -- pet & stance buttons size
 	["buttonspacing"] = 4,                              -- buttons spacing
 }
 
@@ -120,14 +138,14 @@ C["datatext"] = {
 C["chat"] = {
 	["enable"] = true,                                  -- blah
 	["whispersound"] = true,                            -- play a sound when receiving whisper
-	["background"] = false,
+	["background"] = true,
 }
 
 C["nameplate"] = {
 	["enable"] = true,                                  -- enable nice skinned nameplates that fit into tukui
-	["showhealth"] = false,				                -- show health text on nameplate
-	["enhancethreat"] = false,			                -- threat features based on if your a tank or not
-	["overlap"] = false,				                -- allow nameplates to overlap
+	["showhealth"] = true,				                -- show health text on nameplate
+	["enhancethreat"] = true,			                -- threat features based on if your a tank or not
+	["overlap"] = true,				                -- allow nameplates to overlap
 	["combat"] = false,					                -- only show enemy nameplates in-combat.
 	["goodcolor"] = {75/255,  175/255, 76/255},	        -- good threat color (tank shows this with threat, everyone else without)
 	["badcolor"] = {0.78, 0.25, 0.25},			        -- bad threat color (opposite of above)
