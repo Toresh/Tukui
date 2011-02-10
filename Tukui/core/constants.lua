@@ -14,3 +14,4 @@ T.incombat = UnitAffectingCombat("player")
 T.patch = GetBuildInfo()
 T.level = UnitLevel("player")
 T.InfoLeftRightWidth = 352
+T.myrealm = GetRealmName()
