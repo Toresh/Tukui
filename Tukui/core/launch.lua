@@ -68,6 +68,7 @@ local function install()
 	end
 	
 	--call functions to set up addons
+	Setup_DBM()
 	Setup_DXE()
 	Setup_Recount()
 	Setup_Omen()
@@ -472,4 +473,40 @@ function Setup_Coolline()
 		CoolLineDB.iconplus = 2
 		CoolLineDB.activealpha = 0.9999999999999999
 	end
+end
+
+--mostly taken from affis dbm skin.
+function Setup_DBM()
+	--if IsAddOnLoaded("DBM") then
+		DBM_SavedOptions.Enabled=true
+		DBM_SavedOptions.WarningIconLeft=false
+		DBM_SavedOptions.WarningIconRight=false
+		DBM_SavedOptions["WarningColors"] = {{["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
+								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
+								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
+								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},}
+		DBM_SavedOptions.ShowMinimapButton=false
+		DBT_SavedOptions["DBM"].StartColorR=classcolor.r
+		DBT_SavedOptions["DBM"].StartColorG=classcolor.g
+		DBT_SavedOptions["DBM"].StartColorB=classcolor.b
+		DBT_SavedOptions["DBM"].EndColorR=classcolor.r
+		DBT_SavedOptions["DBM"].EndColorG=classcolor.g
+		DBT_SavedOptions["DBM"].EndColorB=classcolor.b
+		DBT_SavedOptions["DBM"].Scale=1
+		DBT_SavedOptions["DBM"].HugeScale=1
+		DBT_SavedOptions["DBM"].BarXOffset=0
+		DBT_SavedOptions["DBM"].BarYOffset=3
+		DBT_SavedOptions["DBM"].IconLeft=true
+		DBT_SavedOptions["DBM"].ExpandUpwards=true
+		DBT_SavedOptions["DBM"].Texture=C["media"].normTex
+		DBT_SavedOptions["DBM"].IconRight=false
+		DBT_SavedOptions["DBM"].FillUpBars=true
+		DBT_SavedOptions["DBM"].HugeTimerY=201
+		DBT_SavedOptions["DBM"].HugeBarXOffset=-7
+		DBT_SavedOptions["DBM"].BarYOffset=22
+		DBT_SavedOptions["DBM"].TimerX=22
+		DBT_SavedOptions["DBM"].HugeTimerX=-403
+		DBT_SavedOptions["DBM"].TimerY=-83
+		
+	--end
 end
