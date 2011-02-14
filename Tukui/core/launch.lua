@@ -477,10 +477,16 @@ end
 
 --mostly taken from affis dbm skin.
 function Setup_DBM()
-	if IsAddOnLoaded("DBM") then
+
+	if IsAddOnLoadOnDemand("DBM-Core") then
+		LoadAddOn("DBM-Core")
+	end
+
+	if IsAddOnLoaded("DBM-Core") then
 		DBM_SavedOptions.Enabled=true
 		DBM_SavedOptions.WarningIconLeft=false
 		DBM_SavedOptions.WarningIconRight=false
+		DBM_SavedOptions.ShowMinimapButton=false
 		DBT_SavedOptions["DBM"].Scale=1
 		DBT_SavedOptions["DBM"].HugeScale=1
 		DBT_SavedOptions["DBM"].BarXOffset=0
