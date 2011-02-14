@@ -19,6 +19,9 @@
 	Functions that can be overridden from within a layout:
 	 - :OverrideText(elapsed)
 --]]
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local _, ns = ...
+local oUF = ns.oUF
 
 local OnDurationUpdate
 do

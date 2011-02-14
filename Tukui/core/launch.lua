@@ -404,10 +404,10 @@ function Setup_Recount()
 		Recount.db.profile.ReportLines = 4
 		Recount.db.profile.MainWindow.Position.point = "BOTTOMRIGHT"
 		Recount.db.profile.MainWindow.Position.relativePoint = "BOTTOMRIGHT"
-		Recount.db.profile.MainWindow.Position.y = TukuiDB.Scale(-430.250643299163)
-		Recount.db.profile.MainWindow.Position.x = TukuiDB.Scale(371)
-		Recount.db.profile.MainWindow.Position.w = 188.0000075911726
-		Recount.db.profile.MainWindow.Position.h = 159.8336667240456
+		Recount.db.profile.MainWindow.Position.y = T.Scale(-432.)
+		Recount.db.profile.MainWindow.Position.x = T.Scale(372)
+		Recount.db.profile.MainWindow.Position.w = 188
+		Recount.db.profile.MainWindow.Position.h = 151
 		Recount.db.profile.MainWindowHeight = 159.8336667240456
 		Recount.db.profile.MainWindowWidth = 188.0000255850633
 		
@@ -445,10 +445,10 @@ function Setup_Omen()
 	if IsAddOnLoaded("Omen") then
 		Omen.db.profile.MinimapIcon.hide = true
 		Omen.db.profile.ShowWith.UseShowWith = false	
-		Omen.db.profile.PositionX = TukuiDB.Scale(372)--359.4994234613777
-		Omen.db.profile.PositionY = TukuiDB.Scale(165)--146.9990649412748
-		Omen.db.profile.PositionW = 192--199.0000127884138
-		Omen.db.profile.PositionH = 152--142.9999017275369		
+		Omen.db.profile.PositionX = T.Scale(372)
+		Omen.db.profile.PositionY = T.Scale(163)
+		Omen.db.profile.PositionW = 188
+		Omen.db.profile.PositionH = 150	
 		Omen.db.profile.Shown = true
 		Omen.db.profile.Locked = true
 		
@@ -458,7 +458,7 @@ end
 function Setup_Coolline()
 	if IsAddOnLoaded ("CoolLine") then	
 		CoolLineDB.x = 0
-		CoolLineDB.y = TukuiDB.Scale(-403)
+		CoolLineDB.y = T.Scale(-403)
 		CoolLineDB.h = 23
 		CoolLineDB.w = 512
 		CoolLineDB.bgcolor.a = 0
@@ -477,36 +477,28 @@ end
 
 --mostly taken from affis dbm skin.
 function Setup_DBM()
-	--if IsAddOnLoaded("DBM") then
+	if IsAddOnLoaded("DBM") then
 		DBM_SavedOptions.Enabled=true
 		DBM_SavedOptions.WarningIconLeft=false
 		DBM_SavedOptions.WarningIconRight=false
-		DBM_SavedOptions["WarningColors"] = {{["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
-								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
-								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},
-								 {["b"] = classcolor.b, ["g"] = classcolor.g, ["r"] = classcolor.r,},}
-		DBM_SavedOptions.ShowMinimapButton=false
-		DBT_SavedOptions["DBM"].StartColorR=classcolor.r
-		DBT_SavedOptions["DBM"].StartColorG=classcolor.g
-		DBT_SavedOptions["DBM"].StartColorB=classcolor.b
-		DBT_SavedOptions["DBM"].EndColorR=classcolor.r
-		DBT_SavedOptions["DBM"].EndColorG=classcolor.g
-		DBT_SavedOptions["DBM"].EndColorB=classcolor.b
 		DBT_SavedOptions["DBM"].Scale=1
 		DBT_SavedOptions["DBM"].HugeScale=1
 		DBT_SavedOptions["DBM"].BarXOffset=0
 		DBT_SavedOptions["DBM"].BarYOffset=3
 		DBT_SavedOptions["DBM"].IconLeft=true
-		DBT_SavedOptions["DBM"].ExpandUpwards=true
+		DBT_SavedOptions["DBM"].ExpandUpwards=false
 		DBT_SavedOptions["DBM"].Texture=C["media"].normTex
 		DBT_SavedOptions["DBM"].IconRight=false
 		DBT_SavedOptions["DBM"].FillUpBars=true
-		DBT_SavedOptions["DBM"].HugeTimerY=201
+		DBT_SavedOptions["DBM"].HugeTimerY=T.Scale(260)
 		DBT_SavedOptions["DBM"].HugeBarXOffset=-7
-		DBT_SavedOptions["DBM"].BarYOffset=22
-		DBT_SavedOptions["DBM"].TimerX=22
-		DBT_SavedOptions["DBM"].HugeTimerX=-403
-		DBT_SavedOptions["DBM"].TimerY=-83
-		
-	--end
+		DBT_SavedOptions["DBM"].HugeBarYOffset=20
+		DBT_SavedOptions["DBM"].BarYOffset=20
+		DBT_SavedOptions["DBM"].TimerX=T.Scale(10.5)
+		DBT_SavedOptions["DBM"].HugeTimerX=T.Scale(-340)
+		DBT_SavedOptions["DBM"].TimerY=T.Scale(-21)
+		DBT_SavedOptions["DBM"].TimerPoint="TOP"
+		DBT_SavedOptions["DBM"].HugeTimerPoint="RIGHT"
+		DBT_SavedOptions["DBM"].FillUpBars="TRUE"
+	end
 end
