@@ -17,7 +17,6 @@ local function install()
 	SetCVar("showTutorials", 0)
 	SetCVar("showNewbieTips", 0)
 	SetCVar("Maxfps", 120)
-	SetCVar("autoDismountFlying", 1)
 	SetCVar("autoQuestWatch", 1)
 	SetCVar("autoQuestProgress", 1)
 	SetCVar("UberTooltips", 1)
@@ -30,7 +29,8 @@ local function install()
 	SetCVar("cameraDistanceMaxFactor", 3.4)
 	
 	-- setting this the creator or tukui only, because a lot of people don't like this.		
-	if T.myname == "Tukz" then	
+	if T.myname == "Tukz" then
+		SetCVar("autoDismountFlying", 1)
 		SetCVar("secureAbilityToggle", 0)
 		SetCVar("colorblindMode", 0)
 		SetCVar("showLootSpam", 1)

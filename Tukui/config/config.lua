@@ -30,6 +30,7 @@ C["unitframes"] = {
 	["playeraggro"] = true,                             -- color player border to red if you have aggro on current target.
 	["healcomm"] = true,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = false,                        -- display only our own debuffs applied on target
+	["showfocustarget"] = true,                         -- show focus target
 
 	-- raid layout (if one of them is enabled)
 	["showrange"] = true,                               -- show range opacity on raidframes
@@ -79,8 +80,8 @@ C["auras"] = {
 }
 
 C["actionbar"] = {
-	["enable"] = true,                              	-- enable tukui action bars
-	["hotkey"] = false,                                 -- enable hotkey display because it was a lot requested
+	["enable"] = true,                                  -- enable tukui action bars
+	["hotkey"] = true,                                 -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
 	["cooldownbar"] = true,                				-- enables a bar to place cooldown timer in
