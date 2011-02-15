@@ -1,16 +1,18 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
-
 ------------------------------------------------------------------------
 -- Auto accept invite
 ------------------------------------------------------------------------
 
 if C["invite"].autoaccept then
-	local holder = CreateFrame("Frame")
-	holder:RegisterEvent("PARTY_INVITE_REQUEST")
-	holder:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	local tAutoAcceptInvite = CreateFrame("Frame")
+	tAutoAcceptInvite:RegisterEvent("PARTY_INVITE_REQUEST")
+	tAutoAcceptInvite:RegisterEvent("PARTY_MEMBERS_CHANGED")
 	
 	local hidestatic -- used to hide static popup when auto-accepting
-	holder:SetScript("OnEvent", function(self, event, leader)
+	
+	tAutoAcceptInvite:SetScript("OnEvent", function(self, event, ...)
+		arg1 = ...
+		local leader = arg1
 		local ingroup = false
 		
 		if event == "PARTY_INVITE_REQUEST" then
@@ -22,9 +24,9 @@ if C["invite"].autoaccept then
 			if GetNumFriends() > 0 then ShowFriends() end
 			if IsInGuild() then GuildRoster() end
 			
-			for friendindex = 1, GetNumFriends() do
-				local friendname = GetFriendInfo(friendindex)
-				if friendname == leader then
+			for friendIndex = 1, GetNumFriends() do
+				local friendName = GetFriendInfo(friendIndex)
+				if friendName == leader then
 					AcceptGroup()
 					ingroup = true
 					break
@@ -32,9 +34,9 @@ if C["invite"].autoaccept then
 			end
 			
 			if not ingroup then
-				for guildindex = 1, GetNumGuildMembers(true) do
-					local guildmembername = GetGuildRosterInfo(guildindex)
-					if guildmembername == leader then
+				for guildIndex = 1, GetNumGuildMembers(true) do
+					local guildMemberName = GetGuildRosterInfo(guildIndex)
+					if guildMemberName == leader then
 						AcceptGroup()
 						break
 					end
@@ -63,10 +65,10 @@ autoinvite:SetScript("OnEvent", function(self,event,arg1,arg2)
 end)
 
 function SlashCmdList.AUTOINVITE(msg, editbox)
-	if msg == "off" then
+	if (msg == 'off') then
 		ainvenabled = false
 		print(L.core_autoinv_disable)
-	elseif msg == "" then
+	elseif (msg == '') then
 		ainvenabled = true
 		print(L.core_autoinv_enable)
 		ainvkeyword = "invite"
@@ -76,4 +78,4 @@ function SlashCmdList.AUTOINVITE(msg, editbox)
 		ainvkeyword = msg
 	end
 end
-SLASH_AUTOINVITE1 = "/ainv"
+SLASH_AUTOINVITE1 = '/ainv'
