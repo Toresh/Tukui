@@ -31,7 +31,8 @@ C["unitframes"] = {
 	["healcomm"] = true,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = false,                        -- display only our own debuffs applied on target
 	["showfocustarget"] = true,                         -- show focus target
-
+	["classTimerLayout"] = 3,							-- Sets the layout for class timers
+	
 	-- raid layout (if one of them is enabled)
 	["showrange"] = true,                               -- show range opacity on raidframes
 	["raidalphaoor"] = 0.3,                             -- alpha of unitframes when unit is out of range
@@ -55,20 +56,22 @@ C["unitframes"] = {
 
 C["castbar"] = {
 	["unitcastbar"] = true,                -- enable tukui castbar
-	["standAloneCast"] = true,			   -- enable standalone cast bar. Disable to have standed on uintframe
 	["unitswingbar"] = true,			   -- enable player swing bar
 	["cblatency"] = true,                  -- enable castbar latency
 	["cbicons"] = true,                    -- enable icons on castbar
 	["castBarHeight"] = 20,				   -- sets the hright of the cast bar
-	["castBarWidth"] = 230,				   -- sets the width of the castbar
+	["castBarWidth"] = 220,				   -- sets the width of the castbar
 	["castBarX"] = 0,					   -- set the X pos of the castbar
 	["castBarY"] = 200,					   -- sets the Y pos of the cast bar.
-	["iconHeight"] = 27,				   -- Sets the castbar icon height
-	["iconWidth"] = 27,					   -- Sets castbar icon width
+	["targetX"] = 0, 					   -- set the X pos of the castbar
+	["targetY"] = 155,					   -- sets the Y pos of the cast bar.
+	["targetHeight"] = 20,				   -- sets the hright of the cast bar
+	["targetWidth"] = 220,				   -- sets the width of the castbar
+	["iconSize"] = 25,					   -- set icon size
 	["swingBarHeight"] = 4,				   -- Sets the swingbar height
 	["swingBarWidth"] = 230,			   -- sets the width of the swingbar
 	["swingBarX"] = 0,					   -- set the X pos of the swingbar
-	["swingBarY"] = 170,				   -- set the y pos of the swingbar
+	["swingBarY"] = 172,				   -- set the y pos of the swingbar
 }
 
 C["arena"] = {
@@ -123,12 +126,12 @@ C["datatext"] = {
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
 	["power"] = 0,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 4,                                      -- show your haste rating on panels.
-	["crit"] = 5,                                       -- show your crit rating on panels.
-	["avd"] = 6,                                        -- show your current avoidance against the level of the mob your targeting
+	["haste"] = 0,                                      -- show your haste rating on panels.
+	["crit"] = 0,                                       -- show your crit rating on panels.
+	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
-	["currency"] = 11,                                   -- show your tracked currency on panels
-	["hit"] = 12,
+	["currency"] = 0,                                   -- show your tracked currency on panels
+	["hit"] = 0,
 	["mastery"] = 0,
 	["micromenu"] = 0,
 

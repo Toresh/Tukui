@@ -648,17 +648,17 @@ local function Shared(self, unit)
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 			castbar:SetStatusBarTexture(normTex)
 			if unit == "player" then
-				castbar:Width(TukuiBar1:GetWidth() - 120)
-				castbar:Height(21)
-				castbar:Point("BOTTOM" ,TukuiBar1, "TOP", 14, 180)
+				castbar:Width(C["castbar"].castBarWidth)
+				castbar:Height(C["castbar"].castBarHeight)
+				castbar:Point("BOTTOM" ,TukuiBar1, "TOP", C["castbar"].castBarX, C["castbar"].castBarY)
 			elseif unit == "target" then
-				castbar:Width(240)
-				castbar:Height(18)
-				castbar:Point("BOTTOM", UIParent, "BOTTOM", 0, 80)
+				castbar:Width(C["castbar"].targetWidth)
+				castbar:Height(C["castbar"].targetHeight)
+				castbar:Point("BOTTOM", TukuiBar1, "TOP", C["castbar"].targetX, C["castbar"].targetY)
 			end
 			
 			castbar.CustomTimeText = T.CustomCastTimeText
-			castbar.CustomDelayText = T.CustomCastDelayText
+			castbar.CustomDelayText = T.CustomCastDelayText 
 			castbar.PostCastStart = T.CheckCast
 			castbar.PostChannelStart = T.CheckChannel
 
@@ -683,11 +683,11 @@ local function Shared(self, unit)
 				castbar.button:CreateShadow("Default")
 				
 				if unit == "player" then
-					castbar.button:Size(25)
+					castbar.button:Size(C["castbar"].iconSize)
 					castbar.button:Point("RIGHT",castbar,"LEFT", -5, 0)
 				elseif unit == "target" then
-					castbar.button:Size(27)
-					castbar.button:Point("BOTTOM", castbar, "TOP", 0, 5)
+					castbar.button:Size(C["castbar"].iconSize)
+					castbar.button:Point("LEFT", castbar, "RIGHT", 5, 0)
 				end
 
 				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
