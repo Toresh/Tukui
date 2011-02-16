@@ -40,10 +40,10 @@ T.PP = function(p, obj)
 	elseif p == 4 then
 		obj:SetHeight(centre:GetHeight())
 		obj:SetPoint("LEFT", centre, "LEFT", 30, 0)
-	elseif p == 5 and TukuiCF["actionbar"].splitbar == true then
+	elseif p == 5 then
 		obj:SetHeight(centre:GetHeight())
 		obj:SetPoint("CENTER", centre, "CENTER", -75, 0)
-	elseif p == 6 and TukuiCF["actionbar"].splitbar == true then
+	elseif p == 6 then
 		obj:SetHeight(centre:GetHeight())
 		obj:SetPoint("CENTER", centre, "CENTER", 75, 0)
 	elseif p == 7 then
