@@ -3,13 +3,8 @@
 ## Project Collaborators: Elv22, Nightcracker
 ## Credits to: Caith, Caellian, Shestak, Haste, Tekkub, Alza, Roth, P3lim, Tulla, Hungtar, hankthetank, Ishtara and others...
 ## Special Thanks to: Admins, Moderator and VIP's from tukui.org
-<<<<<<< HEAD
-## Version: 3.01
+## Version: 3.02
 ## Title: |cffC495DDTukui|r Toresh's edit
-=======
-## Version: 13.06
-## Title: |cffC495DDTukui|r
->>>>>>> upstream/master
 ## Notes: UI of awesomeness!
 ## SavedVariables: TukuiData
 ## SavedVariablesPerCharacter: TukuiDataPerChar
