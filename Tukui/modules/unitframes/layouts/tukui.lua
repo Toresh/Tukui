@@ -644,58 +644,109 @@ local function Shared(self, unit)
 		
 		-- cast bar for player and target
 		if (C["castbar"].unitcastbar == true) then
-			-- castbar of player and target
+			
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 			castbar:SetStatusBarTexture(normTex)
-			if unit == "player" then
-				castbar:Width(C["castbar"].castBarWidth)
-				castbar:Height(C["castbar"].castBarHeight)
-				castbar:Point("BOTTOM" ,TukuiBar1, "TOP", C["castbar"].castBarX, C["castbar"].castBarY)
-			elseif unit == "target" then
-				castbar:Width(C["castbar"].targetWidth)
-				castbar:Height(C["castbar"].targetHeight)
-				castbar:Point("BOTTOM", TukuiBar1, "TOP", C["castbar"].targetX, C["castbar"].targetY)
-			end
 			
-			castbar.CustomTimeText = T.CustomCastTimeText
-			castbar.CustomDelayText = T.CustomCastDelayText 
-			castbar.PostCastStart = T.CheckCast
-			castbar.PostChannelStart = T.CheckChannel
-
-			castbar.time = T.SetFontString(castbar, font1, 12)
-			castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
-			castbar.time:SetTextColor(0.84, 0.75, 0.65)
-			castbar.time:SetJustifyH("RIGHT")
-
-			castbar.Text = T.SetFontString(castbar, font1, 12)
-			castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
-			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+			if (unit == "player" and (C["castbar"].playerStandAlone == true)) or (unit == "target" and (C["castbar"].targetStandAlone)) then
 			
-			-- Border
-			castbar.border = CreateFrame("Frame", nil, castbar)
-			castbar.border:CreatePanel("Default",1,1,"TOPLEFT", castbar, "TOPLEFT", -2, 2)
-			castbar.border:Point("BOTTOMRIGHT", castbar, "BOTTOMRIGHT", 2, -2)
-			castbar.border:CreateShadow("Default")
-			
-			if C["castbar"].cbicons == true then
-				castbar.button = CreateFrame("Frame", nil, castbar)
-				castbar.button:SetTemplate("Default")
-				castbar.button:CreateShadow("Default")
-				
 				if unit == "player" then
-					castbar.button:Size(C["castbar"].iconSize)
-					castbar.button:Point("RIGHT",castbar,"LEFT", -5, 0)
+					castbar:Width(C["castbar"].castBarWidth)
+					castbar:Height(C["castbar"].castBarHeight)
+					castbar:Point("BOTTOM" ,TukuiBar1, "TOP", C["castbar"].castBarX, C["castbar"].castBarY)
 				elseif unit == "target" then
-					castbar.button:Size(C["castbar"].iconSize)
-					castbar.button:Point("LEFT", castbar, "RIGHT", 5, 0)
+					castbar:Width(C["castbar"].targetWidth)
+					castbar:Height(C["castbar"].targetHeight)
+					castbar:Point("BOTTOM", TukuiBar1, "TOP", C["castbar"].targetX, C["castbar"].targetY)
 				end
+				
+				castbar.CustomTimeText = T.CustomCastTimeText
+				castbar.CustomDelayText = T.CustomCastDelayText 
+				castbar.PostCastStart = T.CheckCast
+				castbar.PostChannelStart = T.CheckChannel
 
-				castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
-				castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
-				castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
-				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+				castbar.time = T.SetFontString(castbar, font1, 12)
+				castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
+				castbar.time:SetTextColor(0.84, 0.75, 0.65)
+				castbar.time:SetJustifyH("RIGHT")
+
+				castbar.Text = T.SetFontString(castbar, font1, 12)
+				castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
+				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+				
+				-- Border
+				castbar.border = CreateFrame("Frame", nil, castbar)
+				castbar.border:CreatePanel("Default",1,1,"TOPLEFT", castbar, "TOPLEFT", -2, 2)
+				castbar.border:Point("BOTTOMRIGHT", castbar, "BOTTOMRIGHT", 2, -2)
+				castbar.border:CreateShadow("Default")
+				
+				if C["castbar"].cbicons == true then
+					castbar.button = CreateFrame("Frame", nil, castbar)
+					castbar.button:SetTemplate("Default")
+					castbar.button:CreateShadow("Default")
+					
+					if unit == "player" then
+						castbar.button:Size(C["castbar"].iconSize)
+						castbar.button:Point("RIGHT",castbar,"LEFT", -5, 0)
+					elseif unit == "target" then
+						castbar.button:Size(C["castbar"].iconSize)
+						castbar.button:Point("LEFT", castbar, "RIGHT", 5, 0)
+					end
+
+					castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+					castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
+					castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
+					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+				end
+			else				
+				castbar.bg = castbar:CreateTexture(nil, "BORDER")
+				castbar.bg:SetAllPoints(castbar)
+				castbar.bg:SetTexture(normTex)
+				castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
+				castbar:SetFrameLevel(6)
+				castbar:Point("TOPLEFT", panel, 2, -2)
+				castbar:Point("BOTTOMRIGHT", panel, -2, 2)
+				
+				castbar.CustomTimeText = T.CustomCastTimeText
+				castbar.CustomDelayText = T.CustomCastDelayText
+				castbar.PostCastStart = T.CheckCast
+				castbar.PostChannelStart = T.CheckChannel
+
+				castbar.time = T.SetFontString(castbar, font1, 12)
+				castbar.time:Point("RIGHT", panel, "RIGHT", -4, 0)
+				castbar.time:SetTextColor(0.84, 0.75, 0.65)
+				castbar.time:SetJustifyH("RIGHT")
+
+				castbar.Text = T.SetFontString(castbar, font1, 12)
+				castbar.Text:Point("LEFT", panel, "LEFT", 4, 0)
+				castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+				
+				if C["unitframes"].cbicons == true then
+					castbar.button = CreateFrame("Frame", nil, castbar)
+					castbar.button:Size(26)
+					castbar.button:SetTemplate("Default")
+					castbar.button:CreateShadow("Default")
+
+					castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+					castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
+					castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
+					castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+				
+					if unit == "player" then
+						if C["unitframes"].charportrait == true then
+							castbar.button:SetPoint("LEFT", -82.5, 26.5)
+						else
+							castbar.button:SetPoint("LEFT", -46.5, 26.5)
+						end
+					elseif unit == "target" then
+						if C["unitframes"].charportrait == true then
+							castbar.button:SetPoint("RIGHT", 82.5, 26.5)
+						else
+							castbar.button:SetPoint("RIGHT", 46.5, 26.5)
+						end					
+					end
 			end
-			
+		end
 			-- cast bar latency on player
 			if unit == "player" and C["castbar"].cblatency == true then
 				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
