@@ -30,7 +30,12 @@ end
 SLASH_CLFIX1 = "/clfix"
 SlashCmdList["CLFIX"] = CLFIX
 
-SlashCmdList["GROUPDISBAND"] = function()
+-- ready check shortcut
+SlashCmdList.RCSLASH = DoReadyCheck
+SLASH_RCSLASH1 = "/rc"
+
+SLASH_RAIDDISBAND1 = "/rd"
+SlashCmdList["RAIDDISBAND"] = function()
 		SendChatMessage(L.disband, "RAID" or "PARTY")
 		if UnitInRaid("player") then
 			for i = 1, GetNumRaidMembers() do

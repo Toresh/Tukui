@@ -187,6 +187,7 @@ local function Shared(self, unit)
 			end
 			panel:SetWidth(panel:GetWidth() - 34) -- panel need to be resized if charportrait is enabled
 			table.insert(self.__elements, T.HidePortrait)
+			portrait.PostUpdate = T.PortraitUpdate --Worgen Fix (Hydra)
 			self.Portrait = portrait
 		end
 		
@@ -289,6 +290,8 @@ local function Shared(self, unit)
 				Experience.Rested = CreateFrame('StatusBar', nil, self)
 				Experience.Rested:SetParent(Experience)
 				Experience.Rested:SetAllPoints(Experience)
+				Experience.Rested:SetStatusBarTexture(normTex)
+				Experience.Rested:SetStatusBarColor(1, 0, 1, 0.2)
 				local Resting = Experience:CreateTexture(nil, "OVERLAY")
 				Resting:SetHeight(28)
 				Resting:SetWidth(28)
@@ -491,10 +494,21 @@ local function Shared(self, unit)
 					TotemBar.Destroy = true
 					for i = 1, 4 do
 						TotemBar[i] = CreateFrame("StatusBar", self:GetName().."_TotemBar"..i, self)
-						if (i == 1) then
-						   TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
+						-- a totem 'slot' in the default ui doesn't necessarily correspond to its place on the screen.
+						-- for example, on the default totem action bar frame, the first totem is earth, but earth's
+						-- slot id is two according to Blizzard default slotID!
+						-- we want to match action bar so we fix them by moving status bar around.
+						local fixme
+						if (i == 2) then
+							TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
+						elseif i == 1 then
+							fixme = 62
+							if T.lowversion then fixme = 46 end
+							TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", fixme + 1, 1)
 						else
-						   TotemBar[i]:Point("TOPLEFT", TotemBar[i-1], "TOPRIGHT", 1, 0)
+							fixme = i
+							if i == 3 then fixme = i-1 end
+							TotemBar[i]:Point("TOPLEFT", TotemBar[fixme-1], "TOPRIGHT", 1, 0)
 						end
 						TotemBar[i]:SetStatusBarTexture(normTex)
 						TotemBar[i]:Height(8)
@@ -1462,7 +1476,7 @@ local function Shared(self, unit)
 		local debuffs = CreateFrame("Frame", nil, self)
 		debuffs:SetHeight(26)
 		debuffs:SetWidth(200)
-		debuffs:SetPoint('LEFT', self, 'RIGHT', T.Scale(4), 0)
+		debuffs:Point('LEFT', self, 'RIGHT', 4, 0)
 		debuffs.size = 26
 		debuffs.num = 5
 		debuffs.spacing = 2
@@ -1484,8 +1498,8 @@ local function Shared(self, unit)
 			
 			local Trinket = CreateFrame("Frame", nil, Trinketbg)
 			Trinket:SetAllPoints(Trinketbg)
-			Trinket:SetPoint("TOPLEFT", Trinketbg, T.Scale(2), T.Scale(-2))
-			Trinket:SetPoint("BOTTOMRIGHT", Trinketbg, T.Scale(-2), T.Scale(2))
+			Trinket:Point("TOPLEFT", Trinketbg, 2, -2)
+			Trinket:Point("BOTTOMRIGHT", Trinketbg, -2, 2)
 			Trinket:SetFrameLevel(1)
 			Trinket.trinketUseAnnounce = true
 			self.Trinket = Trinket
@@ -1529,7 +1543,7 @@ local function Shared(self, unit)
 		castbar.button:SetTemplate("Default")
 		castbar.button:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
-		castbar.icon:Point("TOPLEFT", castbar.button, T.Scale(2), T.Scale(-2))
+		castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
 		castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
 		castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 

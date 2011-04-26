@@ -20,7 +20,7 @@ local AddMessage = function(self, text, ...)
 	return origs[self](self, text, ...)
 end
 
--- localize this later k tukz? DON'T FORGET!
+-- Shortcut channel name
 _G.CHAT_BATTLEGROUND_GET = "|Hchannel:Battleground|h"..L.chat_BATTLEGROUND_GET.."|h %s:\32"
 _G.CHAT_BATTLEGROUND_LEADER_GET = "|Hchannel:Battleground|h"..L.chat_BATTLEGROUND_LEADER_GET.."|h %s:\32"
 _G.CHAT_BN_WHISPER_GET = L.chat_BN_WHISPER_GET.." %s:\32"
@@ -35,13 +35,23 @@ _G.CHAT_RAID_WARNING_GET = L.chat_RAID_WARNING_GET.." %s:\32"
 _G.CHAT_SAY_GET = "%s:\32"
 _G.CHAT_WHISPER_GET = L.chat_WHISPER_GET.." %s:\32"
 _G.CHAT_YELL_GET = "%s:\32"
- 
+
+-- color afk, dnd, gm
 _G.CHAT_FLAG_AFK = "|cffFF0000"..L.chat_FLAG_AFK.."|r "
 _G.CHAT_FLAG_DND = "|cffE7E716"..L.chat_FLAG_DND.."|r "
 _G.CHAT_FLAG_GM = "|cff4154F5"..L.chat_FLAG_GM.."|r "
- 
+
+-- customize online/offline msg
 _G.ERR_FRIEND_ONLINE_SS = "|Hplayer:%s|h[%s]|h "..L.chat_ERR_FRIEND_ONLINE_SS.."!"
 _G.ERR_FRIEND_OFFLINE_S = "%s "..L.chat_ERR_FRIEND_OFFLINE_S.."!"
+
+-- Adding brackets to Blizzard timestamps
+_G.TIMESTAMP_FORMAT_HHMM = "[%I:%M] "
+_G.TIMESTAMP_FORMAT_HHMMSS = "[%I:%M:%S] "
+_G.TIMESTAMP_FORMAT_HHMMSS_24HR = "[%H:%M:%S] "
+_G.TIMESTAMP_FORMAT_HHMMSS_AMPM = "[%I:%M:%S %p] "
+_G.TIMESTAMP_FORMAT_HHMM_24HR = "[%H:%M] "
+_G.TIMESTAMP_FORMAT_HHMM_AMPM = "[%I:%M %p] "
 
 -- Hide friends micro button (added in 3.3.5)
 FriendsMicroButton:Kill()
@@ -58,8 +68,10 @@ local function SetChatStyle(frame)
 	-- always set alpha to 1, don't fade it anymore
 	tab:SetAlpha(1)
 	tab.SetAlpha = UIFrameFadeRemoveFrame
-	-- hide text when setting chat
-	_G[chat.."TabText"]:Hide()
+
+	if not C.chat.background and not frame.temp then
+		-- hide text when setting chat
+		_G[chat.."TabText"]:Hide()
 		
 	-- now show text if mouse is found over tab.
 	tab:HookScript("OnEnter", function() _G[chat.."TabText"]:Show() end)
@@ -122,6 +134,10 @@ local function SetChatStyle(frame)
 
 	-- Kill off editbox artwork
 	local a, b, c = select(6, _G[chat.."EditBox"]:GetRegions()) a:Kill() b:Kill() c:Kill()
+	
+	-- bubble tex & glow killing from privates
+	if tab.glow then tab.glow:Kill() end
+	if tab.conversationIcon then tab.conversationIcon:Kill() end
 				
 	-- Disable alt key usage
 	_G[chat.."EditBox"]:SetAltArrowKeyMode(false)
@@ -166,6 +182,8 @@ local function SetChatStyle(frame)
 		origs[_G[chat]] = _G[chat].AddMessage
 		_G[chat].AddMessage = AddMessage
 	end
+	
+	frame.skinned = true
 end
 
 -- Setup chatframes 1 to 10 on login.
@@ -215,11 +233,6 @@ local function SetupChatPosAndFont(self)
 				FCF_SavePositionAndDimensions(chat)
 			end
 		end
-		
-		--Check if chat exists in the bottomright corner
-		if C.chat.background == true and point == "BOTTOMRIGHT" and chat:IsShown() then
-			TukuiChatBackgroundRight:Show()		
-		end
 	end
 			
 	-- reposition battle.net popup over chat #1
@@ -251,6 +264,12 @@ end)
 -- Setup temp chat (BN, WHISPER) when needed.
 local function SetupTempChat()
 	local frame = FCF_GetCurrentChatFrame()
+
+	-- do a check if we already did a skinning earlier for this temp chat frame
+	if frame.skinned then return end
+	
+	-- style it
+	frame.temp = true
 	SetChatStyle(frame)
 end
 hooksecurefunc("FCF_OpenTemporaryWindow", SetupTempChat)

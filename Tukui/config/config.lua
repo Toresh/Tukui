@@ -7,7 +7,9 @@ C["general"] = {
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
 	["buffsize"] = 22,					   				--Change the size of your player buffs / debuffs (Use at your own risk)
 	["rowbuffs"] = 16,					  				--How many buffs to display in each line
-	}
+	["backdropcolor"] = { .1,.1,.1 },                   -- default backdrop color of panels
+	["bordercolor"] = { .6,.6,.6 },                     -- default border color of panels
+}
 
 C["unitframes"] = {
 	-- general options
@@ -32,6 +34,7 @@ C["unitframes"] = {
 	["onlyselfdebuffs"] = false,                        -- display only our own debuffs applied on target
 	["showfocustarget"] = true,                         -- show focus target
 	["classTimerLayout"] = 3,							-- Sets the layout for class timers
+	["bordercolor"] = { .4,.4,.4 },                     -- unit frames panel border color
 	
 	-- raid layout (if one of them is enabled)
 	["showrange"] = true,                               -- show range opacity on raidframes
@@ -133,9 +136,10 @@ C["datatext"] = {
 	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
 	["currency"] = 0,                                   -- show your tracked currency on panels
-	["hit"] = 0,
-	["mastery"] = 0,
-	["micromenu"] = 0,
+	["hit"] = 0,                                        -- show hit rating
+	["mastery"] = 0,                                    -- show mastery rating
+	["micromenu"] = 0,                                  -- add a micro menu thought datatext
+	["regen"] = 0,                                      -- show mana regeneration
 
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = false,                                  -- set time to 24h format.
@@ -168,10 +172,10 @@ C["chat"] = {
 }
 
 C["nameplate"] = {
-	["enable"] = true,                                  -- enable nice skinned nameplates that fit into tukui
-	["showhealth"] = true,				                -- show health text on nameplate
-	["enhancethreat"] = true,			                -- threat features based on if your a tank or not
+	["enable"] = true,                                  -- enable nice skinned nameplates that fit into tukui		                -- threat features based on if your a tank or not
 	["overlap"] = true,				                -- allow nameplates to overlap
+	["showhealth"] = false,				                -- show health text on nameplate
+	["enhancethreat"] = false,			                -- threat features based on if your a tank or not
 	["combat"] = false,					                -- only show enemy nameplates in-combat.
 	["goodcolor"] = {75/255,  175/255, 76/255},	        -- good threat color (tank shows this with threat, everyone else without)
 	["badcolor"] = {0.78, 0.25, 0.25},			        -- bad threat color (opposite of above)

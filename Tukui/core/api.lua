@@ -212,19 +212,41 @@ local function FontString(parent, name, fontName, fontHeight, fontStyle)
 	return fs
 end
 
+local function HighlightTarget(self, event, unit)
+	if self.unit == "target" then return end
+	if UnitIsUnit('target', self.unit) then
+		self.HighlightTarget:Show()
+	else
+		self.HighlightTarget:Hide()
+	end
+end
+
+local function HighlightUnit(f, r, g, b)
+	if f.HighlightTarget then return end
+	local glowBorder = {edgeFile = C["media"].blank, edgeSize = 1}
+	f.HighlightTarget = CreateFrame("Frame", nil, f)
+	f.HighlightTarget:Point("TOPLEFT", f, "TOPLEFT", -2, 2)
+	f.HighlightTarget:Point("BOTTOMRIGHT", f, "BOTTOMRIGHT", 2, -2)
+	f.HighlightTarget:SetBackdrop(glowBorder)
+	f.HighlightTarget:SetFrameLevel(f:GetFrameLevel() + 1)
+	f.HighlightTarget:SetBackdropBorderColor(r,g,b,1)
+	f.HighlightTarget:Hide()
+	f:RegisterEvent("PLAYER_TARGET_CHANGED", HighlightTarget)
+end
+
 local function addapi(object)
 	local mt = getmetatable(object).__index
-	mt.Size = Size
-	mt.Point = Point
-	mt.SetTemplate = SetTemplate
-	mt.CreatePanel = CreatePanel
-	mt.CreateShadow = CreateShadow
-	mt.Kill = Kill
-	mt.CreateTransparentPanel = CreateTransparentPanel
-	mt.StyleButton = StyleButton
-	mt.Width = Width
-	mt.Height = Height
-	mt.FontString = FontString
+	if not object.Size then mt.Size = Size end
+	if not object.Point then mt.Point = Point end
+	if not object.SetTemplate then mt.SetTemplate = SetTemplate end
+	if not object.CreatePanel then mt.CreatePanel = CreatePanel end
+	if not object.CreateShadow then mt.CreateShadow = CreateShadow end
+	if not object.Kill then mt.Kill = Kill end
+	if not object.StyleButton then mt.StyleButton = StyleButton end
+	if not object.Width then mt.Width = Width end
+	if not object.Height then mt.Height = Height end
+	if not object.FontString then mt.FontString = FontString end
+	if not object.HighlightUnit then mt.HighlightUnit = HighlightUnit end
 end
 
 local handled = {["Frame"] = true}

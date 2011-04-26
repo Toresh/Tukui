@@ -604,7 +604,7 @@ local CreateAuraTimer = function(self, elapsed)
 end
 
 T.PostCreateAura = function(element, button)
-	T.SetTemplate(button)
+	button:SetTemplate("Default")
 	
 	button.remaining = T.SetFontString(button, C["media"].font, C["unitframes"].auratextscale, "THINOUTLINE")
 	button.remaining:Point("CENTER", 1, 0)
@@ -654,6 +654,12 @@ T.PostUpdateAura = function(icons, unit, icon, index, offset, filter, isDebuff, 
 			icon:SetBackdropBorderColor(color.r * 0.6, color.g * 0.6, color.b * 0.6)
 			icon.icon:SetDesaturated(false)
 		end
+	else
+		if (isStealable or ((T.myclass == "MAGE" or T.myclass == "PRIEST" or T.myclass == "SHAMAN") and dtype == "Magic")) and not UnitIsFriend("player", unit) then
+			icon:SetBackdropBorderColor(1, 0.85, 0, 1)
+		else
+			icon:SetBackdropBorderColor(unpack(C.media.bordercolor))
+		end
 	end
 	
 	if duration and duration > 0 then
@@ -679,6 +685,13 @@ T.HidePortrait = function(self, unit)
 		else
 			self.Portrait:SetAlpha(1)
 		end
+	end
+end
+
+T.PortraitUpdate = function(self, unit)
+	--Fucking Furries
+	if self:GetModel() and self:GetModel().find and self:GetModel():find("worgenmale") then
+		self:SetCamera(1)
 	end
 end
 
@@ -919,8 +932,8 @@ T.createAuraWatch = function(self, unit)
 			local icon = CreateFrame("Frame", nil, auras)
 			icon.spellID = spell[1]
 			icon.anyUnit = spell[4]
-			icon:SetWidth(T.Scale(6*C["unitframes"].gridscale))
-			icon:SetHeight(T.Scale(6*C["unitframes"].gridscale))
+			icon:Width(6*C["unitframes"].gridscale)
+			icon:Height(6*C["unitframes"].gridscale)
 			icon:SetPoint(spell[2], 0, 0)
 
 			local tex = icon:CreateTexture(nil, "OVERLAY")
@@ -985,77 +998,89 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		
 		ORD.ShowDispelableDebuff = true
 		ORD.FilterDispellableDebuff = true
-		ORD.MatchBySpellName = false
+		ORD.MatchBySpellName = true
+		
+		local function SpellName(id)
+			local name, _, _, _, _, _, _, _, _ = GetSpellInfo(id) 	
+			return name	
+		end
 
 		T.debuffids = {
-			-- Other debuff
-			67479, -- Impale
-			
-			--CATA DEBUFFS
+		-- Other debuff
+			SpellName(67479), -- Impale
+
+		--CATA DEBUFFS
 		--Baradin Hold
-			95173, -- Consuming Darkness
-			
+			SpellName(95173), -- Consuming Darkness
+
 		--Blackwing Descent
 			--Magmaw
-			91911, -- Constricting Chains
-			94679, -- Parasitic Infection
-			94617, -- Mangle
-			
+			SpellName(91911), -- Constricting Chains
+			SpellName(94679), -- Parasitic Infection
+			SpellName(94617), -- Mangle
+
 			--Omintron Defense System
-			79835, --Poison Soaked Shell	
-			91433, --Lightning Conductor
-			91521, --Incineration Security Measure
-			
+			SpellName(79835), --Poison Soaked Shell
+			SpellName(91433), --Lightning Conductor
+			SpellName(91521), --Incineration Security Measure
+
 			--Maloriak
-			77699, -- Flash Freeze
-			77760, -- Biting Chill
-			
+			SpellName(77699), -- Flash Freeze
+			SpellName(77760), -- Biting Chill
+
 			--Atramedes
-			92423, -- Searing Flame
-			92485, -- Roaring Flame
-			92407, -- Sonic Breath
-			
+			SpellName(92423), -- Searing Flame
+			SpellName(92485), -- Roaring Flame
+			SpellName(92407), -- Sonic Breath
+
 			--Chimaeron
-			82881, -- Break
-			89084, -- Low Health
-			
+			SpellName(82881), -- Break
+			SpellName(89084), -- Low Health
+
 			--Nefarian
-			
+
+			--Sinestra
+			SpellName(92956), --Wrack
+
 		--The Bastion of Twilight
 			--Valiona & Theralion
-			92878, -- Blackout
-			86840, -- Devouring Flames
-			95639, -- Engulfing Magic
-			
+			SpellName(92878), -- Blackout
+			SpellName(86840), -- Devouring Flames
+			SpellName(95639), -- Engulfing Magic
+
 			--Halfus Wyrmbreaker
-			39171, -- Malevolent Strikes
-			
+			SpellName(39171), -- Malevolent Strikes
+
 			--Twilight Ascendant Council
-			92511, -- Hydro Lance
-			82762, -- Waterlogged
-			92505, -- Frozen
-			92518, -- Flame Torrent
-			83099, -- Lightning Rod
-			92075, -- Gravity Core
-			92488, -- Gravity Crush
-			
+			SpellName(92511), -- Hydro Lance
+			SpellName(82762), -- Waterlogged
+			SpellName(92505), -- Frozen
+			SpellName(92518), -- Flame Torrent
+			SpellName(83099), -- Lightning Rod
+			SpellName(92075), -- Gravity Core
+			SpellName(92488), -- Gravity Crush
+
 			--Cho'gall
-			86028, -- Cho's Blast
-			86029, -- Gall's Blast
-			
+			SpellName(86028), -- Cho's Blast
+			SpellName(86029), -- Gall's Blast
+
 		--Throne of the Four Winds
 			--Conclave of Wind
 				--Nezir <Lord of the North Wind>
-				93131, --Ice Patch
+				SpellName(93131), --Ice Patch
 				--Anshal <Lord of the West Wind>
-				86206, --Soothing Breeze
-				93122, --Toxic Spores
+				SpellName(86206), --Soothing Breeze
+				SpellName(93122), --Toxic Spores
 				--Rohash <Lord of the East Wind>
-				93058, --Slicing Gale 
+				SpellName(93058), --Slicing Gale
 			--Al'Akir
-			93260, -- Ice Storm
-			93295, -- Lightning Rod
+			SpellName(93260), -- Ice Storm
+			SpellName(93295), -- Lightning Rod
 		}
+
+		T.ReverseTimer = {
+			[92956] = true, -- Sinestra (Wrack)
+		},
 		
 		ORD:RegisterDebuffs(T.debuffids)
 	end

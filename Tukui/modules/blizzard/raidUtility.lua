@@ -26,7 +26,7 @@ end
 
 --Change border when mouse is inside the button
 local function ButtonEnter(self)
-	local color = RAID_CLASS_COLORS[E.myclass]
+	local color = RAID_CLASS_COLORS[T.myclass]
 	self:SetBackdropBorderColor(color.r, color.g, color.b)
 end
 
