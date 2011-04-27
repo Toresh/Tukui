@@ -200,6 +200,7 @@ local function SetupChat(self)
 	ChatTypeInfo.OFFICER.sticky = 1
 	ChatTypeInfo.RAID_WARNING.sticky = 1
 	ChatTypeInfo.CHANNEL.sticky = 1
+	
 end
 
 local function SetupChatPosAndFont(self)	
@@ -233,11 +234,6 @@ local function SetupChatPosAndFont(self)
 				FCF_SavePositionAndDimensions(chat)
 			end
 		end
-		--Check if chat exists in the bottomright corner
-		if C.chat.background == true and point == "BOTTOMRIGHT" and chat:IsShown() then
-			TukuiChatBackgroundRight:Show()		
-		end
-	
 	end
 			
 	-- reposition battle.net popup over chat #1

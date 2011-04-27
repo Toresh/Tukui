@@ -150,7 +150,7 @@ if C.chat.background then
 	-- CHAT BG RIGHT
 	local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", TukuiInfoRight)
 	chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth, 145, "BOTTOM", TukuiInfoRight, "BOTTOM", 0, 0)
-	chatrightbg:Hide() --This will get shown if a chat exists in the bottomright corner	
+	--chatrightbg:Hide() --This will get shown if a chat exists in the bottomright corner	
 end
 
 if C["actionbar"].cooldownbar then
