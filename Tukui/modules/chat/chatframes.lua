@@ -76,7 +76,7 @@ local function SetChatStyle(frame)
 	-- now show text if mouse is found over tab.
 	tab:HookScript("OnEnter", function() _G[chat.."TabText"]:Show() end)
 	tab:HookScript("OnLeave", function() _G[chat.."TabText"]:Hide() end)
-
+	end
 	
 	-- yeah baby
 	_G[chat]:SetClampRectInsets(0,0,0,0)
@@ -233,6 +233,11 @@ local function SetupChatPosAndFont(self)
 				FCF_SavePositionAndDimensions(chat)
 			end
 		end
+		--Check if chat exists in the bottomright corner
+		if C.chat.background == true and point == "BOTTOMRIGHT" and chat:IsShown() then
+			TukuiChatBackgroundRight:Show()		
+		end
+	
 	end
 			
 	-- reposition battle.net popup over chat #1
