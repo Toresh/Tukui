@@ -774,7 +774,7 @@ local function Shared(self, unit)
 			self.Castbar.Icon = castbar.icon
 		end
 		
-		--[[swing bar, based on Elv22 code
+		--swing bar, based on Elv22 code
 			if C["castbar"].unitswingbar == true then
 				if unit =="player" then
 					local Swing = CreateFrame("StatusBar", self:GetName().."_SwingBar", InvTukuiActionBarBackground)
@@ -793,9 +793,9 @@ local function Shared(self, unit)
 					self.Swing.bg:SetFrameStrata("BACKGROUND")
 					--self.Swing.bg:SetFrameLevel(self.Swing:GetFrameLevel() - 1)
 					--T.SetTemplate(self.Swing.bg)
-					T:SetTemplate("Default")
+					self.Swing.bg:SetTemplate("Default")
 				end
-			end--]]
+			end
 		
 		-- add combat feedback support
 		if C["unitframes"].combatfeedback == true then
