@@ -69,10 +69,10 @@ T.PP = function(p, obj)
 	end
 	
 	if TukuiMinimap then
-		if p == 11 and TukuiCF["map"].topinfo then
+		if p == 11 and C["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
 			obj:SetPoint("LEFT", top, 20, 0)
-		elseif p == 12 and TukuiCF["map"].topinfo then
+		elseif p == 12 and C["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
 			obj:SetPoint("RIGHT", top, -20, 0)
 
