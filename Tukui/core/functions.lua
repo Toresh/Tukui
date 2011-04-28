@@ -71,10 +71,10 @@ T.PP = function(p, obj)
 	if TukuiMinimap then
 		if p == 11 and C["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
-			obj:SetPoint("LEFT", top, 20, 0)
+			obj:SetPoint("LEFT", top, 10, 0)
 		elseif p == 12 and C["map"].topinfo then
 			obj:SetHeight(top:GetHeight())
-			obj:SetPoint("RIGHT", top, -20, 0)
+			obj:SetPoint("RIGHT", top, -10, 0)
 
 		elseif p == 14 then
 			obj:SetParent(mapleft)
